@@ -1,9 +1,12 @@
 local function OnPlayerConnecting(name, setKickReason, deferrals)
     local _Player = Player(source)
     local Identifier = _Player.Identifier()
+    
+    deferrals.defer()
+    Wait(0)
 
     if not Identifier then
-        setKickReason("You are not connected to Steam.")
+        deferrals.done("You dont have a " .. GlobalConfig.Identifier .." identifier.")
     else
         if (_Player.Exists()) then
             print(name .. " - User Authenticated [" .. Identifier .. "]")
@@ -11,6 +14,7 @@ local function OnPlayerConnecting(name, setKickReason, deferrals)
             print(name .. "[" .. Identifier .. "] - Joined for first time to server!")
             Database.ExecuteInsertQuery("INSERT INTO users (Identifier, Nickname) VALUES ('" .. Identifier .. "', '" .. name .. "')")
         end
+        deferrals.done()
     end
 end
 AddEventHandler("playerConnecting", OnPlayerConnecting)

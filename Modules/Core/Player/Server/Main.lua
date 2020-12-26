@@ -9,7 +9,7 @@ function Player(Source)
     self.Identifier = function()
         local Identifier
         for k, v in ipairs(GetPlayerIdentifiers(self.Source)) do
-            if string.match(v, "steam") then
+            if string.match(v, GlobalConfig.Identifier) then
                 Identifier = v
                 return Identifier
             end
