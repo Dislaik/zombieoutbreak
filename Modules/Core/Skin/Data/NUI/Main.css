@@ -1,0 +1,243 @@
+@font-face {
+    font-family: Roboto;
+    src: url(./Fonts/RobotoMono-VariableFont_wght.ttf);
+}
+@font-face {
+    font-family: Bebas;
+    src: url(./Fonts/BebasNeue-Regular.ttf);
+}
+
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    opacity: 0.2;
+}
+
+.LeftBox {
+    position: absolute;
+    background-color: rgba(35,35,35,0.95);
+    left: auto;
+    width: 500px;
+    height: 100%;
+    text-align: center;
+}
+
+p {
+    user-select: none;
+    font-family: Bebas;
+    color: rgba(200, 200, 200, 1);
+    font-size: 20px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#Title {
+	font-size: 36;
+}
+
+.slidecontainer {
+    width: 87%;
+    margin: auto;
+}
+  
+.slider {
+    -webkit-appearance: none;
+    width: 70%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+  
+.slider:hover {
+    opacity: 1;
+}
+  
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: rgba(150, 150, 150, 1);
+    cursor: pointer;
+}
+  
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: rgba(150, 150, 150, 1);
+    cursor: pointer;
+}
+
+
+button.submit {
+    margin-top: 20px;
+    user-select: none;
+    background-color: rgba(200, 200, 200, 0.5);
+    outline: none;
+    border: none;
+    padding: 12px 60px 12px 60px;
+    transition: background-color 0.2s;
+    font-family: Bebas;
+    font-size: 20px;
+}
+
+button:hover {
+    background-color: rgba(200, 200, 200, 1);
+}
+
+[type=radio] { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+[type=radio] + img {
+    width: 78px;
+    height: 78px;
+    display: inline-block;
+    margin-right: -2px;
+    margin-top: -2px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+[type=radio]:checked + img {
+    box-shadow: 0 0 0px 2px white;
+}
+
+[type=radio]:checked + span {
+    box-shadow: 0 0 0px 2px white;
+}
+
+.RadioImageBox {
+    width: 87%;
+    margin: auto;
+    text-align: left;
+}
+
+.Container {
+    width: 87%;
+    margin: auto;
+}
+
+.Container > p {
+    text-align: left;
+}
+
+.ContainerSubColor {
+    text-align: left;
+}
+
+span.color {
+    width: 65px;
+    height: 65px;
+    border-radius: 100%;
+    display: inline-block;
+    margin-right: -2px;
+    margin-top: -2px;
+    font-size: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+span.colorsub {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    display: inline-block;
+    margin-right: -2px;
+    margin-top: -2px;
+    font-size: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.Tab {
+    overflow: hidden;
+    width: 100%;
+}
+  
+.Tab button {
+    user-select: none;
+    background-color: rgba(200, 200, 200, 0.5);
+    outline: none;
+    border: none;
+    width: 49.6%;
+    height: 50px;
+    transition: background-color 0.2s;
+    font-family: Bebas;
+    font-size: 20px;
+}
+
+.Tab button:hover {
+    background-color: #ddd;
+}
+
+.Tab button.active {
+    background-color: #ccc;
+}
+
+.TabContent {
+    display: none;
+    overflow:auto;
+    padding: 6px 12px;
+    height: 75%;
+    border-bottom: 2px solid rgba(100, 100, 100, 0.3);
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+
+.RangeButton {
+    background-color: transparent;
+    color:  rgba(150, 150, 150, 1);
+    border: none;
+    outline: none;
+    font-size: 22;
+    transition: color 0.2s ease-in-out;
+}
+
+.RangeButton:hover {
+    background-color: transparent;
+    color:  d3d3d3;
+}
+
+.Keys {
+    background-color: transparent;
+    width: 720px;
+    height: 100px;
+    position: absolute;
+    bottom: 0px;
+    left: auto;
+    z-index: -1;
+}
+
+.RightKeyContainer {
+    float: right;
+}
+
+.KeysContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.RotationButton {
+    margin: 0px 15px 0px 15px;
+    padding: 6px 12px 6px 12px;
+    font-size: 22;
+    border-radius: 5px;
+    background-color: black;
+}

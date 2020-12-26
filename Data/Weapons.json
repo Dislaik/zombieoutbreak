@@ -1,0 +1,296 @@
+{
+    "weapon_dagger" : {
+        "hash" : -1834847097
+    },
+    "weapon_bat" : {
+        "hash" : -1786099057
+    },
+    "weapon_bottle" : {
+        "hash" : -102323637
+    },
+    "weapon_crowbar" : {
+        "hash" : -2067956739
+    },
+    "weapon_unarmed" : {
+        "hash" : -1569615261
+    },
+    "weapon_flashlight" : {
+        "hash" : -1951375401
+    },
+    "weapon_golfclub" : {
+        "hash" : 1141786504
+    },
+    "weapon_hammer" : {
+        "hash" : 1261537171
+    },
+    "weapon_hatchet" : {
+        "hash" : -102973651
+    },
+    "weapon_knuckle" : {
+        "hash" : -656458692
+    },
+    "weapon_knife" : {
+        "hash" : -1716189206
+    },
+    "weapon_machete" : {
+        "hash" : -581044007
+    },
+    "weapon_switchblade" : {
+        "hash" : -538741184
+    },
+    "weapon_nightstick" : {
+        "hash" : 1737195953
+    },
+    "weapon_wrench" : {
+        "hash" : 419712736
+    },
+    "weapon_battleaxe" : {
+        "hash" : -853065399
+    },
+    "weapon_poolcue" : {
+        "hash" : -1810795771
+    },
+    "weapon_stone_hatchet" : {
+        "hash" : 940833800
+    },
+    "weapon_pistol" : {
+        "hash" : 453432689
+    },
+    "weapon_pistol_mk2" : {
+        "hash" : -1075685676
+    },
+    "weapon_combatpistol" : {
+        "hash" : 1593441988
+    },
+    "weapon_appistol" : {
+        "hash" : 584646201
+    },
+    "weapon_stungun" : {
+        "hash" : 911657153
+    },
+    "weapon_pistol50" : {
+        "hash" : -1716589765
+    },
+    "weapon_snspistol" : {
+        "hash" : -1076751822
+    },
+    "weapon_snspistol_mk2" : {
+        "hash" : -2009644972
+    },
+    "weapon_heavypistol" : {
+        "hash" : -771403250
+    },
+    "weapon_vintagepistol" : {
+        "hash" : 137902532
+    },
+    "weapon_flaregun" : {
+        "hash" : 1198879012
+    },
+    "weapon_marksmanpistol" : {
+        "hash" : -598887786
+    },
+    "weapon_revolver" : {
+        "hash" : -1045183535
+    },
+    "weapon_revolver_mk2" : {
+        "hash" : -879347409
+    },
+    "weapon_doubleaction" : {
+        "hash" : -1746263880
+    },
+    "weapon_raypistol" : {
+        "hash" : -1355376991
+    },
+    "weapon_ceramicpistol" : {
+        "hash" : 727643628
+    },
+    "weapon_navyrevolver" : {
+        "hash" : -1853920116
+    },
+    "weapon_gadgetpistol" : {
+        "hash" : 1470379660
+    },
+    "weapon_microsmg" : {
+        "hash" : 324215364
+    },
+    "weapon_smg" : {
+        "hash" : 736523883
+    },
+    "weapon_smg_mk2" : {
+        "hash" : 2024373456
+    },
+    "weapon_assaultsmg" : {
+        "hash" : -270015777
+    },
+    "weapon_combatpdw" : {
+        "hash" : 171789620
+    },
+    "weapon_machinepistol" : {
+        "hash" : -619010992
+    },
+    "weapon_minismg" : {
+        "hash" : -1121678507
+    },
+    "weapon_raycarbine" : {
+        "hash" : 1198256469
+    },
+    "weapon_pumpshotgun" : {
+        "hash" : 487013001
+    },
+    "weapon_pumpshotgun_mk2" : {
+        "hash" : 1432025498
+    },
+    "weapon_sawnoffshotgun" : {
+        "hash" : 2017895192
+    },
+    "weapon_assaultshotgun" : {
+        "hash" : -494615257
+    },
+    "weapon_bullpupshotgun" : {
+        "hash" : -1654528753
+    },
+    "weapon_musket" : {
+        "hash" : -1466123874
+    },
+    "weapon_heavyshotgun" : {
+        "hash" : 984333226
+    },
+    "weapon_dbshotgun" : {
+        "hash" : -275439685
+    },
+    "weapon_autoshotgun" : {
+        "hash" : 317205821
+    },
+    "weapon_combatshotgun" : {
+        "hash" : 94989220
+    },
+    "weapon_assaultrifle" : {
+        "hash" : -1074790547
+    },
+    "weapon_assaultrifle_mk2" : {
+        "hash" : 961495388
+    },
+    "weapon_carbinerifle" : {
+        "hash" : -2084633992
+    },
+    "weapon_carbinerifle_mk2" : {
+        "hash" : -86904375
+    },
+    "weapon_advancedrifle" : {
+        "hash" : -1357824103
+    },
+    "weapon_specialcarbine" : {
+        "hash" : -1063057011
+    },
+    "weapon_specialcarbine_mk2" : {
+        "hash" : -1768145561
+    },
+    "weapon_bullpuprifle" : {
+        "hash" : 2132975508
+    },
+    "weapon_bullpuprifle_mk2" : {
+        "hash" : -2066285827
+    },
+    "weapon_compactrifle" : {
+        "hash" : 1649403952
+    },
+    "weapon_militaryrifle" : {
+        "hash" : -1658906650
+    },
+    "weapon_mg" : {
+        "hash" : -1660422300
+    },
+    "weapon_combatmg" : {
+        "hash" : 2144741730
+    },
+    "weapon_combatmg_mk2" : {
+        "hash" : -608341376
+    },
+    "weapon_gusenberg" : {
+        "hash" : 1627465347
+    },
+    "weapon_sniperrifle" : {
+        "hash" : 100416529
+    },
+    "weapon_heavysniper" : {
+        "hash" : 205991906
+    },
+    "weapon_heavysniper_mk2" : {
+        "hash" : 177293209
+    },
+    "weapon_marksmanrifle" : {
+        "hash": -952879014
+    },
+    "weapon_marksmanrifle_mk2" : {
+        "hash" : 1785463520
+    },
+    "weapon_rpg" : {
+        "hash" : -1312131151
+    },
+    "weapon_grenadelauncher" : {
+        "hash" : -1568386805
+    },
+    "weapon_grenadelauncher_smoke" : {
+        "hash" : 1305664598
+    },
+    "weapon_minigun" : {
+        "hash" : 1119849093
+    },
+    "weapon_firework" : {
+        "hash" : 2138347493
+    },
+    "weapon_railgun" : {
+        "hash" : 1834241177
+    },
+    "weapon_hominglauncher" : {
+        "hash" : 1672152130
+    },
+    "weapon_compactlauncher" : {
+        "hash" : 125959754
+    },
+    "weapon_rayminigun" : {
+        "hash" : -1238556825
+    },
+    "weapon_grenade" : {
+        "hash" : -1813897027
+    },
+    "weapon_bzgas" : {
+        "hash" : -1600701090
+    },
+    "weapon_molotov" : {
+        "hash" : 615608432
+    },
+    "weapon_stickybomb" : {
+        "hash" : 741814745
+    },
+    "weapon_proxmine" : {
+        "hash" : -1420407917
+    },
+    "weapon_snowball" : {
+        "hash" : 126349499
+    },
+    "weapon_pipebomb" : {
+        "hash" : -1169823560
+    },
+    "weapon_ball" : {
+        "hash" : 600439132
+    },
+    "weapon_smokegrenade" : {
+        "hash" : -37975472
+    },
+    "weapon_flare" : {
+        "hash" : 1233104067
+    },
+    "weapon_petrolcan" : {
+        "hash" : 883325847
+    },
+    "gadget_parachute" : {
+        "hash" : -72657034
+    },
+    "weapon_fireextinguisher" : {
+        "hash" : 101631238
+    },
+    "weapon_hazardcan" : {
+        "hash" : -1168940174
+    }
+}

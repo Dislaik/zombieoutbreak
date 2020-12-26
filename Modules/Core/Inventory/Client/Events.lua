@@ -1,0 +1,132 @@
+RegisterNUICallback("Inventory:Use", function(Data)
+    if Data.Item.Type == "Item" then
+        TriggerServerEvent("Inventory:UseItem", Data.Item.Name)
+    elseif Data.Item.Type == "Weapon" then
+        Inventory.CurrentWeapon = Data.Item.Name
+        Inventory.PlayerWeapon(Data.Item.Name, Data.Item.Ammo)
+    elseif Data.Item.Type == "Clothes" then
+        Inventory.UseClothes(Data.Item, Skin.GetPlayerSex())
+    end
+end)
+
+RegisterNUICallback("Inventory:Give", function(Data)
+    local PlayerCoords = GetEntityCoords(PlayerPedId(), true)
+    for i, _Player in pairs(GetActivePlayers()) do
+        local PlayerId = GetPlayerFromServerId(_Player)
+        local PlayerTargetCoods = GetEntityCoords(GetPlayerPed(PlayerId), true)
+        local Distance = Vdist(PlayerCoords.x, PlayerCoords.y, PlayerCoords.z, PlayerTargetCoods.x, PlayerTargetCoods.y, PlayerTargetCoods.z)
+
+        if PlayerId ~= -1 and Distance < 1.5 then
+            if Data.Input > 0 then
+                TriggerServerEvent("Inventory:Give", PlayerId, Data.Item, Data.Input)
+            end
+        else
+            Player.ShowNotification(Translate("Inventory:No_Player_Nearby"))
+        end
+    end
+
+end)
+
+RegisterNUICallback("Inventory:Throw", function(Data)
+    if Data.Input > 0 then
+
+        RequestAnimDict("amb@medic@standing@kneel@base")
+        while not HasAnimDictLoaded("amb@medic@standing@kneel@base") do
+            Wait(0)
+        end
+
+        TaskPlayAnim(PlayerPedId(), "amb@medic@standing@kneel@base", "base", 5.0, 10.0, -1, 49, 0, false, false, false)
+
+        if Data.Type == "Item" or Data.Type == "Clothes" then
+            if Data.Item.Count >= Data.Input then
+                Data.Item["Input"] = Data.Input
+            else
+                Data.Item["Input"] = Data.Item.Count
+            end
+            TriggerServerEvent("Inventory:RemoveItem", Data.Name, Data.Input)
+            Inventory.CreateDrop(Data.Name, Data.Item)
+
+            if Data.Type == "Clothes" then
+                TriggerEvent("Skin:RemoveClothes", Data.Name, Skin.GetPlayerSex())
+            end
+
+        elseif Data.Type == "Weapon" then
+            TriggerServerEvent("Inventory:RemoveWeapon", Data.Name)
+            RemoveWeaponFromPed(PlayerPedId(), GetHashKey(Data.Name))
+            Inventory.CreateDrop(Data.Name, Data.Item)
+        end
+
+        SetCurrentPedWeapon(PlayerPedId(), GetHashKey("WEAPON_UNARMED"), true)
+    end
+end)
+
+RegisterNUICallback("Inventory:Close", function(Data)
+    SetNuiFocus(false, false)
+    SendNUIMessage({
+        Type = "Inventory",
+        Display = false
+    })
+    ClearPedTasks(PlayerPedId())
+    AnimpostfxStop("SwitchHUDIn")
+    Inventory.Open = false
+end)
+
+RegisterNUICallback("Inventory:Lootable", function(Data)
+    for i in pairs(Inventory.Drop) do
+        local Drop = Inventory.Drop[i]
+        if Data.Id == Drop.Id then
+            TriggerServerEvent("Inventory:Lootable", Drop)
+        end
+    end
+end)
+
+RegisterNetEvent("Inventory:RemoveLootable")
+AddEventHandler("Inventory:RemoveLootable", function(Id)
+    for i in pairs(Inventory.Drop) do
+        if Inventory.Drop[i].Id == Id then
+            if Inventory.Drop[i].Type == "Item" or Inventory.Drop[i].Type == "Clothes" then
+                if Inventory.Drop[i].Input > 1 then
+                    Inventory.Drop[i].Input = Inventory.Drop[i].Input - 1
+                else
+                    Inventory.Drop[i] = nil
+                end
+                break
+            elseif Inventory.Drop[i].Type == "Weapon" then
+                Inventory.Drop[i] = nil
+            end
+        end
+    end
+
+    TriggerServerEvent("Inventory:UpdateDrop", Inventory.Drop, Inventory.DropId)
+
+    Inventory.UpdateDrop = true
+end)
+
+
+RegisterNetEvent("Inventory:PlayerInventory")
+AddEventHandler("Inventory:PlayerInventory", function(Data)
+    Inventory.Items = Data
+end)
+
+RegisterNetEvent("Inventory:UpdatePlayerInventory")
+AddEventHandler("Inventory:UpdatePlayerInventory", function(Data)
+    Inventory.Items = Data
+    if Inventory.Open then
+        SendNUIMessage({
+            Type = "UpdateInventory",
+            Inventory = Inventory.Items,
+            MaxWeight = 32.0
+        })
+    end
+end)
+
+RegisterNetEvent("Inventory:CreateDrop")
+AddEventHandler("Inventory:CreateDrop", function(Drop)
+    for i in pairs(Drop) do
+       local Object = CreateObject(GetHashKey("PROP_BIG_BAG_01"), Drop[i].Coords.x, Drop[i].Coords.y, Drop[i].Coords.z, false, false, true)
+        SetEntityHeading(Object, Drop[i].Heading)
+        SetEntityCollision(Object, false, false)
+        PlaceObjectOnGroundProperly_2(Object)
+        table.insert(Inventory.VisualDrop, Object)
+    end
+end)
