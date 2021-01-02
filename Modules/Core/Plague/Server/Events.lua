@@ -13,16 +13,10 @@ AddEventHandler("Plague:LootCorpse", function(Ped, Loot, TotalProbability)
         for i in pairs(Config.LootProbability) do
             CurrentProbability = CurrentProbability + Config.LootProbability[i]
             if RandomLoot <= CurrentProbability then
-                local LootArray = {}
-                for j in pairs(Inventory[i]) do
-                    for k in pairs(Loot) do
-                        if Inventory[i][j].Name == Loot[k] then
-                            table.insert(LootArray, Loot[k])
-                        end
-                    end
+                if next(Loot[i]) ~= nil then
+                    Item = Loot[i][Utils.Random(1, #Loot[i])]
+                    break
                 end
-                Item = LootArray[Utils.Random(1, #LootArray)]
-                break
             end
         end
 
