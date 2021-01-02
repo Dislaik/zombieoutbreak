@@ -20,9 +20,7 @@ Config.LootProbability = {
 Config.Loot = {
     "unemployedtshirt",
     "unemployedpants",
-    "unemployedshoes",
-    "test",
-    "weapon_bat"
+    "unemployedshoes"
 }
 
 Config.Debug = false
