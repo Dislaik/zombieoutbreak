@@ -1,3 +1,6 @@
+LoadModuleTranslations("Data/Locales/".. GlobalConfig.Lang ..".lua")
+local Config = LoadModuleConfig("Data/Config.lua")
+
 RegisterNetEvent("Identity:CreateIdentity")
 AddEventHandler("Identity:CreateIdentity", function(Data)
     local _Player = Player(source)
