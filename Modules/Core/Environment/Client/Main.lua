@@ -1,6 +1,4 @@
-LoadModuleTranslations("Data/Locales/".. GlobalConfig.Lang ..".lua")
 local Config = LoadModuleConfig("Data/Config.lua")
-
 
 SetArtificialLightsState(true)
 SetScenarioGroupEnabled("LSA_Planes", false)
@@ -8,7 +6,14 @@ StartAudioScene("CHARACTER_CHANGE_IN_SKY_SCENE")
 SetDistantCarsEnabled(true)
 SetMaxWantedLevel(0)
 
-SetInterval(10, function()
+for i, zone in pairs(Config.SafeZones) do
+    blip = AddBlipForRadius(zone.x, zone.y, zone.z, zone.radius)
+	SetBlipHighDetail(blip, true)
+    SetBlipColour(blip, 2)
+    SetBlipAlpha(blip, 128)
+end
+
+SetInterval(0, function()
     for i, Player in pairs(GetActivePlayers()) do
 
         local PlayerId = GetPlayerFromServerId(Player)
@@ -18,12 +23,12 @@ SetInterval(10, function()
         local Handler, VehicleHandler = FindFirstVehicle()
 
         repeat
-            Wait(10)
+            Wait(5)
             local VehicleCoords = GetEntityCoords(VehicleHandler)
 
             if (IsPedInVehicle(PlayerPed, VehicleHandler, true)) or (GetLastPedInVehicleSeat(VehicleHandler, -1) == PlayerPed) then
                 SetVehRadioStation(VehicleHandler, "OFF")
-                --SetVehicleForwardSpeed(VehicleHandler, 0.0)
+                SetVehicleEngineOn(VehicleHandler, true, false, false)
             else
 
                 if (Utils.Random(1, 100) <= Config.PercentageVehiclesUndriveable) and GetVehicleEngineHealth(VehicleHandler) > 999.0 then
@@ -39,9 +44,7 @@ SetInterval(10, function()
                     DeleteEntity(PedHandler)
                 end
 
-                --SetVehicleDoorOpen
                 SetVehicleEngineOn(VehicleHandler, false, true, true)
-                --SetVehicleForwardSpeed(VehicleHandler, 0.0)
                 BringVehicleToHalt(VehicleHandler, 0, 1, false)
             end
              
@@ -69,18 +72,18 @@ SetInterval(0, function()
     end
 end)
 
-SetInterval(500, function()
-    for i, Safe in pairs(Config.SafeZones) do
+SetInterval(0, function()
+    for i, zone in pairs(Config.SafeZones) do
         local PedHandler = -1
         local Success = false
         local Handler, PedHandler = FindFirstPed()
 
         repeat
-            Wait(10)
             if IsPedHuman(PedHandler) and not IsPedAPlayer(PedHandler) and not IsPedDeadOrDying(PedHandler, true) then
-                local PedCoords = GetEntityCoords(PedHandler)
+                local pedcoords = GetEntityCoords(PedHandler)
+                local distance = Vdist(zone.x, zone.y, zone.z, pedcoords.x, pedcoords.y, pedcoords.z)
 
-                if (Safe.X < (PedCoords.x + (Safe.Width / 2)) and Safe.X > (PedCoords.x - (Safe.Width / 2)) and Safe.Y < (PedCoords.y + (Safe.Height / 2)) and Safe.Y > (PedCoords.y - (Safe.Height / 2))) then
+                if (distance <= zone.radius) then
                     DeleteEntity(PedHandler)
                 end
             end

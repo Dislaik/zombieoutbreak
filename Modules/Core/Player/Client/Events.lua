@@ -38,25 +38,70 @@ AddEventHandler("Player:LoadPlayer", function(Sex, PlayerSkin, Position)
         SetPedHeadOverlay(PlayerPedId(), 10, PlayerSkin["ChestHair"], PlayerSkin["ChestHairOpacity"])
         SetPedHeadOverlayColor(PlayerPedId(), 10, 1, PlayerSkin["ChestHairColor"], 0)
         SetPedHeadOverlay(PlayerPedId(), 11, PlayerSkin["BodyBlemishes"], PlayerSkin["BodyBlemishesOpacity"])
-        if PlayerSkin["Hat"] then
-            Skin.SetClothes(Sex, 0, PlayerSkin["Hat"])
+        if PlayerSkin.Hat then
+            Skin.SetClothes(Sex, 0, PlayerSkin.Hat)
         else
             Skin.DeleteClothes(0)
         end
-        if PlayerSkin["Tshirt"] then 
-            Skin.SetClothes(Sex, 1, PlayerSkin["Tshirt"])
-        else 
+        if PlayerSkin.Glasses then
+            Skin.SetClothes(Sex, 1, PlayerSkin.Glasses)
+        else
             Skin.DeleteClothes(1)
         end
-        if PlayerSkin["Pants"] then
-            Skin.SetClothes(Sex, 3, PlayerSkin["Pants"])
+        if PlayerSkin.Earrings then
+            Skin.SetClothes(Sex, 2, PlayerSkin.Earrings)
+        else
+            Skin.DeleteClothes(2)
+        end
+        if PlayerSkin.Watch then
+            Skin.SetClothes(Sex, 3, PlayerSkin.Watch)
         else
             Skin.DeleteClothes(3)
         end
-        if PlayerSkin["Shoes"] then
-            Skin.SetClothes(Sex, 4, PlayerSkin["Shoes"])
+        if PlayerSkin.Bracelet then
+            Skin.SetClothes(Sex, 4, PlayerSkin.Bracelet)
         else
             Skin.DeleteClothes(4)
+        end
+        if PlayerSkin.Mask then
+            Skin.SetClothes(Sex, 5, PlayerSkin.Mask)
+        else
+            Skin.DeleteClothes(5)
+        end
+        if PlayerSkin.Accessory then
+            Skin.SetClothes(Sex, 6, PlayerSkin.Accessory)
+        else
+            Skin.DeleteClothes(6)
+        end
+        if PlayerSkin.Tshirt then 
+            Skin.SetClothes(Sex, 7, PlayerSkin.Tshirt)
+        else 
+            Skin.DeleteClothes(7)
+        end
+        if PlayerSkin.Gloves then 
+            Skin.SetClothes(Sex, 8, PlayerSkin.Gloves)
+        else 
+            Skin.DeleteClothes(8)
+        end
+        if PlayerSkin.Armor then 
+            Skin.SetClothes(Sex, 9, PlayerSkin.Armor)
+        else 
+            Skin.DeleteClothes(9)
+        end
+        if PlayerSkin.Bag then 
+            Skin.SetClothes(Sex, 10, PlayerSkin.Bag)
+        else 
+            Skin.DeleteClothes(10)
+        end
+        if PlayerSkin.Pants then
+            Skin.SetClothes(Sex, 11, PlayerSkin.Pants)
+        else
+            Skin.DeleteClothes(11)
+        end
+        if PlayerSkin.Shoes then
+            Skin.SetClothes(Sex, 12, PlayerSkin.Shoes)
+        else
+            Skin.DeleteClothes(12)
         end
     elseif Sex == "Female" then
         SetPedHeadBlendData(PlayerPedId(), PlayerSkin["Face"], 0, 0, PlayerSkin["Skin"], 0, 0, 0, 0, 0, false)
@@ -81,25 +126,70 @@ AddEventHandler("Player:LoadPlayer", function(Sex, PlayerSkin, Position)
         SetPedHeadOverlay(PlayerPedId(), 10, 0, 0.0)
         SetPedHeadOverlayColor(PlayerPedId(), 10, 1, 0, 0)
         SetPedHeadOverlay(PlayerPedId(), 11, PlayerSkin["BodyBlemishes"], PlayerSkin["BodyBlemishesOpacity"])
-        if PlayerSkin["Hat"] then
-            Skin.SetClothes(Sex, 0, PlayerSkin["Hat"])
+        if PlayerSkin.Hat then
+            Skin.SetClothes(Sex, 0, PlayerSkin.Hat)
         else
             Skin.DeleteClothes(0)
         end
-        if PlayerSkin["Tshirt"] then 
-            Skin.SetClothes(Sex, 1, PlayerSkin["Tshirt"])
-        else 
+        if PlayerSkin.Glasses then
+            Skin.SetClothes(Sex, 1, PlayerSkin.Glasses)
+        else
             Skin.DeleteClothes(1)
         end
-        if PlayerSkin["Pants"] then
-            Skin.SetClothes(Sex, 3, PlayerSkin["Pants"])
+        if PlayerSkin.Earrings then
+            Skin.SetClothes(Sex, 2, PlayerSkin.Earrings)
+        else
+            Skin.DeleteClothes(2)
+        end
+        if PlayerSkin.Watch then
+            Skin.SetClothes(Sex, 3, PlayerSkin.Watch)
         else
             Skin.DeleteClothes(3)
         end
-        if PlayerSkin["Shoes"] then
-            Skin.SetClothes(Sex, 4, PlayerSkin["Shoes"])
+        if PlayerSkin.Bracelet then
+            Skin.SetClothes(Sex, 4, PlayerSkin.Bracelet)
         else
             Skin.DeleteClothes(4)
+        end
+        if PlayerSkin.Mask then
+            Skin.SetClothes(Sex, 5, PlayerSkin.Mask)
+        else
+            Skin.DeleteClothes(5)
+        end
+        if PlayerSkin.Accessory then
+            Skin.SetClothes(Sex, 6, PlayerSkin.Accessory)
+        else
+            Skin.DeleteClothes(6)
+        end
+        if PlayerSkin.Tshirt then 
+            Skin.SetClothes(Sex, 7, PlayerSkin.Tshirt)
+        else 
+            Skin.DeleteClothes(7)
+        end
+        if PlayerSkin.Gloves then 
+            Skin.SetClothes(Sex, 8, PlayerSkin.Gloves)
+        else 
+            Skin.DeleteClothes(8)
+        end
+        if PlayerSkin.Armor then 
+            Skin.SetClothes(Sex, 9, PlayerSkin.Armor)
+        else 
+            Skin.DeleteClothes(9)
+        end
+        if PlayerSkin.Bag then 
+            Skin.SetClothes(Sex, 10, PlayerSkin.Bag)
+        else 
+            Skin.DeleteClothes(10)
+        end
+        if PlayerSkin.Pants then
+            Skin.SetClothes(Sex, 11, PlayerSkin.Pants)
+        else
+            Skin.DeleteClothes(11)
+        end
+        if PlayerSkin.Shoes then
+            Skin.SetClothes(Sex, 12, PlayerSkin.Shoes)
+        else
+            Skin.DeleteClothes(12)
         end
     end
 

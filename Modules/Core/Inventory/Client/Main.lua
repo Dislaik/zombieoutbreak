@@ -1,24 +1,24 @@
 LoadModuleTranslations("Data/Locales/".. GlobalConfig.Lang ..".lua")
 local Config = LoadModuleConfig("Data/Config.lua")
-Load("Client/Events.lua")
 local WeaponEquipped = false
 
 Inventory.Drop = {}
 Inventory.DropId = 0
 Inventory.VisualDrop = {}
+Inventory.Loot = {}
 
 Inventory.Open = false
 Inventory.UpdateDrop = false
 Inventory.CurrentWeapon = nil
 
 SetInterval(0, function()
-    if (IsControlJustReleased(0, 289)) then
+    if (IsControlJustReleased(0, 289)) and not Player.Dead() then
         AnimpostfxPlay("SwitchHUDIn", 0, true)
         SetNuiFocus(true, true)
         SendNUIMessage({
             Type = "Inventory",
             Display = true,
-            Inventory = Inventory.Items,
+            Inventory = Inventory.PlayerItems,
             MaxWeight = GlobalConfig.PlayerWeight
         })
         
@@ -38,7 +38,6 @@ Inventory.PlayerWeapon = function(Name, Ammo)
     end
 
     if not WeaponEquipped or LastWeaponEquipped ~= Name then
-        --RemoveWeaponFromPed(PlayerPedId(), GetHashKey(LastWeaponEquipped))
         RemoveAllPedWeapons(PlayerPedId(), false)
         SetPedAmmo(PlayerPedId(), GetHashKey(Name), 0)
         GiveWeaponToPed(PlayerPedId(), GetHashKey(Name), Ammo, true, true)
@@ -62,10 +61,6 @@ SetInterval(0, function()
     DisableControlAction(0, 37, true)
 
     if IsPedShooting(PlayerPedId()) then
-        --local Aux, WeaponHash = GetCurrentPedWeapon(PlayerPedId(), true)
-        --local WeaponHash = GetSelectedPedWeapon(PlayerPedId())
-        --local WeaponName = Utils.GetWeaponNameFromHashKey(WeaponHash)
-        --print(WeaponHash, WeaponName, GetHashKey("WEAPON_UNARMED"))
         TriggerServerEvent("Inventory:UpdateWeaponAmmo", Inventory.CurrentWeapon)
     end
 
@@ -108,7 +103,7 @@ Inventory.CreateDrop = function(Name, Item)
             Item.Coords = Inventory.Drop[i].Coords
 
             if Inventory.Drop[i].Name == Name and (Inventory.Drop[i].Type == "Item" or Inventory.Drop[i].Type == "Clothes") then
-                Inventory.Drop[i].Input = Inventory.Drop[i].Input + Item.Input
+                Inventory.Drop[i].Count = Inventory.Drop[i].Count + Item.Count
                 Found = true
                 break
             end
@@ -146,7 +141,7 @@ SetInterval(0, function()
             table.insert(Inventory.DropGroup, Inventory.Drop[i])
 
 
-            if (IsControlJustPressed(0, 289)) then
+            if (IsControlJustPressed(0, 289)) and not IsPedInAnyVehicle(PlayerPedId(), true) and not Player.Dead() then
                 Inventory.UpdateDrop = true
             end
         end
@@ -163,7 +158,8 @@ SetInterval(0, function()
         TaskPlayAnim(PlayerPedId(), "amb@medic@standing@kneel@base", "base", 5.0, 10.0, -1, 1, 0, false, false, false)
 
         SendNUIMessage({
-            Type = "UpdateLoot",
+            Type = "UpdateDrop",
+            Display = true,
             Inventory = Inventory.DropGroup
         })
 
@@ -180,6 +176,11 @@ SetInterval(0, function()
             if not Found then
                 DeleteEntity(Inventory.VisualDrop[i])
                 table.remove(Inventory.VisualDrop, i)
+                SendNUIMessage({
+                    Type = "UpdateDrop",
+                    Display = false,
+                    Inventory = Inventory.DropGroup
+                })
             end
         end
 
@@ -188,8 +189,13 @@ SetInterval(0, function()
 end)
 
 Inventory.UseClothes = function(Item, Sex)
-    if Root.UsableClothes[Item.Name][Sex] then
-        Root.UsableClothes[Item.Name][Sex]()
+
+    if Root.UsableClothes[Item.Name] then
+        if Root.UsableClothes[Item.Name][Sex] then
+            Root.UsableClothes[Item.Name][Sex]()
+        else
+            Player.ShowNotification(Translate("Inventory:Clothes_Not_Available_For_Player_Sex", Item.Label))
+        end
     else
         Player.ShowNotification(Translate("Inventory:Clothes_Not_Available", Item.Label))
     end

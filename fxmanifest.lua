@@ -3,14 +3,14 @@ games { "gta5" }
 
 author "Matias Salas"
 description "Zombie Survival RPG Framework"
-version "0.6.8"
+version "0.7.2"
 
 
 client_script {
     "Config/Global.lua",
-    "Root/Client-Server/Events.lua",
-    "Root/Client-Server/Functions.lua",
-    "Root/Client-Server/Main.lua",
+    "Root/Shared/Events.lua",
+    "Root/Shared/Functions.lua",
+    "Root/Shared/Main.lua",
     "Root/Client/Events.lua",
     "Root/Client/Functions.lua",
     "Root/Client/Main.lua"
@@ -19,9 +19,9 @@ client_script {
 server_script {
     "@mysql-async/lib/MySQL.lua",
     "Config/Global.lua",
-    "Root/Client-Server/Events.lua",
-    "Root/Client-Server/Functions.lua",
-    "Root/Client-Server/Main.lua",
+    "Root/Shared/Events.lua",
+    "Root/Shared/Functions.lua",
+    "Root/Shared/Main.lua",
     "Root/Server/Events.lua",
     "Root/Server/Functions.lua",
     "Root/Server/Main.lua"
@@ -47,19 +47,19 @@ files {
     "Modules/Core/**/Data/NUI/Images/*.png",
     "Modules/Core/**/Data/NUI/Fonts/*.ttf",
     "Modules/Core/**/Data/Sounds/*.ogg",
-    "Modules/Core/**/Client/*.lua",
-    "Modules/Core/**/Client-Server/*.lua",
+    "Modules/Core/**/Shared/*.lua",
     "Modules/Core/**/Server/*.lua",
+    "Modules/Core/**/Client/*.lua",
     "Modules/Base/**/Data/Locales/*.lua",
     "Modules/Base/**/Data/*.lua",
-    "Modules/Base/**/Client/*.lua",
-    "Modules/Base/**/Client-Server/*.lua",
+    "Modules/Base/**/Shared/*.lua",
     "Modules/Base/**/Server/*.lua",
+    "Modules/Base/**/Client/*.lua",
     "Modules/User/**/Data/Locales/*.lua",
     "Modules/User/**/Data/*.lua",
-    "Modules/User/**/Client/*.lua",
-    "Modules/User/**/Client-Server/*.lua",
+    "Modules/User/**/Shared/*.lua",
     "Modules/User/**/Server/*.lua",
+    "Modules/User/**/Client/*.lua",
     "NUI/Main.html",
     "NUI/Main.js",
     "NUI/Default.css"

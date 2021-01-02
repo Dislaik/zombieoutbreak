@@ -29,7 +29,7 @@ end)
 
 RegisterNUICallback("Inventory:Throw", function(Data)
     if Data.Input > 0 then
-
+        
         RequestAnimDict("amb@medic@standing@kneel@base")
         while not HasAnimDictLoaded("amb@medic@standing@kneel@base") do
             Wait(0)
@@ -38,11 +38,13 @@ RegisterNUICallback("Inventory:Throw", function(Data)
         TaskPlayAnim(PlayerPedId(), "amb@medic@standing@kneel@base", "base", 5.0, 10.0, -1, 49, 0, false, false, false)
 
         if Data.Type == "Item" or Data.Type == "Clothes" then
-            if Data.Item.Count >= Data.Input then
-                Data.Item["Input"] = Data.Input
+            if Data.Input > Data.Item.Count then
+                --Data.Item.Input = Data.Item.Count
             else
-                Data.Item["Input"] = Data.Item.Count
+                Data.Item.Count = Data.Input
             end
+           
+            
             TriggerServerEvent("Inventory:RemoveItem", Data.Name, Data.Input)
             Inventory.CreateDrop(Data.Name, Data.Item)
 
@@ -80,20 +82,24 @@ RegisterNUICallback("Inventory:Lootable", function(Data)
     end
 end)
 
+RegisterNUICallback("Inventory:Loot", function(Data)
+    TriggerServerEvent("Inventory:CheckLoot", Data.PedHandler, Data.Item)
+end)
+
 RegisterNetEvent("Inventory:RemoveLootable")
 AddEventHandler("Inventory:RemoveLootable", function(Id)
     for i in pairs(Inventory.Drop) do
         if Inventory.Drop[i].Id == Id then
             if Inventory.Drop[i].Type == "Item" or Inventory.Drop[i].Type == "Clothes" then
-                if Inventory.Drop[i].Input > 1 then
-                    Inventory.Drop[i].Input = Inventory.Drop[i].Input - 1
+                if Inventory.Drop[i].Count > 1 then
+                    Inventory.Drop[i].Count = Inventory.Drop[i].Count - 1
                 else
                     Inventory.Drop[i] = nil
                 end
-                break
             elseif Inventory.Drop[i].Type == "Weapon" then
                 Inventory.Drop[i] = nil
             end
+            break
         end
     end
 
@@ -105,16 +111,16 @@ end)
 
 RegisterNetEvent("Inventory:PlayerInventory")
 AddEventHandler("Inventory:PlayerInventory", function(Data)
-    Inventory.Items = Data
+    Inventory.PlayerItems = Data
 end)
 
 RegisterNetEvent("Inventory:UpdatePlayerInventory")
 AddEventHandler("Inventory:UpdatePlayerInventory", function(Data)
-    Inventory.Items = Data
+    Inventory.PlayerItems = Data
     if Inventory.Open then
         SendNUIMessage({
             Type = "UpdateInventory",
-            Inventory = Inventory.Items,
+            Inventory = Inventory.PlayerItems,
             MaxWeight = 32.0
         })
     end
@@ -128,5 +134,47 @@ AddEventHandler("Inventory:CreateDrop", function(Drop)
         SetEntityCollision(Object, false, false)
         PlaceObjectOnGroundProperly_2(Object)
         table.insert(Inventory.VisualDrop, Object)
+    end
+end)
+
+RegisterNetEvent("Inventory:Loot")
+AddEventHandler("Inventory:Loot", function(Ped, Loot)
+    Inventory.Loot[Ped] = Loot
+end)
+
+RegisterNetEvent("Inventory:RemoveLoot")
+AddEventHandler("Inventory:RemoveLoot", function(Ped, Item)
+    for i in pairs(Inventory.Loot[Ped]) do
+        if Item.Name == i then
+            if Inventory.Loot[Ped][i].Type == "Item" or Inventory.Loot[Ped][i].Type == "Clothes" then
+                if Inventory.Loot[Ped][i].Count > 1 then
+                    Inventory.Loot[Ped][i].Count = Inventory.Loot[Ped][i].Count - 1
+                else
+                    Inventory.Loot[Ped][i] = nil
+                end
+            elseif Inventory.Loot[Ped][i].Type == "Weapon" then
+                Inventory.Loot[Ped][i] = nil
+            end
+            break
+        end
+    end
+
+    TriggerEvent("Inventory:Loot", Inventory.Loot[Ped])
+
+    if next(Inventory.Loot[Ped]) == nil then
+        DecorSetBool(Ped, "ZombieLoot", false)
+        SendNUIMessage({
+            Type = "UpdateLoot",
+            Display = false,
+            Ped = Ped,
+            Inventory = Inventory.Loot[Ped]
+        })
+    else
+        SendNUIMessage({
+            Type = "UpdateLoot",
+            Display = true,
+            Ped = Ped,
+            Inventory = Inventory.Loot[Ped]
+        })
     end
 end)

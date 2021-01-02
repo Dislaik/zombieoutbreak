@@ -1,4 +1,4 @@
-# Zombie Outbreak V 0.6.8
+# Zombie Outbreak V 0.7.2
 Zombie Outbreak is a Zombie Surival RPG Framework, you will must survive and fight against hordes of zombies to ensure your survival.
 
 ![](https://i.imgur.com/sE2NCpr.png)
@@ -10,6 +10,7 @@ Zombie Outbreak is a Zombie Surival RPG Framework, you will must survive and fig
 - Identity creation
 - Character creation
 - Inventory system
+- Loot system
 
 ## Documentation
 Take a look at [Wiki](https://github.com/Dislaik/zombieoutbreak/wiki)

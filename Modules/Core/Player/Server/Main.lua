@@ -1,5 +1,3 @@
-Load("Server/Events.lua")
-
 function Player(Source)
 
     local self = {}
@@ -122,51 +120,51 @@ function Player(Source)
         return PlayerSkin
     end
 
-    self.AddItem = function(Name, Count)
-        if Inventory.PreventItem(Inventory.Items, Name) or Inventory.PreventItem(Inventory.Clothes, Name) then
+    self.AddItem = function(Item, Count)
+        if Inventory.PreventItem(Inventory.Items, Item) or Inventory.PreventItem(Inventory.Clothes, Item) then
             local PlayerInventory = Inventory.GetPlayerItems(self.Source)
             local Found = false
             for i in pairs(PlayerInventory) do
-                if i == Name then   
+                if i == Item then   
                     PlayerInventory[i] = PlayerInventory[i] + Count
                     Found = true
                     break
                 end
             end
             if not Found then
-                PlayerInventory[Name] = Count
+                PlayerInventory[Item] = Count
             end
             Inventory.Update(self.Source, PlayerInventory)
         else
-            print("^3[Warning]^7Item ^5[".. Name .."]^7 doesn't exists in database")
+            print("^3[Warning]^7Item ^5[".. Item .."]^7 doesn't exists in database")
         end
     end
 
-    self.RemoveItem = function(Name, Count)
-        if Inventory.PreventItem(Inventory.Items, Name) or Inventory.PreventItem(Inventory.Clothes, Name) then
+    self.RemoveItem = function(Item, Count)
+        if Inventory.PreventItem(Inventory.Items, Item) or Inventory.PreventItem(Inventory.Clothes, Item) then
             local PlayerInventory = Inventory.GetPlayerItems(self.Source)
             for i in pairs(PlayerInventory) do
-                if i == Name then   
+                if i == Item then   
                     PlayerInventory[i] = PlayerInventory[i] - Count
                     break
                 end
             end
-            if PlayerInventory[Name] < 1 then
-                PlayerInventory[Name] = nil
+            if PlayerInventory[Item] < 1 then
+                PlayerInventory[Item] = nil
             end
 
             Inventory.Update(self.Source, PlayerInventory)
         else
-            print("^3[Warning]^7Item ^5[".. Name .."]^7 doesn't exists in database")
+            print("^3[Warning]^7Item ^5[".. Item .."]^7 doesn't exists in database")
         end
     end
 
-    self.CanCarryItem = function(Name, Count)
-        if Inventory.PreventItem(Inventory.Items, Name) or Inventory.PreventItem(Inventory.Clothes, Name) then
+    self.CanCarryItem = function(Item, Count)
+        if Inventory.PreventItem(Inventory.Items, Item) or Inventory.PreventItem(Inventory.Clothes, Item) then
             local PlayerInventory = self.GetInventory()
             local Found = false
             for i in pairs(PlayerInventory) do
-                if i == Name then
+                if i == Item then
                     Found = true
                     if PlayerInventory[i].Limit >= (PlayerInventory[i].Count + Count) then
                         return true
@@ -179,27 +177,27 @@ function Player(Source)
 
             return false
         else
-            print("^3[Warning]^7Item ^5[".. Name .."]^7 doesn't exists in database")
+            print("^3[Warning]^7Item ^5[".. Item .."]^7 doesn't exists in database")
         end
     end
 
-    self.HasItem = function(Name)
-        if Inventory.PreventItem(Inventory.Items, Name) or Inventory.PreventItem(Inventory.Clothes, Name) then
+    self.HasItem = function(Item)
+        if Inventory.PreventItem(Inventory.Items, Item) or Inventory.PreventItem(Inventory.Clothes, Item) then
             local PlayerInventory = Inventory.GetPlayerItems(self.Source)
             for i in pairs(PlayerInventory) do
-                if i == Name then
+                if i == Item then
                     return true, PlayerInventory[i]
                 end
             end
         else
-            print("^3[Warning]^Item ^5[".. Name .."]^7 doesn't exists in database")
+            print("^3[Warning]^Item ^5[".. Item .."]^7 doesn't exists in database")
         end
 
         return false, 0
     end
 
-    self.AddWeapon = function(Name, Ammo, Components, Tint)
-        if Inventory.PreventItem(Inventory.Weapons, Name) then
+    self.AddWeapon = function(WeaponName, Ammo, Components, Tint)
+        if Inventory.PreventItem(Inventory.Weapons, WeaponName) then
             Ammo = Ammo or 0
             Components = Components or nil
             Tint = Tint or 0
@@ -207,33 +205,33 @@ function Player(Source)
             local PlayerInventory = Inventory.GetPlayerItems(self.Source)
             local Found = false
             for i in pairs(PlayerInventory) do
-                if i == Name then   
-                    PlayerInventory[Name]["Ammo"] = Ammo
-                    PlayerInventory[Name]["Components"] = Components
-                    PlayerInventory[Name]["Tint"] = Tint
+                if i == WeaponName then
+                    PlayerInventory[WeaponName]["Ammo"] = Ammo
+                    PlayerInventory[WeaponName]["Components"] = Components
+                    PlayerInventory[WeaponName]["Tint"] = Tint
                     Found = true
                     break
                 end
             end
             if not Found then
-                PlayerInventory[Name] = {}
-                PlayerInventory[Name]["Ammo"] = Ammo
-                PlayerInventory[Name]["Components"] = Components
-                PlayerInventory[Name]["Tint"] = Tint
+                PlayerInventory[WeaponName] = {}
+                PlayerInventory[WeaponName]["Ammo"] = Ammo
+                PlayerInventory[WeaponName]["Components"] = Components
+                PlayerInventory[WeaponName]["Tint"] = Tint
             end
 
             Inventory.Update(self.Source, PlayerInventory)
         else
-            print("^3[Warning]^7Weapon ^5[".. Name .."]^7 doesn't exists in database")
+            print("^3[Warning]^7Weapon ^5[".. WeaponName .."]^7 doesn't exists in database")
         end
     end
 
-    self.RemoveWeapon = function(Name)
-        if Inventory.PreventItem(Inventory.Weapons, Name) then
+    self.RemoveWeapon = function(WeaponName)
+        if Inventory.PreventItem(Inventory.Weapons, WeaponName) then
 
             local PlayerInventory = Inventory.GetPlayerItems(self.Source)
             for i in pairs(PlayerInventory) do
-                if i == Name then   
+                if i == WeaponName then   
                     PlayerInventory[i] = nil
                     break
                 end
@@ -241,54 +239,54 @@ function Player(Source)
 
             Inventory.Update(self.Source, PlayerInventory)
         else
-            print("^3[Warning]^7Weapon ^5[".. Name .."]^7 doesn't exists in database")
+            print("^3[Warning]^7Weapon ^5[".. WeaponName .."]^7 doesn't exists in database")
         end
     end
 
-    self.AddWeaponAmmo = function(Name, Ammo)
+    self.AddWeaponAmmo = function(WeaponName, Ammo)
         if Inventory.PreventItem(Inventory.Weapons, Name) then
 
             local PlayerInventory = Inventory.GetPlayerItems(self.Source)
             for i in pairs(PlayerInventory) do
-                if i == Name then   
-                    PlayerInventory[Name]["Ammo"] = PlayerInventory[Name]["Ammo"] + Ammo
+                if i == WeaponName then   
+                    PlayerInventory[WeaponName]["Ammo"] = PlayerInventory[WeaponName]["Ammo"] + Ammo
                     break
                 end
             end
 
             Inventory.Update(self.Source, PlayerInventory)
         else
-            print("^3[Warning]^7Weapon ^5[".. Name .."]^7 doesn't exists in database")
+            print("^3[Warning]^7Weapon ^5[".. WeaponName .."]^7 doesn't exists in database")
         end
     end
 
-    self.RemoveWeaponAmmo = function(Name, Ammo)
-        if Inventory.PreventItem(Inventory.Weapons, Name) then
+    self.RemoveWeaponAmmo = function(WeaponName, Ammo)
+        if Inventory.PreventItem(Inventory.Weapons, WeaponName) then
 
             local PlayerInventory = Inventory.GetPlayerItems(self.Source)
             for i in pairs(PlayerInventory) do
-                if i == Name then   
-                    PlayerInventory[Name]["Ammo"] = PlayerInventory[Name]["Ammo"] - Ammo
+                if i == WeaponName then   
+                    PlayerInventory[WeaponName]["Ammo"] = PlayerInventory[WeaponName]["Ammo"] - Ammo
                     break
                 end
             end
 
             Inventory.Update(self.Source, PlayerInventory)
         else
-            print("^3[Warning]^7Weapon ^5[".. Name .."]^7 doesn't exists in database")
+            print("^3[Warning]^7Weapon ^5[".. WeaponName .."]^7 doesn't exists in database")
         end
     end
 
-    self.HasWeapon = function(Name)
-        if Inventory.PreventItem(Inventory.Weapons, Name) then
+    self.HasWeapon = function(WeaponName)
+        if Inventory.PreventItem(Inventory.Weapons, WeaponName) then
             local PlayerInventory = Inventory.GetPlayerItems(self.Source)
             for i in pairs(PlayerInventory) do
-                if i == Name then
+                if i == WeaponName then
                     return true
                 end
             end
         else
-            print("^3[Warning]^Weapon ^5[".. Name .."]^7 doesn't exists in database")
+            print("^3[Warning]^Weapon ^5[".. WeaponName .."]^7 doesn't exists in database")
         end
 
         return false

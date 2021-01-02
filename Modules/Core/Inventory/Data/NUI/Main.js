@@ -16,7 +16,7 @@ Inventory.SetSlots = function(Inventory, MaxWeight) {
     for (var Item in resultArray) {
         if (resultArray[Item].Type == "Item" || resultArray[Item].Type == "Clothes") {
             Div += `<div class="col-3">
-                        <div id="${resultArray[Item].Name}" data-value="${resultArray[Item].Type}" class="Slots">
+                        <div id="${resultArray[Item].Name}" class="Slots">
                             <p class="Weight">${parseFloat(resultArray[Item].Weight * resultArray[Item].Count).toFixed(1)} KG</p>
                             <p class="Limit">${resultArray[Item].Count +"/"+ resultArray[Item].Limit}</p>
                             <p class="Label">${resultArray[Item].Label}</p>
@@ -32,7 +32,7 @@ Inventory.SetSlots = function(Inventory, MaxWeight) {
                     </div>`;
         } else if (resultArray[Item].Type == "Weapon") {
             Div += `<div class="col-3">
-                        <div id="${resultArray[Item].Name}" data-value="${resultArray[Item].Type}" class="Slots">
+                        <div id="${resultArray[Item].Name}" class="Slots">
                             <p class="Weight">${parseFloat(resultArray[Item].Weight).toFixed(1)} KG</p>
                             <p class="Limit">${resultArray[Item].Ammo}</p>
                             <p class="Label">${resultArray[Item].Label}</p>
@@ -62,6 +62,44 @@ Inventory.SetSlots = function(Inventory, MaxWeight) {
     EmptyWeight.innerHTML = parseFloat(TotalWeight).toFixed(1) + " KG/" + parseFloat(MaxWeight).toFixed(1) + " KG";
 }
 
+Inventory.SetSlotsDrop = function(Inventory) {
+
+    var resultArray = $.map(Inventory, function(value, index) { return [value]; });
+
+    resultArray.sort(function(a, b) {
+        var textA = a.Name.toUpperCase();
+        var textB = b.Name.toUpperCase();
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    });
+
+    var DivLoot = document.getElementById("SlotsContainerLoot");
+    DivLoot.innerHTML = "";
+    var Div = "";
+    for (var Item in resultArray) {
+        if (resultArray[Item].Type == "Item" || resultArray[Item].Type == "Clothes") {
+            Div += `<div class="col-3">
+                        <div id="${resultArray[Item].Id}" class="SlotsLoot">
+                            <p class="Weight">${resultArray[Item].Weight} KG</p>
+                            <p class="Limit">${resultArray[Item].Count}</p>
+                            <p class="Label">${resultArray[Item].Label}</p>
+                            <img src="/Modules/Core/Inventory/Data/NUI/Images/${resultArray[Item].Name}.png" width="100%" height="100%">
+                        </div>
+                    </div>`;
+        } else if (resultArray[Item].Type == "Weapon") {
+            Div += `<div class="col-3">
+                        <div id="${resultArray[Item].Id}" class="SlotsLoot">
+                            <p class="Weight">${resultArray[Item].Weight} KG</p>
+                            <p class="Limit">${resultArray[Item].Ammo}</p>
+                            <p class="Label">${resultArray[Item].Label}</p>
+                            <img src="/Modules/Core/Inventory/Data/NUI/Images/${resultArray[Item].Name}.png" width="100%" height="100%">
+                        </div>
+                    </div>`;
+        }
+    }
+    Div = `<div class="row">` + Div + `</div>`;
+    DivLoot.innerHTML = Div;
+}
+
 Inventory.SetSlotsLoot = function(Inventory) {
 
     var resultArray = $.map(Inventory, function(value, index) { return [value]; });
@@ -72,23 +110,22 @@ Inventory.SetSlotsLoot = function(Inventory) {
         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
     });
 
-
     var DivLoot = document.getElementById("SlotsContainerLoot");
     DivLoot.innerHTML = "";
     var Div = "";
     for (var Item in resultArray) {
         if (resultArray[Item].Type == "Item" || resultArray[Item].Type == "Clothes") {
             Div += `<div class="col-3">
-                        <div id="${resultArray[Item].Id}" class="SlotsLoot">
+                        <div id="${resultArray[Item].Name}" class="SlotsLoot">
                             <p class="Weight">${resultArray[Item].Weight} KG</p>
-                            <p class="Limit">${resultArray[Item].Input}</p>
+                            <p class="Limit">${resultArray[Item].Count}</p>
                             <p class="Label">${resultArray[Item].Label}</p>
                             <img src="/Modules/Core/Inventory/Data/NUI/Images/${resultArray[Item].Name}.png" width="100%" height="100%">
                         </div>
                     </div>`;
         } else if (resultArray[Item].Type == "Weapon") {
             Div += `<div class="col-3">
-                        <div id="${resultArray[Item].Id}" class="SlotsLoot">
+                        <div id="${resultArray[Item].Name}" class="SlotsLoot">
                             <p class="Weight">${resultArray[Item].Weight} KG</p>
                             <p class="Limit">${resultArray[Item].Ammo}</p>
                             <p class="Label">${resultArray[Item].Label}</p>
@@ -120,34 +157,49 @@ Inventory.InputNumber = function(ClassName)
 let ToggleMouse = false
 
 $(document).ready(function(){
+
+    $("#IncluideInventory").load("../Modules/Core/Inventory/Data/NUI/Main.html", function() {
+        $('<link>').appendTo('head').attr({
+            type: 'text/css', 
+            rel: 'stylesheet',
+            href: '../Modules/Core/Inventory/Data/NUI/Main.css'
+        });
+        $("#Loot").hide();
+        $("#IncluideInventory").hide();
+    });
     
+    function DisplayInventory(bool) {
+        if (bool) {
+            $('#IncluideInventory').fadeIn(200);
+        } else {
+            $('#IncluideInventory').fadeOut(200);
+        }
+    }
+    
+    function DisplayLoot(bool) {
+        if (bool) {
+            $('#Loot').fadeIn(200);
+        } else {
+            $('#Loot').fadeOut(200);
+        }
+    }
+
     window.addEventListener('message', function(event) {
         var Data = event.data;
         if (Data.Type === "Inventory") {
 			if (Data.Display == true) {
-				$("#IncluideInventory").load("../Modules/Core/Inventory/Data/NUI/Main.html", function() {
-					$('<link>').appendTo('head').attr({
-						type: 'text/css', 
-						rel: 'stylesheet',
-						href: '../Modules/Core/Inventory/Data/NUI/Main.css'
-                    });
-                    
-                    Inventory.InputNumber('GiveInput');
-                    Inventory.InputNumber('ThrowInput');
+                DisplayInventory(true);
+                Inventory.Open();
+                Inventory.KeyDown();
 
-                    Inventory.SetSlots(Data.Inventory, Data.MaxWeight);
-                    Inventory.RepetDraggables(Data.Inventory);
-                });
+                Inventory.InputNumber('GiveInput');
+                Inventory.InputNumber('ThrowInput');
 
-                
-
-                $("#IncluideInventory").hide();
-				setTimeout(function() {
-                    $('#IncluideInventory').fadeIn(200);
-                }, 100);
+                Inventory.SetSlots(Data.Inventory, Data.MaxWeight);
+                Inventory.RepetDraggables(Data.Inventory);
 			} else {
-                $("#IncluideInventory").empty();
-                $("LINK[href*='../Modules/Core/Inventory/Data/NUI/Main.css']").remove();
+                DisplayInventory(false);
+                DisplayLoot(false);
             }
         }
 
@@ -156,11 +208,24 @@ $(document).ready(function(){
             Inventory.RepetDraggables(Data.Inventory);
         }
 
+        if (Data.Type === "UpdateDrop") {
+            if (Data.Display == true) {
+                DisplayLoot(true);
+                Inventory.SetSlotsDrop(Data.Inventory);
+                Inventory.RepetDraggablesDrop(Data.Inventory);
+            } else {
+                DisplayLoot(false);
+            }
+        }
+
         if (Data.Type === "UpdateLoot") {
-            setTimeout(function() {
+            if (Data.Display == true) { 
+                DisplayLoot(true);
                 Inventory.SetSlotsLoot(Data.Inventory);
-                Inventory.RepetDraggablesLoot(Data.Inventory);
-            }, 200);
+                Inventory.RepetDraggablesLoot(Data.Ped, Data.Inventory);
+            } else {
+                DisplayLoot(false);
+            }
         }
     });
 
@@ -225,7 +290,7 @@ $(document).ready(function(){
         }});
     }
 
-    Inventory.RepetDraggablesLoot = function(DropInventory) {
+    Inventory.RepetDraggablesDrop = function(DropInventory) {
         $('.SlotsLoot').draggable({
             helper: function (event) {
                 var ret = $(this).clone();
@@ -250,15 +315,42 @@ $(document).ready(function(){
         });
     }
 
-    $( "#IncluideInventory" ).mouseenter(function() {
+    Inventory.RepetDraggablesLoot = function(Ped, Loot) {
+        $('.SlotsLoot').draggable({
+            helper: function (event) {
+                var ret = $(this).clone();
+                $(this).toggleClass("ghost");
+                return ret;
+            },
+            zIndex: 99999,
+            revert: 'invalid',
+            containment: "#Loot",
+            stop: function (event, ui) {
+                $(this).toggleClass("ghost");
+            }
+        });
+        $( "#SlotsContainer" ).droppable({
+            accept: ".SlotsLoot",
+            drop: function(event, ui) 
+            { 
+                $.post('http://zombieoutbreak/Inventory:Loot', JSON.stringify({
+                    PedHandler: Ped,
+                    Item: Loot[ui.draggable.attr("id")]
+                }));
+            }
+        });
+    }
+    Inventory.Open = function() {
         ToggleMouse = true
-    });
+    }
     
-    $(document).on('keydown', function(event) {
-        if (ToggleMouse && (event.which == 27 || event.which == 113)) {
-            ToggleMouse = false
-            $.post('http://zombieoutbreak/Inventory:Close', JSON.stringify({
-            }));
-        }
-    });
+    Inventory.KeyDown = function() {
+        $(document).on('keydown', function(event) {
+            if (ToggleMouse && (event.which == 27 || event.which == 113)) {
+                ToggleMouse = false
+                $.post('http://zombieoutbreak/Inventory:Close', JSON.stringify({
+                }));
+            }
+        });
+    }
 });

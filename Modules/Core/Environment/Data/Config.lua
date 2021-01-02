@@ -2,7 +2,7 @@ Config = {}
 
 Config.PercentageVehiclesUndriveable = 40
 Config.SafeZones = {
-    {X = 450.5966, Y = -998.9636, Z = 28.4284, Width = 80.0, Height = 65.0}
+    {x = 450.5966, y = -998.9636, z = 28.4284, radius = 80.0}
 }
 
 Config.RadiationZones = {

@@ -1,5 +1,3 @@
-Load("Server/Events.lua")
-
 Skin = {}
 
 Register.Command("on", "None", function(Source, Arguments, RawCommand)

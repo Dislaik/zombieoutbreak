@@ -179,10 +179,11 @@ $(document).ready(function(){
 							type: 'text/css', 
 							rel: 'stylesheet',
 							href: '../Modules/Core/Skin/Data/NUI/Main.css'
-						});
-
-                    
+                        });
                         
+                        Skin.Open();
+                        Skin.Keydown();
+
                         var FacesId = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
                             10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 
                             20, 42, 43, 44];
@@ -225,7 +226,8 @@ $(document).ready(function(){
 							href: '../Modules/Core/Skin/Data/NUI/Main.css'
                         });
                         
-                        
+                        Skin.Open();
+                        Skin.Keydown();
 
                         var FacesId = [21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
                             31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41]
@@ -262,12 +264,12 @@ $(document).ready(function(){
         }
     });
 
-    $( "#IncluideSkin" ).mouseenter(function() {
+    Skin.Open = function() {
         ToggleMouse = true
-    });
+    }
 
     Skin.Submit = function() {
-        $("#Submit").click(function () {
+        $(".submit").click(function () {
             ToggleMouse = false
             $.post('http://zombieoutbreak/Skin:Submit', JSON.stringify({
                 Skin: parseInt($('input[name=skin]:checked').val()),
@@ -393,23 +395,23 @@ $(document).ready(function(){
         });
     }
 
-    //Skin.Keydown = function() {
-    $(document).on("keydown", function(event) {
-        if (ToggleMouse && event.which == 65) {
-            $.post('http://zombieoutbreak/Skin:RotateLeft', JSON.stringify({
-                Left: 3
-            }));
-        }
-        if (ToggleMouse && event.which == 68) {
-            $.post('http://zombieoutbreak/Skin:RotateRight', JSON.stringify({
-                Right: 3
-            }));
-        }
-        if (ToggleMouse && event.which == 9) {
-            $.post('http://zombieoutbreak/Skin:View', JSON.stringify({
-            }));
-        }
-    });
-    //}
+    Skin.Keydown = function() {
+        $(document).on("keydown", function(event) {
+            if (ToggleMouse && event.which == 65) {
+                $.post('http://zombieoutbreak/Skin:RotateLeft', JSON.stringify({
+                    Left: 3
+                }));
+            }
+            if (ToggleMouse && event.which == 68) {
+                $.post('http://zombieoutbreak/Skin:RotateRight', JSON.stringify({
+                    Right: 3
+                }));
+            }
+            if (ToggleMouse && event.which == 9) {
+                $.post('http://zombieoutbreak/Skin:View', JSON.stringify({
+                }));
+            }
+        });
+    }
 
 });

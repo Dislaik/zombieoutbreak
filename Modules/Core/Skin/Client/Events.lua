@@ -83,30 +83,62 @@ end)
 
 RegisterNetEvent("Skin:RemoveClothes")
 AddEventHandler("Skin:RemoveClothes", function(Name, Sex)
-    for i in pairs(ItemClothes) do
+    for i in pairs(Root.ItemClothes) do
         if i == Name then
-            local Clothes = ItemClothes[i][Sex][1]
-            local DrawableId = ItemClothes[i][Sex][2]
+            local Component = Root.ItemClothes[i][Sex][1]
+            local DrawableId = Root.ItemClothes[i][Sex][2]
                 
-            if Clothes == 0 then
+            if Component == 0 then
                 if DrawableId == GetPedPropIndex(PlayerPedId(), 0) then
-                    Skin.DeleteClothes(Clothes)
+                    Skin.DeleteClothes(Component)
                 end
-            elseif Clothes == 1 then
+            elseif Component == 1 then
+                if DrawableId == GetPedPropIndex(PlayerPedId(), 1) then
+                    Skin.DeleteClothes(Component)
+                end
+            elseif Component == 2 then
+                if DrawableId == GetPedPropIndex(PlayerPedId(), 2) then
+                    Skin.DeleteClothes(Component)
+                end
+            elseif Component == 3 then
+                if DrawableId == GetPedPropIndex(PlayerPedId(), 6) then
+                    Skin.DeleteClothes(Component)
+                end
+            elseif Component == 4 then
+                if DrawableId == GetPedPropIndex(PlayerPedId(), 7) then
+                    Skin.DeleteClothes(Component)
+                end
+            elseif Component == 5 then
+                if DrawableId == GetPedDrawableVariation(PlayerPedId(), 1) then
+                    Skin.DeleteClothes(Component)
+                end
+            elseif Component == 6 then
+                if DrawableId == GetPedDrawableVariation(PlayerPedId(), 7) then
+                    Skin.DeleteClothes(Component)
+                end
+            elseif Component == 7 then
                 if DrawableId == GetPedDrawableVariation(PlayerPedId(), 11) then
-                    Skin.DeleteClothes(Clothes)
+                    Skin.DeleteClothes(Component)
                 end
-            elseif Clothes == 2 then
+            elseif Component == 8 then
                 if DrawableId == GetPedDrawableVariation(PlayerPedId(), 3) then
-                    Skin.DeleteClothes(Clothes)
+                    Skin.DeleteClothes(Component)
                 end
-            elseif Clothes == 3 then
+            elseif Component == 9 then
+                if DrawableId == GetPedDrawableVariation(PlayerPedId(), 9) then
+                    Skin.DeleteClothes(Component)
+                end
+            elseif Component == 10 then
+                if DrawableId == GetPedDrawableVariation(PlayerPedId(), 5) then
+                    Skin.DeleteClothes(Component)
+                end
+            elseif Component == 11 then
                 if DrawableId == GetPedDrawableVariation(PlayerPedId(), 4) then
-                    Skin.DeleteClothes(Clothes)
+                    Skin.DeleteClothes(Component)
                 end
-            elseif Clothes == 4 then
+            elseif Component == 12 then
                 if DrawableId == GetPedDrawableVariation(PlayerPedId(), 6) then
-                    Skin.DeleteClothes(Clothes)
+                    Skin.DeleteClothes(Component)
                 end
             end
         end

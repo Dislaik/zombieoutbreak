@@ -26,7 +26,7 @@ $(document).ready(function(){
         {
             var i = Data.Index;
             Howler.volume(Data.Volume, Sounds[i]);
-            Howler.pos(Data.PlayerCoord.x,Data.PlayerCoord.y,Data.PlayerCoord.z, Sounds[i]);
+            Howler.pos(Data.PlayerCoords.x,Data.PlayerCoords.y,Data.PlayerCoords.z, Sounds[i]);
         }
     });
 });

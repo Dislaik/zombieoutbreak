@@ -1,5 +1,3 @@
-Load("Client/Events.lua")
-
 SoundsCoords = {}
 SoundsEntity = {}
 
@@ -12,7 +10,7 @@ SetInterval(10, function()
             Type = "Update",
             Index = i,
             Volume = VolumeProximity, 
-            PlayerCoord = GetEntityCoords(PlayerPedId())
+            PlayerCoords = GetEntityCoords(PlayerPedId())
         })
     end
 end)
@@ -26,7 +24,7 @@ SetInterval(10, function()
             Type = "Update",
             Index = i,
             Volume = VolumeProximity, 
-            PlayerCoord = GetEntityCoords(PlayerPedId())
+            PlayerCoords = GetEntityCoords(PlayerPedId())
         })
     end
 end)

@@ -1,13 +1,21 @@
-Load("Client/Events.lua")
+--Load("Client/Events.lua")
 
 
 Skin = {}
 
-Skin.HatOn = false
-Skin.TshirtOn = false
-Skin.GlovesOn = false
-Skin.PantsOn = false
-Skin.ShoesOn = false
+Skin.HatOn = false -- 0
+Skin.GlassesOn = false -- New! 1
+Skin.EarringsOn = false -- New! 2
+Skin.WatchOn = false -- New! 3
+Skin.BraceletOn = false -- New! 4
+Skin.MaskOn = false -- New! 5
+Skin.AccessoryOn = false -- New! 6
+Skin.TshirtOn = false -- 7
+Skin.GlovesOn = false -- 8
+Skin.ArmorOn = false -- New! 9
+Skin.BagOn = false -- New 10
+Skin.PantsOn = false -- 11
+Skin.ShoesOn = false -- 12
 Skin.ActiveClothes = {}
 
 Skin.SetPlayerModel = function(Model)
@@ -82,13 +90,13 @@ Skin.GetPlayerSex = function()
     return Sex
 end
 
-Skin.SetClothes = function(Sex, Clothes, DrawableId, TextureIdl, PaletteId)
+Skin.SetClothes = function(Sex, Component, DrawableId, TextureIdl, PaletteId)
     TextureIdl = TextureIdl or 0
     PaletteId = PaletteId or 0
     
-    TriggerServerEvent("Skin:SetClothes", Clothes, DrawableId)
+    TriggerServerEvent("Skin:SetClothes", Component, DrawableId)
 
-    if Clothes == 0 then
+    if Component == 0 then
         if Sex == "Male" then
             SetPedPropIndex(PlayerPedId(), 0, DrawableId, TextureIdl, PaletteId)
         elseif Sex == "Female" then
@@ -96,12 +104,61 @@ Skin.SetClothes = function(Sex, Clothes, DrawableId, TextureIdl, PaletteId)
         end
 
         Skin.HatOn = true
-    elseif Clothes == 1 then
+    elseif Component == 1 then
+        if Sex == "Male" then
+            SetPedPropIndex(PlayerPedId(), 1, DrawableId, TextureIdl, PaletteId)
+        elseif Sex == "Female" then
+            SetPedPropIndex(PlayerPedId(), 1, DrawableId, TextureIdl, PaletteId)
+        end
+
+        Skin.GlassesOn = true
+    elseif Component == 2 then
+        if Sex == "Male" then
+            SetPedPropIndex(PlayerPedId(), 2, DrawableId, TextureIdl, PaletteId)
+        elseif Sex == "Female" then
+            SetPedPropIndex(PlayerPedId(), 2, DrawableId, TextureIdl, PaletteId)
+        end
+
+        Skin.EarringsOn = true
+    elseif Component == 3 then
+        if Sex == "Male" then
+            SetPedPropIndex(PlayerPedId(), 6, DrawableId, TextureIdl, PaletteId)
+        elseif Sex == "Female" then
+            SetPedPropIndex(PlayerPedId(), 6, DrawableId, TextureIdl, PaletteId)
+        end
+
+        Skin.WatchOn = true
+    elseif Component == 4 then
+        if Sex == "Male" then
+            SetPedPropIndex(PlayerPedId(), 7, DrawableId, TextureIdl, PaletteId)
+        elseif Sex == "Female" then
+            SetPedPropIndex(PlayerPedId(), 7, DrawableId, TextureIdl, PaletteId)
+        end
+
+        Skin.BraceletOn = true
+    elseif Component == 5 then
+        if Sex == "Male" then
+            SetPedComponentVariation(PlayerPedId(), 1, DrawableId, TextureIdl, PaletteId)
+        elseif Sex == "Female" then
+            SetPedComponentVariation(PlayerPedId(), 1, DrawableId, TextureIdl, PaletteId)
+        end
+
+        Skin.MaskOn = true
+    elseif Component == 6 then
+        if Sex == "Male" then
+            SetPedComponentVariation(PlayerPedId(), 7, DrawableId, TextureIdl, PaletteId)
+        elseif Sex == "Female" then
+            SetPedComponentVariation(PlayerPedId(), 7, DrawableId, TextureIdl, PaletteId)
+        end
+
+        Skin.AccessoryOn = true
+    elseif Component == 7 then
         if Sex == "Male" then
             SetPedComponentVariation(PlayerPedId(), 11, DrawableId, TextureIdl, PaletteId)
 
             if DrawableId == 55 then
-                SetPedComponentVariation(PlayerPedId(), 8, 15, 0, 0)
+                SetPedComponentVariation(PlayerPedId(), 10, 8, 1, 0)
+                SetPedComponentVariation(PlayerPedId(), 8, 129, 0, 0)
                 SetPedComponentVariation(PlayerPedId(), 3, 0, 0, 0)
             elseif DrawableId == 56 then
                 SetPedComponentVariation(PlayerPedId(), 8, 15, 0, 0)
@@ -119,7 +176,8 @@ Skin.SetClothes = function(Sex, Clothes, DrawableId, TextureIdl, PaletteId)
                 SetPedComponentVariation(PlayerPedId(), 8, 14, 0, 0)
                 SetPedComponentVariation(PlayerPedId(), 3, 14, 0, 0)
             elseif DrawableId == 48 then
-                SetPedComponentVariation(PlayerPedId(), 8, 14, 0, 0)
+                SetPedComponentVariation(PlayerPedId(), 10, 7, 1, 0)
+                SetPedComponentVariation(PlayerPedId(), 8, 159, 0, 0)
                 SetPedComponentVariation(PlayerPedId(), 3, 14, 0, 0)
             elseif DrawableId == 258 then
                 SetPedComponentVariation(PlayerPedId(), 10, 66, 0, 0)
@@ -129,10 +187,31 @@ Skin.SetClothes = function(Sex, Clothes, DrawableId, TextureIdl, PaletteId)
         end
 
         Skin.TshirtOn = true
-    elseif Clothes == 2 then
-        --Gloves
+    elseif Component == 8 then
+        if Sex == "Male" then
+            SetPedComponentVariation(PlayerPedId(), 3, DrawableId, TextureIdl, PaletteId)
+        elseif Sex == "Female" then
+            SetPedComponentVariation(PlayerPedId(), 3, DrawableId, TextureIdl, PaletteId)
+        end
+
         Skin.GlovesOn = true
-    elseif Clothes == 3 then
+    elseif Component == 9 then
+        if Sex == "Male" then
+            SetPedComponentVariation(PlayerPedId(), 9, DrawableId, TextureIdl, PaletteId)
+        elseif Sex == "Female" then
+            SetPedComponentVariation(PlayerPedId(), 9, DrawableId, TextureIdl, PaletteId)
+        end
+        
+        Skin.ArmorOn = true
+    elseif Component == 10 then
+        if Sex == "Male" then
+            SetPedComponentVariation(PlayerPedId(), 5, DrawableId, TextureIdl, PaletteId)
+        elseif Sex == "Female" then
+            SetPedComponentVariation(PlayerPedId(), 5, DrawableId, TextureIdl, PaletteId)
+        end
+
+        Skin.BagOn = true
+    elseif Component == 11 then
         if Sex == "Male" then
             SetPedComponentVariation(PlayerPedId(), 4, DrawableId, TextureIdl, PaletteId)
         elseif Sex == "Female" then
@@ -140,7 +219,7 @@ Skin.SetClothes = function(Sex, Clothes, DrawableId, TextureIdl, PaletteId)
         end
 
         Skin.PantsOn = true
-    elseif Clothes == 4 then
+    elseif Component == 12 then
         if Sex == "Male" then
             SetPedComponentVariation(PlayerPedId(), 6, DrawableId, TextureIdl, PaletteId)
         elseif Sex == "Female" then
@@ -151,16 +230,44 @@ Skin.SetClothes = function(Sex, Clothes, DrawableId, TextureIdl, PaletteId)
 
 end
 
-Skin.DeleteClothes = function(Clothes)
-    if Clothes == 0 then
-        if Skin.GetPlayerSex() == "Male" then
-            SetPedPropIndex(PlayerPedId(), 0, 8, 0, 0)
-        elseif Skin.GetPlayerSex() == "Female" then
-            SetPedPropIndex(PlayerPedId(), 0, 120, 0, 0)
-        end
+Skin.DeleteClothes = function(Component) --- -1 (Remove all)
+    if Component == 0 then
+        ClearPedProp(PlayerPedId(), 0)
 
         Skin.HatOn = false
-    elseif Clothes == 1 then
+    elseif Component == 1 then
+        ClearPedProp(PlayerPedId(), 1)
+
+        Skin.GlassesOn = false
+    elseif Component == 2 then
+        ClearPedProp(PlayerPedId(), 2)
+        
+        Skin.EarringsOn = false
+    elseif Component == 3 then
+        ClearPedProp(PlayerPedId(), 6)
+
+        Skin.WatchOn = false
+    elseif Component == 4 then
+        ClearPedProp(PlayerPedId(), 7)
+
+        Skin.BraceletOn = false
+    elseif Component == 5 then
+        if Skin.GetPlayerSex() == "Male" then
+            SetPedComponentVariation(PlayerPedId(), 1, 0, 0, 0)
+        elseif Skin.GetPlayerSex() == "Female" then
+            SetPedComponentVariation(PlayerPedId(), 1, 0, 0, 0)
+        end
+
+        Skin.MaskOn = false
+    elseif Component == 6 then
+        if Skin.GetPlayerSex() == "Male" then
+            SetPedComponentVariation(PlayerPedId(), 7, 0, 0, 0)
+        elseif Skin.GetPlayerSex() == "Female" then
+            SetPedComponentVariation(PlayerPedId(), 7, 0, 0, 0)
+        end
+
+        Skin.AccessoryOn = false
+    elseif Component == 7 then
         if Skin.GetPlayerSex() == "Male" then
             SetPedComponentVariation(PlayerPedId(), 10, 0, 0, 0)
             SetPedComponentVariation(PlayerPedId(), 11, 15, 0, 0)
@@ -174,10 +281,31 @@ Skin.DeleteClothes = function(Clothes)
         end
 
         Skin.TshirtOn = false
-    elseif Clothes == 2 then
-        --Gloves
+    elseif Component == 8 then
+        if Skin.GetPlayerSex() == "Male" then
+            SetPedComponentVariation(PlayerPedId(), 3, 15, 0, 0)
+        elseif Skin.GetPlayerSex() == "Female" then
+            SetPedComponentVariation(PlayerPedId(), 3, 15, 0, 0)
+        end
+
         Skin.GlovesOn = false
-    elseif Clothes == 3 then
+    elseif Component == 9 then
+        if Skin.GetPlayerSex() == "Male" then
+            SetPedComponentVariation(PlayerPedId(), 9, 0, 0, 0)
+        elseif Skin.GetPlayerSex() == "Female" then
+            SetPedComponentVariation(PlayerPedId(), 9, 0, 0, 0)
+        end
+
+        Skin.ArmorOn = false
+    elseif Component == 10 then
+        if Skin.GetPlayerSex() == "Male" then
+            SetPedComponentVariation(PlayerPedId(), 5, 0, 0, 0)
+        elseif Skin.GetPlayerSex() == "Female" then
+            SetPedComponentVariation(PlayerPedId(), 5, 0, 0, 0)
+        end
+
+        Skin.BagOn = false
+    elseif Component == 11 then
         if Skin.GetPlayerSex() == "Male" then
             SetPedComponentVariation(PlayerPedId(), 4, 21, 0, 0)
         elseif Skin.GetPlayerSex() == "Female" then
@@ -185,7 +313,7 @@ Skin.DeleteClothes = function(Clothes)
         end
 
         Skin.PantsOn = false
-    elseif Clothes == 4 then
+    elseif Component == 12 then
         if Skin.GetPlayerSex() == "Male" then
             SetPedComponentVariation(PlayerPedId(), 6, 34, 0, 0)
         elseif Skin.GetPlayerSex() == "Female" then
@@ -195,24 +323,36 @@ Skin.DeleteClothes = function(Clothes)
         Skin.ShoesOn = false
     end
 
-    TriggerServerEvent("Skin:DeleteClothes", Clothes)
+    TriggerServerEvent("Skin:DeleteClothes", Component)
 end
 
 Skin.ClearClothes = function()
+    ClearPedProp(PlayerPedId(), 0)
+    ClearPedProp(PlayerPedId(), 1)
+    ClearPedProp(PlayerPedId(), 2)
+    ClearPedProp(PlayerPedId(), 6)
+    ClearPedProp(PlayerPedId(), 7)
+
     if Skin.GetPlayerSex() == "Male" then
-        SetPedPropIndex(PlayerPedId(), 0, 8, 0, 0)
+        SetPedComponentVariation(PlayerPedId(), 1, 0, 0, 0)
+        SetPedComponentVariation(PlayerPedId(), 7, 0, 0, 0)
         SetPedComponentVariation(PlayerPedId(), 10, 0, 0, 0)
         SetPedComponentVariation(PlayerPedId(), 11, 15, 0, 0)
         SetPedComponentVariation(PlayerPedId(), 8, 15, 0, 0)
         SetPedComponentVariation(PlayerPedId(), 3, 15, 0, 0)
+        SetPedComponentVariation(PlayerPedId(), 9, 0, 0, 0)
+        SetPedComponentVariation(PlayerPedId(), 5, 0, 0, 0)
         SetPedComponentVariation(PlayerPedId(), 4, 21, 0, 0)
         SetPedComponentVariation(PlayerPedId(), 6, 34, 0, 0)
     elseif Skin.GetPlayerSex() == "Female" then
-        SetPedPropIndex(PlayerPedId(), 0, 120, 0, 0)
+        SetPedComponentVariation(PlayerPedId(), 1, 0, 0, 0)
+        SetPedComponentVariation(PlayerPedId(), 7, 0, 0, 0)
         SetPedComponentVariation(PlayerPedId(), 10, 0, 0, 0)
         SetPedComponentVariation(PlayerPedId(), 11, 5, 0, 0)
         SetPedComponentVariation(PlayerPedId(), 8, 14, 0, 0)
         SetPedComponentVariation(PlayerPedId(), 3, 15, 0, 0)
+        SetPedComponentVariation(PlayerPedId(), 9, 0, 0, 0)
+        SetPedComponentVariation(PlayerPedId(), 5, 0, 0, 0)
         SetPedComponentVariation(PlayerPedId(), 4, 14, 0, 0)
         SetPedComponentVariation(PlayerPedId(), 6, 35, 0, 0)
     end

@@ -15,7 +15,7 @@
     overflow: hidden;
 }
 
-.RightBox {
+#IncluideInventory .RightBox {
     height:100%;
     width:761px;
     background:transparent;
@@ -23,7 +23,7 @@
     right: 0px;
 }
 
-.Container {
+#IncluideInventory .Container {
     height:80%;
     width:90%;
     margin-top: 50px;
@@ -32,27 +32,27 @@
     padding: 15px 15px 10px 15px;
 }
 
-#SlotsContainer {
+#IncluideInventory #SlotsContainer {
     background-color: rgba(0,0,0,0.6);
     height: 90%;
     overflow-y: auto;
 }
 
-.row {
+#IncluideInventory .row {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
 
-.col-3 {
+#IncluideInventory .col-3 {
     -ms-flex: 0 0 19.7%;
     flex: 0 0 19.7%;
     max-width: 19.7%;
     margin: 1px;
 }
 
-.Slots {
+#IncluideInventory .Slots {
     background-color: rgba(0,0,0,0.5);
     width: 135px;
     height: 135px;
@@ -62,7 +62,7 @@
     -webkit-user-select: none;
 }
 
-.Slots .Label {
+#IncluideInventory .Slots .Label {
     font-family: Bebas;
     color: rgba(200, 200, 200, 1);
     background-color:  rgba(200, 200, 200, 0.2);
@@ -76,7 +76,7 @@
     user-select: none;
 }
 
-.Slots .Limit {
+#IncluideInventory .Slots .Limit {
     font-family: Bebas;
     color: rgba(200, 200, 200, 1);
     z-index: 2;
@@ -85,7 +85,7 @@
     user-select: none;
 }
 
-.Slots .Weight {
+#IncluideInventory .Slots .Weight {
     font-family: Bebas;
     color: rgba(200, 200, 200, 1);
     z-index: 2;
@@ -94,7 +94,7 @@
     user-select: none;
 }
 
-input {
+#IncluideInventory input {
     background-color: transparent;
     outline: none;
     width: 50px;
@@ -110,11 +110,11 @@ input {
     z-index: 20;
 }
 
-input:focus {
+#IncluideInventory input:focus {
     border-color: rgba(200, 200, 200, 1);
 }
 
-.ButtonContainer {
+#IncluideInventory .ButtonContainer {
     background: transparent;
     max-height: 100px;
     width: 100%;
@@ -123,7 +123,7 @@ input:focus {
 }
 
 
-#Use {
+#IncluideInventory #Use {
     background-color:  rgba(0, 0, 0, 0.7);
     width: 25%;
     height: 100%;
@@ -132,7 +132,7 @@ input:focus {
     text-align: center;
 }
 
-#Use > a {
+#IncluideInventory #Use > a {
     font-family: Bebas;
     color:  rgba(200, 200, 200, 1);
     font-size: 25px;
@@ -143,7 +143,7 @@ input:focus {
 }
 
 
-#Give {
+#IncluideInventory #Give {
     background-color:  rgba(0, 0, 0, 0.7);
     width: 25%;
     height: 100%;
@@ -151,7 +151,7 @@ input:focus {
     position: relative;
     text-align: center;
 }
-#Give > p {
+#IncluideInventory #Give > p {
     font-family: Bebas;
     color:  rgba(200, 200, 200, 1);
     font-size: 25px;
@@ -161,7 +161,7 @@ input:focus {
     user-select: none;
 }
 
-#Throw {
+#IncluideInventory #Throw {
     background-color:  rgba(0, 0, 0, 0.7);
     width: 25%;
     height: 100%;
@@ -170,7 +170,7 @@ input:focus {
     text-align: center;
 }
 
-#Throw > p {
+#IncluideInventory #Throw > p {
     font-family: Bebas;
     color:  rgba(200, 200, 200, 1);
     font-size: 25px;
@@ -180,7 +180,7 @@ input:focus {
     user-select: none;
 }
 
-#TotalWeight {
+#IncluideInventory #TotalWeight {
     font-family: Bebas;
     color:  rgba(200, 200, 200, 1);
     font-size: 28px;
@@ -215,15 +215,15 @@ input:focus {
     z-index: 1;
 }
 
-.ghost {
+#IncluideInventory .ghost {
     opacity: .5;
 }
 
-.hide {
+#IncluideInventory .hide {
     display: none;
 }
       
-.Slots:hover + .hide {
+#IncluideInventory .Slots:hover + .hide {
     display: inline-block;
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s;
@@ -237,7 +237,7 @@ input:focus {
     z-index: 100;
 }
 
-.test {
+#IncluideInventory .test {
     background-color:  rgba(0, 0, 0, 0.9);
     z-index: 1000;
     position: absolute;
@@ -247,7 +247,7 @@ input:focus {
     width: 100%;
 }
 
-.test::after {
+#IncluideInventory .test::after {
     content: "";
     position: absolute;
     top: 15%;
@@ -258,7 +258,7 @@ input:focus {
     border-color: transparent transparent transparent black;
 }
 
-.hide .title {
+#IncluideInventory .hide .title {
     font-family: Bebas;
     font-size: 30;
     color: rgba(200, 200, 200, 1);
@@ -268,7 +268,7 @@ input:focus {
     width: 320px;
 }
 
-.ImageDescription {
+#IncluideInventory .ImageDescription {
     display: inline-block;
     margin-top: 50px;
     margin-left: auto;
@@ -276,7 +276,7 @@ input:focus {
     height: 30%;
 }
 
-.Description {
+#IncluideInventory .Description {
     font-family: Bebas;
     text-align: justify;
     font-size: 18;
@@ -297,14 +297,14 @@ input:focus {
       to { opacity: 1; }
 }
 
-#Loot {
+#IncluideInventory #Loot {
     background-color: transparent;
     width: 100%;
     height: 100%;
     position: absolute;
 }
 
-#Loot .LeftBox {
+#IncluideInventory #Loot .LeftBox {
     height:100%;
     width:1040px;
     background:transparent;
@@ -312,7 +312,7 @@ input:focus {
     left: 0px;
 }
 
-#Loot .Container {
+#IncluideInventory #Loot .Container {
     height:60%;
     width:92%;
     margin-top: 50px;
@@ -322,27 +322,27 @@ input:focus {
     padding: 15px 15px 10px;
 }
 
-#Loot #SlotsContainerLoot {
+#IncluideInventory #Loot #SlotsContainerLoot {
     background-color: rgba(0,0,0,0.6);
     height: 88%;
     overflow-y: auto;
 }
 
-#Loot .row {
+#IncluideInventory #Loot .row {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
 
-#Loot .col-3 {
+#IncluideInventory #Loot .col-3 {
     -ms-flex: 0 0 14%;
     flex: 0 0 14%;
     max-width: 14%;
     margin: 1px;
 }
 
-#Loot .SlotsLoot {
+#IncluideInventory #Loot .SlotsLoot {
     background-color: rgba(0,0,0,0.5);
     width: 135px;
     height: 135px;
@@ -351,7 +351,7 @@ input:focus {
     -webkit-user-select: none;
 }
 
-#Loot .SlotsLoot .Label {
+#IncluideInventory #Loot .SlotsLoot .Label {
     font-family: Bebas;
     color: rgba(200, 200, 200, 1);
     background-color:  rgba(200, 200, 200, 0.2);
@@ -365,7 +365,7 @@ input:focus {
     user-select: none;
 }
 
-#Loot .SlotsLoot .Limit {
+#IncluideInventory #Loot .SlotsLoot .Limit {
     font-family: Bebas;
     color: rgba(200, 200, 200, 1);
     z-index: 2;
@@ -374,7 +374,7 @@ input:focus {
     user-select: none;
 }
 
-#Loot .SlotsLoot .Weight {
+#IncluideInventory #Loot .SlotsLoot .Weight {
     font-family: Bebas;
     color: rgba(200, 200, 200, 1);
     z-index: 2;
@@ -383,7 +383,7 @@ input:focus {
     user-select: none;
 }
 
-#Loot .CenterContainer {
+#IncluideInventory #Loot .CenterContainer {
     background: transparent;
     max-height: 100px;
     width: 100%;
@@ -392,7 +392,7 @@ input:focus {
     text-align: center;
 }
 
-#Loot .CenterContainer > a {
+#IncluideInventory #Loot .CenterContainer > a {
     font-family: Bebas;
     font-size: 70;
     color: rgba(200, 200, 200, 1);

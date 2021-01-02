@@ -119,17 +119,6 @@ Identity.Translate = function(Lang) {
 		document.getElementById("Occupation").innerHTML = "Ocupación";
 		document.getElementById("Skills").innerHTML = "Descripción";
 		document.getElementById("Submit").innerHTML = "Crear Identidad";
-	} else if (Lang == "FR") {
-		document.getElementById("Title").innerHTML = "Création de Personnage";
-		document.getElementById("FirstName").innerHTML = "Prénom";
-		document.getElementById("LastName").innerHTML = "Nom";
-		document.getElementById("DateOfBirth").innerHTML = "Date de naissance";
-		document.getElementById("Sex").innerHTML = "Sexe";
-		document.getElementById("Male").innerHTML = "Masculin";
-		document.getElementById("Female").innerHTML = "Feminin";
-		document.getElementById("Occupation").innerHTML = "Occupation";
-		document.getElementById("Skills").innerHTML = "Description";
-		document.getElementById("Submit").innerHTML = "Créer le personnage";
 	};
 }
 
@@ -142,7 +131,10 @@ Identity.SetSelectList = function(Classes) {
 	SelectClasses.innerHTML = Div;
 }
 
+let PreventList = true;
+
 $(document).ready(function(){
+
 
 	window.addEventListener('message', function(event) {
 		var Data = event.data;

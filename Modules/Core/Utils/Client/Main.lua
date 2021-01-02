@@ -1,4 +1,3 @@
-
 Utils.GetWeaponNameFromHashKey = function(Hash)
     local Json = GetDataFile("Data/Weapons.json")
     local JsonData = json.decode(Json)
@@ -9,7 +8,7 @@ Utils.GetWeaponNameFromHashKey = function(Hash)
     end
 end
 
-Utils.DrawText3D = function(Text, X, Y, Z, _Scale)
+Utils.DrawText3D = function(Text, X, Y, Z, _Scale, Font)
     local _ScreenX, _ScreenY = GetActiveScreenResolution()
     _ScreenX = (_ScreenX / 2.0)
     _ScreenY = (_ScreenY / 2.0)
@@ -21,7 +20,7 @@ Utils.DrawText3D = function(Text, X, Y, Z, _Scale)
     Scale = (Scale * Fov)
     if OnScreen then
         SetTextScale(Scale, (Scale + 0.35))
-        SetTextFont(0)
+        SetTextFont(Font)
         SetTextProportional(true)
         SetTextColour(255, 255, 255, 255)
         SetTextDropshadow(0, 0, 0, 0, 255)

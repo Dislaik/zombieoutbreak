@@ -1,9 +1,12 @@
 LoadModuleTranslations("Data/Locales/" .. "EN" .. ".lua")
 local Config = LoadModuleConfig("Data/Config.lua")
-Load("Client/Events.lua")
+
 Player = {}
 Player.Loaded = false
-Player.Dead = false
+Player.IsDead = false
+Player.Shoot = false
+Player.Run = false
+Player.Drive = false
 
 local OnControlPressed
 
@@ -37,8 +40,8 @@ end
 
 SetInterval(0, function() 
     if NetworkIsPlayerActive(PlayerId()) then
-        if IsPedFatallyInjured(PlayerPedId()) and not Player.Dead then
-            Player.Dead = true
+        if IsPedFatallyInjured(PlayerPedId()) and not Player.IsDead then
+            Player.IsDead = true
             local Killer = GetPedSourceOfDeath(PlayerPedId())
             local Weapon = GetPedCauseOfDeath(PlayerPedId())
             local KillerId = NetworkGetPlayerIndexFromPed(Killer)
@@ -49,11 +52,11 @@ SetInterval(0, function()
                 Player.PlayerDeath(Weapon)
             end
         elseif not IsPedFatallyInjured(PlayerPedId()) then
-            Player.Dead = false
+            Player.IsDead = false
         end
     end
 
-    if Player.Dead then
+    if Player.IsDead then
         if IsControlPressed(0, 38) then
             OnControlPressed = OnControlPressed + 1
             if OnControlPressed > 30 then
@@ -98,4 +101,57 @@ Player.PlayerDeathByPlayer = function(KillerId, Weapon)
 
     TriggerEvent("Player:DeathDetection", Data)
     TriggerServerEvent("Player:DeathDetection", Data)
+end
+
+SetInterval(0, function()
+    if IsPedShooting(PlayerPedId()) then
+        Player.Shoot = true
+        Wait(5000)
+        Player.Shoot = false
+    end
+end)
+
+SetInterval(1000, function()
+    if IsPedSprinting(PlayerPedId()) or IsPedRunning(PlayerPedId()) then
+        if Player.Run == false then
+            Player.Run = true
+        end
+    else
+        if Player.Run == true then
+            Player.Run = false
+        end
+    end
+    
+    if IsPedInAnyVehicle(PlayerPedId(), false) then
+        local Vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+        if GetEntitySpeed(Vehicle) > 0.0 then
+            if Player.Drive == false then
+                Player.Drive = true
+            end
+        else
+            if Player.Drive == true then
+                Player.Drive = false
+            end
+        end
+    else
+        if Player.Drive == true then
+            Player.Drive = false
+        end
+    end
+end)
+
+Player.Dead = function()
+    return Player.IsDead
+end
+
+Player.Shooting = function()
+    return Player.Shoot
+end
+
+Player.Running = function()
+    return Player.Run
+end
+
+Player.Driving = function()
+    return Player.Drive
 end

@@ -8,13 +8,13 @@
 }
 
 
-hr {
+#IncluideSkin hr {
     margin-top: 20px;
     margin-bottom: 20px;
     opacity: 0.2;
 }
 
-.LeftBox {
+#IncluideSkin .LeftBox {
     position: absolute;
     background-color: rgba(35,35,35,0.95);
     left: auto;
@@ -23,7 +23,7 @@ hr {
     text-align: center;
 }
 
-p {
+#IncluideSkin p {
     user-select: none;
     font-family: Bebas;
     color: rgba(200, 200, 200, 1);
@@ -33,16 +33,16 @@ p {
     margin-bottom: 10px;
 }
 
-#Title {
+#IncluideSkin #Title {
 	font-size: 36;
 }
 
-.slidecontainer {
+#IncluideSkin .slidecontainer {
     width: 87%;
     margin: auto;
 }
   
-.slider {
+#IncluideSkin .slider {
     -webkit-appearance: none;
     width: 70%;
     height: 15px;
@@ -54,11 +54,11 @@ p {
     transition: opacity .2s;
 }
   
-.slider:hover {
+#IncluideSkin .slider:hover {
     opacity: 1;
 }
   
-.slider::-webkit-slider-thumb {
+#IncluideSkin .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 25px;
@@ -68,7 +68,7 @@ p {
     cursor: pointer;
 }
   
-.slider::-moz-range-thumb {
+#IncluideSkin .slider::-moz-range-thumb {
     width: 25px;
     height: 25px;
     border-radius: 50%;
@@ -77,7 +77,7 @@ p {
 }
 
 
-button.submit {
+#IncluideSkin button.submit {
     margin-top: 20px;
     user-select: none;
     background-color: rgba(200, 200, 200, 0.5);
@@ -89,18 +89,18 @@ button.submit {
     font-size: 20px;
 }
 
-button:hover {
+#IncluideSkin button:hover {
     background-color: rgba(200, 200, 200, 1);
 }
 
-[type=radio] { 
+#IncluideSkin [type=radio] { 
     position: absolute;
     opacity: 0;
     width: 0;
     height: 0;
 }
 
-[type=radio] + img {
+#IncluideSkin [type=radio] + img {
     width: 78px;
     height: 78px;
     display: inline-block;
@@ -113,34 +113,34 @@ button:hover {
     transition: box-shadow 0.2s ease-in-out;
 }
 
-[type=radio]:checked + img {
+#IncluideSkin [type=radio]:checked + img {
     box-shadow: 0 0 0px 2px white;
 }
 
-[type=radio]:checked + span {
+#IncluideSkin [type=radio]:checked + span {
     box-shadow: 0 0 0px 2px white;
 }
 
-.RadioImageBox {
+#IncluideSkin .RadioImageBox {
     width: 87%;
     margin: auto;
     text-align: left;
 }
 
-.Container {
+#IncluideSkin .Container {
     width: 87%;
     margin: auto;
 }
 
-.Container > p {
+#IncluideSkin .Container > p {
     text-align: left;
 }
 
-.ContainerSubColor {
+#IncluideSkin .ContainerSubColor {
     text-align: left;
 }
 
-span.color {
+#IncluideSkin span.color {
     width: 65px;
     height: 65px;
     border-radius: 100%;
@@ -153,7 +153,7 @@ span.color {
     transition: box-shadow 0.2s ease-in-out;
 }
 
-span.colorsub {
+#IncluideSkin span.colorsub {
     width: 30px;
     height: 30px;
     border-radius: 100%;
@@ -166,12 +166,12 @@ span.colorsub {
     transition: box-shadow 0.2s ease-in-out;
 }
 
-.Tab {
+#IncluideSkin .Tab {
     overflow: hidden;
     width: 100%;
 }
   
-.Tab button {
+#IncluideSkin .Tab button {
     user-select: none;
     background-color: rgba(200, 200, 200, 0.5);
     outline: none;
@@ -183,15 +183,15 @@ span.colorsub {
     font-size: 20px;
 }
 
-.Tab button:hover {
+#IncluideSkin .Tab button:hover {
     background-color: #ddd;
 }
 
-.Tab button.active {
+#IncluideSkin .Tab button.active {
     background-color: #ccc;
 }
 
-.TabContent {
+#IncluideSkin .TabContent {
     display: none;
     overflow:auto;
     padding: 6px 12px;
@@ -201,7 +201,7 @@ span.colorsub {
     animation: fadeEffect 1s;
 }
 
-.RangeButton {
+#IncluideSkin .RangeButton {
     background-color: transparent;
     color:  rgba(150, 150, 150, 1);
     border: none;
@@ -210,12 +210,12 @@ span.colorsub {
     transition: color 0.2s ease-in-out;
 }
 
-.RangeButton:hover {
+#IncluideSkin .RangeButton:hover {
     background-color: transparent;
     color:  d3d3d3;
 }
 
-.Keys {
+#IncluideSkin .Keys {
     background-color: transparent;
     width: 720px;
     height: 100px;
@@ -225,16 +225,16 @@ span.colorsub {
     z-index: -1;
 }
 
-.RightKeyContainer {
+#IncluideSkin .RightKeyContainer {
     float: right;
 }
 
-.KeysContainer {
+#IncluideSkin .KeysContainer {
     display: flex;
     justify-content: center;
 }
 
-.RotationButton {
+#IncluideSkin .RotationButton {
     margin: 0px 15px 0px 15px;
     padding: 6px 12px 6px 12px;
     font-size: 22;

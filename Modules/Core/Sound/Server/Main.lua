@@ -1,1 +1,3 @@
-Load("Server/Events.lua")
+--Module: Sound
+
+--Load("Server/Events.lua")

@@ -1,3 +1,5 @@
+LoadModuleTranslations("Data/Locales/".. GlobalConfig.Lang ..".lua")
+
 RegisterNetEvent("Inventory:UseItem")
 AddEventHandler("Inventory:UseItem", function(Item)
     local _Player = Player(source)
@@ -9,44 +11,44 @@ AddEventHandler("Inventory:UseItem", function(Item)
 end)
 
 RegisterNetEvent("Inventory:UpdateWeaponAmmo")
-AddEventHandler("Inventory:UpdateWeaponAmmo", function(Data)
-    local Player = Player(source)
-    Player.RemoveWeaponAmmo(Data, 1)
+AddEventHandler("Inventory:UpdateWeaponAmmo", function(WeaponAmmo)
+    local _Player = Player(source)
+    _Player.RemoveWeaponAmmo(WeaponAmmo, 1)
 end)
 
 RegisterNetEvent("Inventory:RemoveItem")
-AddEventHandler("Inventory:RemoveItem", function(Name, Count)
-    local Player = Player(source)
-    Player.RemoveItem(Name, Count)
+AddEventHandler("Inventory:RemoveItem", function(Item, Count)
+    local _Player = Player(source)
+    _Player.RemoveItem(Item, Count)
 end)
 
 RegisterNetEvent("Inventory:RemoveWeapon")
-AddEventHandler("Inventory:RemoveWeapon", function(Data)
-    local Player = Player(source)
-    Player.RemoveWeapon(Data)
+AddEventHandler("Inventory:RemoveWeapon", function(WeaponName)
+    local _Player = Player(source)
+    _Player.RemoveWeapon(WeaponName)
 end)
 
 RegisterNetEvent("Inventory:Lootable")
 AddEventHandler("Inventory:Lootable", function(Item)
-    local Player = Player(source)
-    if Player.CurrentWeight() <= GlobalConfig.PlayerWeight then
+    local _Player = Player(source)
+    if _Player.CurrentWeight() <= GlobalConfig.PlayerWeight then
         if Item.Type == "Item" or Item.Type == "Clothes" then
-            if Player.CanCarryItem(Item.Name, 1) then
-                Player.AddItem(Item.Name, 1)
-                TriggerClientEvent("Inventory:RemoveLootable", Player.Source, Item.Id)
+            if _Player.CanCarryItem(Item.Name, 1) then
+                _Player.AddItem(Item.Name, 1)
+                TriggerClientEvent("Inventory:RemoveLootable", _Player.Source, Item.Id)
             else
-                Player.ShowNotification(Translate("Inventory:Cant_Carry_Item"))
+                _Player.ShowNotification(Translate("Inventory:Cant_Carry_Item"))
             end
         elseif Item.Type == "Weapon" then
-            if not Player.HasWeapon(Item.Name) then
-                Player.AddWeapon(Item.Name, Item.Ammo, Item.Components, Item.Tint)
-                TriggerClientEvent("Inventory:RemoveLootable", Player.Source, Item.Id)
+            if not _Player.HasWeapon(Item.Name) then
+                _Player.AddWeapon(Item.Name, Item.Ammo, Item.Components, Item.Tint)
+                TriggerClientEvent("Inventory:RemoveLootable", _Player.Source, Item.Id)
             else
-                Player.ShowNotification(Translate("Inventory:Cant_Carry_Weapon"))
+                _Player.ShowNotification(Translate("Inventory:Cant_Carry_Weapon"))
             end
         end
     else
-        Player.ShowNotification(Translate("Inventory:Encumbered"))
+        _Player.ShowNotification(Translate("Inventory:Encumbered"))
     end
 end)
 
@@ -103,3 +105,22 @@ AddEventHandler("Inventory:UpdateDrop", function(Drop, Id)
     Inventory.DropId = Id
 end)
 
+RegisterNetEvent("Inventory:CheckLoot")
+AddEventHandler("Inventory:CheckLoot", function(Ped, Item)
+    local _Player = Player(source)
+    if Item.Type == "Item" or Item.Type == "Clothes" then
+        if _Player.CanCarryItem(Item.Name, 1) then
+            _Player.AddItem(Item.Name, 1)
+            TriggerClientEvent("Inventory:RemoveLoot", _Player.Source, Ped, Item)
+        else
+            _Player.ShowNotification(Translate("Inventory:Cant_Carry_Item"))
+        end
+    elseif Item.Type == "Weapon" then
+        if not _Player.HasWeapon(Item.Name) then
+            _Player.AddWeapon(Item.Name, Item.Ammo)
+            TriggerClientEvent("Inventory:RemoveLoot", _Player.Source, Ped, Item)
+        else
+            _Player.ShowNotification(Translate("Inventory:Cant_Carry_Weapon"))
+        end
+    end
+end)

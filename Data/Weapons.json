@@ -1,296 +1,411 @@
 {
     "weapon_dagger" : {
-        "hash" : -1834847097
+        "hash" : -1834847097,
+        "group" : "Melee"
     },
     "weapon_bat" : {
-        "hash" : -1786099057
+        "hash" : -1786099057,
+        "group" : "Melee"
     },
     "weapon_bottle" : {
-        "hash" : -102323637
+        "hash" : -102323637,
+        "group" : "Melee"
     },
     "weapon_crowbar" : {
-        "hash" : -2067956739
+        "hash" : -2067956739,
+        "group" : "Melee"
     },
     "weapon_unarmed" : {
-        "hash" : -1569615261
+        "hash" : -1569615261,
+        "group" : "Melee"
     },
     "weapon_flashlight" : {
-        "hash" : -1951375401
+        "hash" : -1951375401,
+        "group" : "Melee"
     },
     "weapon_golfclub" : {
-        "hash" : 1141786504
+        "hash" : 1141786504,
+        "group" : "Melee"
     },
     "weapon_hammer" : {
-        "hash" : 1261537171
+        "hash" : 1261537171,
+        "group" : "Melee"
     },
     "weapon_hatchet" : {
-        "hash" : -102973651
+        "hash" : -102973651,
+        "group" : "Melee"
     },
     "weapon_knuckle" : {
-        "hash" : -656458692
+        "hash" : -656458692,
+        "group" : "Melee"
     },
     "weapon_knife" : {
-        "hash" : -1716189206
+        "hash" : -1716189206,
+        "group" : "Melee"
     },
     "weapon_machete" : {
-        "hash" : -581044007
+        "hash" : -581044007,
+        "group" : "Melee"
     },
     "weapon_switchblade" : {
-        "hash" : -538741184
+        "hash" : -538741184,
+        "group" : "Melee"
     },
     "weapon_nightstick" : {
-        "hash" : 1737195953
+        "hash" : 1737195953,
+        "group" : "Melee"
     },
     "weapon_wrench" : {
-        "hash" : 419712736
+        "hash" : 419712736,
+        "group" : "Melee"
     },
     "weapon_battleaxe" : {
-        "hash" : -853065399
+        "hash" : -853065399,
+        "group" : "Melee"
     },
     "weapon_poolcue" : {
-        "hash" : -1810795771
+        "hash" : -1810795771,
+        "group" : "Melee"
     },
     "weapon_stone_hatchet" : {
-        "hash" : 940833800
+        "hash" : 940833800,
+        "group" : "Melee"
     },
     "weapon_pistol" : {
-        "hash" : 453432689
+        "hash" : 453432689,
+        "group" : "Handguns",
+        "components" : {
+            "default clip" : "COMPONENT_PISTOL_CLIP_01",
+            "extended clip" : "COMPONENT_PISTOL_CLIP_02",
+            "flashlight" : "COMPONENT_AT_PI_FLSH",
+            "suppressor" : "COMPONENT_AT_PI_SUPP_02",
+            "yusuf amir luxury finish" : "COMPONENT_PISTOL_VARMOD_LUXE"
+        },
+        "tints" : {
+            "normal" : 0,
+            "green" : 1,
+            "gold" : 2,
+            "pink" : 3,
+            "army" : 4,
+            "lspd" : 5,
+            "orange" : 6,
+            "platinum" : 7
+        }
     },
     "weapon_pistol_mk2" : {
-        "hash" : -1075685676
+        "hash" : -1075685676,
+        "group" : "Handguns"
     },
     "weapon_combatpistol" : {
-        "hash" : 1593441988
+        "hash" : 1593441988,
+        "group" : "Handguns"
     },
     "weapon_appistol" : {
-        "hash" : 584646201
+        "hash" : 584646201,
+        "group" : "Handguns"
     },
     "weapon_stungun" : {
-        "hash" : 911657153
+        "hash" : 911657153,
+        "group" : "Handguns"
     },
     "weapon_pistol50" : {
-        "hash" : -1716589765
+        "hash" : -1716589765,
+        "group" : "Handguns"
     },
     "weapon_snspistol" : {
-        "hash" : -1076751822
+        "hash" : -1076751822,
+        "group" : "Handguns"
     },
     "weapon_snspistol_mk2" : {
-        "hash" : -2009644972
+        "hash" : -2009644972,
+        "group" : "Handguns"
     },
     "weapon_heavypistol" : {
-        "hash" : -771403250
+        "hash" : -771403250,
+        "group" : "Handguns"
     },
     "weapon_vintagepistol" : {
-        "hash" : 137902532
+        "hash" : 137902532,
+        "group" : "Handguns"
     },
     "weapon_flaregun" : {
-        "hash" : 1198879012
+        "hash" : 1198879012,
+        "group" : "Handguns"
     },
     "weapon_marksmanpistol" : {
-        "hash" : -598887786
+        "hash" : -598887786,
+        "group" : "Handguns"
     },
     "weapon_revolver" : {
-        "hash" : -1045183535
+        "hash" : -1045183535,
+        "group" : "Handguns"
     },
     "weapon_revolver_mk2" : {
-        "hash" : -879347409
+        "hash" : -879347409,
+        "group" : "Handguns"
     },
     "weapon_doubleaction" : {
-        "hash" : -1746263880
+        "hash" : -1746263880,
+        "group" : "Handguns"
     },
     "weapon_raypistol" : {
-        "hash" : -1355376991
+        "hash" : -1355376991,
+        "group" : "Handguns"
     },
     "weapon_ceramicpistol" : {
-        "hash" : 727643628
+        "hash" : 727643628,
+        "group" : "Handguns"
     },
     "weapon_navyrevolver" : {
-        "hash" : -1853920116
+        "hash" : -1853920116,
+        "group" : "Handguns"
     },
     "weapon_gadgetpistol" : {
-        "hash" : 1470379660
+        "hash" : 1470379660,
+        "group" : "Handguns"
     },
     "weapon_microsmg" : {
-        "hash" : 324215364
+        "hash" : 324215364,
+        "group" : "Submachine Guns"
     },
     "weapon_smg" : {
-        "hash" : 736523883
+        "hash" : 736523883,
+        "group" : "Submachine Guns"
     },
     "weapon_smg_mk2" : {
-        "hash" : 2024373456
+        "hash" : 2024373456,
+        "group" : "Submachine Guns"
     },
     "weapon_assaultsmg" : {
-        "hash" : -270015777
+        "hash" : -270015777,
+        "group" : "Submachine Guns"
     },
     "weapon_combatpdw" : {
-        "hash" : 171789620
+        "hash" : 171789620,
+        "group" : "Submachine Guns"
     },
     "weapon_machinepistol" : {
-        "hash" : -619010992
+        "hash" : -619010992,
+        "group" : "Submachine Guns"
     },
     "weapon_minismg" : {
-        "hash" : -1121678507
+        "hash" : -1121678507,
+        "group" : "Submachine Guns"
     },
     "weapon_raycarbine" : {
-        "hash" : 1198256469
+        "hash" : 1198256469,
+        "group" : "Submachine Guns"
     },
     "weapon_pumpshotgun" : {
-        "hash" : 487013001
+        "hash" : 487013001,
+        "group" : "Shotguns"
     },
     "weapon_pumpshotgun_mk2" : {
-        "hash" : 1432025498
+        "hash" : 1432025498,
+        "group" : "Shotguns"
     },
     "weapon_sawnoffshotgun" : {
-        "hash" : 2017895192
+        "hash" : 2017895192,
+        "group" : "Shotguns"
     },
     "weapon_assaultshotgun" : {
-        "hash" : -494615257
+        "hash" : -494615257,
+        "group" : "Shotguns"
     },
     "weapon_bullpupshotgun" : {
-        "hash" : -1654528753
+        "hash" : -1654528753,
+        "group" : "Shotguns"
     },
     "weapon_musket" : {
-        "hash" : -1466123874
+        "hash" : -1466123874,
+        "group" : "Shotguns"
     },
     "weapon_heavyshotgun" : {
-        "hash" : 984333226
+        "hash" : 984333226,
+        "group" : "Shotguns"
     },
     "weapon_dbshotgun" : {
-        "hash" : -275439685
+        "hash" : -275439685,
+        "group" : "Shotguns"
     },
     "weapon_autoshotgun" : {
-        "hash" : 317205821
+        "hash" : 317205821,
+        "group" : "Shotguns"
     },
     "weapon_combatshotgun" : {
-        "hash" : 94989220
+        "hash" : 94989220,
+        "group" : "Shotguns"
     },
     "weapon_assaultrifle" : {
-        "hash" : -1074790547
+        "hash" : -1074790547,
+        "group" : "Assault Rifles"
     },
     "weapon_assaultrifle_mk2" : {
-        "hash" : 961495388
+        "hash" : 961495388,
+        "group" : "Assault Rifles"
     },
     "weapon_carbinerifle" : {
-        "hash" : -2084633992
+        "hash" : -2084633992,
+        "group" : "Assault Rifles"
     },
     "weapon_carbinerifle_mk2" : {
-        "hash" : -86904375
+        "hash" : -86904375,
+        "group" : "Assault Rifles"
     },
     "weapon_advancedrifle" : {
-        "hash" : -1357824103
+        "hash" : -1357824103,
+        "group" : "Assault Rifles"
     },
     "weapon_specialcarbine" : {
-        "hash" : -1063057011
+        "hash" : -1063057011,
+        "group" : "Assault Rifles"
     },
     "weapon_specialcarbine_mk2" : {
-        "hash" : -1768145561
+        "hash" : -1768145561,
+        "group" : "Assault Rifles"
     },
     "weapon_bullpuprifle" : {
-        "hash" : 2132975508
+        "hash" : 2132975508,
+        "group" : "Assault Rifles"
     },
     "weapon_bullpuprifle_mk2" : {
-        "hash" : -2066285827
+        "hash" : -2066285827,
+        "group" : "Assault Rifles"
     },
     "weapon_compactrifle" : {
-        "hash" : 1649403952
+        "hash" : 1649403952,
+        "group" : "Assault Rifles"
     },
     "weapon_militaryrifle" : {
-        "hash" : -1658906650
+        "hash" : -1658906650,
+        "group" : "Assault Rifles"
     },
     "weapon_mg" : {
-        "hash" : -1660422300
+        "hash" : -1660422300,
+        "group" : "Light Machine Guns"
     },
     "weapon_combatmg" : {
-        "hash" : 2144741730
+        "hash" : 2144741730,
+        "group" : "Light Machine Guns"
     },
     "weapon_combatmg_mk2" : {
-        "hash" : -608341376
+        "hash" : -608341376,
+        "group" : "Light Machine Guns"
     },
     "weapon_gusenberg" : {
-        "hash" : 1627465347
+        "hash" : 1627465347,
+        "group" : "Light Machine Guns"
     },
     "weapon_sniperrifle" : {
-        "hash" : 100416529
+        "hash" : 100416529,
+        "group" : "Sniper Rifles"
     },
     "weapon_heavysniper" : {
-        "hash" : 205991906
+        "hash" : 205991906,
+        "group" : "Sniper Rifles"
     },
     "weapon_heavysniper_mk2" : {
-        "hash" : 177293209
+        "hash" : 177293209,
+        "group" : "Sniper Rifles"
     },
     "weapon_marksmanrifle" : {
-        "hash": -952879014
+        "hash": -952879014,
+        "group" : "Sniper Rifles"
     },
     "weapon_marksmanrifle_mk2" : {
-        "hash" : 1785463520
+        "hash" : 1785463520,
+        "group" : "Sniper Rifles"
     },
     "weapon_rpg" : {
-        "hash" : -1312131151
+        "hash" : -1312131151,
+        "group" : "Heavy Weapons"
     },
     "weapon_grenadelauncher" : {
-        "hash" : -1568386805
+        "hash" : -1568386805,
+        "group" : "Heavy Weapons"
     },
     "weapon_grenadelauncher_smoke" : {
-        "hash" : 1305664598
+        "hash" : 1305664598,
+        "group" : "Heavy Weapons"
     },
     "weapon_minigun" : {
-        "hash" : 1119849093
+        "hash" : 1119849093,
+        "group" : "Heavy Weapons"
     },
     "weapon_firework" : {
-        "hash" : 2138347493
+        "hash" : 2138347493,
+        "group" : "Heavy Weapons"
     },
     "weapon_railgun" : {
-        "hash" : 1834241177
+        "hash" : 1834241177,
+        "group" : "Heavy Weapons"
     },
     "weapon_hominglauncher" : {
-        "hash" : 1672152130
+        "hash" : 1672152130,
+        "group" : "Heavy Weapons"
     },
     "weapon_compactlauncher" : {
-        "hash" : 125959754
+        "hash" : 125959754,
+        "group" : "Heavy Weapons"
     },
     "weapon_rayminigun" : {
-        "hash" : -1238556825
+        "hash" : -1238556825,
+        "group" : "Heavy Weapons"
     },
     "weapon_grenade" : {
-        "hash" : -1813897027
+        "hash" : -1813897027,
+        "group" : "Throwables"
     },
     "weapon_bzgas" : {
-        "hash" : -1600701090
+        "hash" : -1600701090,
+        "group" : "Throwables"
     },
     "weapon_molotov" : {
-        "hash" : 615608432
+        "hash" : 615608432,
+        "group" : "Throwables"
     },
     "weapon_stickybomb" : {
-        "hash" : 741814745
+        "hash" : 741814745,
+        "group" : "Throwables"
     },
     "weapon_proxmine" : {
-        "hash" : -1420407917
+        "hash" : -1420407917,
+        "group" : "Throwables"
     },
     "weapon_snowball" : {
-        "hash" : 126349499
+        "hash" : 126349499,
+        "group" : "Throwables"
     },
     "weapon_pipebomb" : {
-        "hash" : -1169823560
+        "hash" : -1169823560,
+        "group" : "Throwables"
     },
     "weapon_ball" : {
-        "hash" : 600439132
+        "hash" : 600439132,
+        "group" : "Throwables"
     },
     "weapon_smokegrenade" : {
-        "hash" : -37975472
+        "hash" : -37975472,
+        "group" : "Throwables"
     },
     "weapon_flare" : {
-        "hash" : 1233104067
+        "hash" : 1233104067,
+        "group" : "Throwables"
     },
     "weapon_petrolcan" : {
-        "hash" : 883325847
+        "hash" : 883325847,
+        "group" : "Miscellaneous"
     },
     "gadget_parachute" : {
-        "hash" : -72657034
+        "hash" : -72657034,
+        "group" : "Miscellaneous"
     },
     "weapon_fireextinguisher" : {
-        "hash" : 101631238
+        "hash" : 101631238,
+        "group" : "Miscellaneous"
     },
     "weapon_hazardcan" : {
-        "hash" : -1168940174
+        "hash" : -1168940174,
+        "group" : "Miscellaneous"
     }
 }

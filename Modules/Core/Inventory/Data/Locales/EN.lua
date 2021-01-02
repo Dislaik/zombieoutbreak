@@ -15,5 +15,6 @@ Translations = {
     ["Target_Give_Weapon"] = "~b~[Info]~s~ You received an ~y~%s~s~ from ~b~%s~s~.",
     ["Player_Give_HasWeapon"] = "~y~[Info]~s~ You tried gave an ~y~%s~s~ to ~b~%s~s~, but he already has one.",
     ["Target_Give_HasWeapon"] = "~y~[Warning]~s~ ~b~%s~s~ tried to gave you an ~y~%s~s~, but you already have one.",
-    ["Clothes_Not_Available"] = "~y~[Warning]~s~ ~y~%s~s~ is not available for you character."
+    ["Clothes_Not_Available_For_Player_Sex"] = "~y~[Warning]~s~ ~y~%s~s~ is not available for you character sex.",
+    ["Clothes_Not_Available"] = "~y~[Warning]~s~ ~y~%s~s~ is not available."
 }

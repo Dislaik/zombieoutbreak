@@ -3,7 +3,7 @@ Modules = {}
 
 
 local Categories = {"Core", "Base", "User"}
-local Fxmanifest = {"Client", "Client-Server", "Server"}
+local Fxmanifest = {"Shared", "Client", "Server"}
 for i in pairs(Categories) do
     local File = GetDataFile("Modules/" .. Categories[i] .. "/Modules.json")
     local JSONData = json.decode(File)
@@ -18,10 +18,12 @@ for i in pairs(Categories) do
         Modules[i][j]["Name"] = JSONData[j]
         Modules[i][j]["CodeSide"] = {}
         for k in pairs(Fxmanifest) do
-            local Code = GetDataFile("Modules/" .. Categories[i] .. "/" .. JSONData[j] .. "/".. Fxmanifest[k] .."/Main.lua")
-            Modules[i][j]["CodeSide"][Fxmanifest[k]] = Code
+            Modules[i][j]["CodeSide"][Fxmanifest[k]] = {}
+            local EventsCode = GetDataFile("Modules/" .. Categories[i] .. "/" .. JSONData[j] .. "/".. Fxmanifest[k] .."/Events.lua")
+            local MainCode = GetDataFile("Modules/" .. Categories[i] .. "/" .. JSONData[j] .. "/".. Fxmanifest[k] .."/Main.lua")
+            Modules[i][j]["CodeSide"][Fxmanifest[k]]["Events"] = EventsCode
+            Modules[i][j]["CodeSide"][Fxmanifest[k]]["Main"] = MainCode
         end
     end
 end
-
-LoadModules("Client-Server")
+LoadModules("Shared")

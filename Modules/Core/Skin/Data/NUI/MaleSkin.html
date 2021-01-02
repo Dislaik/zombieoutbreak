@@ -1,174 +1,174 @@
 <div class="LeftBox">
     <p id="Title">Skin Creator</p>
-        <div class="Tab">
-            <button class="TabLinks" id="AppearanceFirstClick" onclick="Skin.Tab(event, 'Appearance')">Appearance</button>
-            <button class="TabLinks" onclick="Skin.Tab(event, 'Cosmetic')">Overlay</button>
+    <div class="Tab">
+        <button class="TabLinks" id="AppearanceFirstClick" onclick="Skin.Tab(event, 'Appearance')">Appearance</button>
+        <button class="TabLinks" onclick="Skin.Tab(event, 'Cosmetic')">Overlay</button>
+    </div>
+    <div id="Appearance" class="TabContent">
+        <div id="Skin" class="RadioImageBox"></div>
+        <hr>
+        <div id="Face" class="RadioImageBox"></div>
+        <hr>
+        <div id="Hair" class="RadioImageBox"></div>
+        <div id="HairColor" class="RadioImageBox"></div>
+        <hr>
+        <div id="EyesColor" class="RadioImageBox"></div>
+    </div>
+    <div id="Cosmetic" class="TabContent">
+        <div class="Container">
+            <p>Blemishes</p>
+            <div class="slidecontainer">
+                <button type="button" class="RangeButton" name="blemishes" onclick="Skin.LeftRange('blemishes')">❮</button>
+                <input type="range" class="slider" id="blemishes" name="blemishes" min="0" max="23" value="0">
+                <button type="button" class="RangeButton" name="blemishes" onclick="Skin.RightRange('blemishes')">❯</button>
+            </div>
+            <p>Opacity</p>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="blemishes" name="blemishesopacity" step="0.03" min="0.0" max="0.99" value="0.0">
+            </div>
+            <hr>
+            <p>Beard</p>
+            <div class="slidecontainer">
+                <button type="button" class="RangeButton" name="beard" onclick="Skin.LeftRange('beard')">❮</button>
+                <input type="range" class="slider" id="beard" name="beard" min="0" max="28" value="0">
+                <button type="button" class="RangeButton" name="beard" onclick="Skin.RightRange('beard')">❯</button>
+            </div>
+            <p>Opacity</p>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="beardopacity" name="beardopacity" step="0.03" min="0.0" max="0.99" value="0.0">
+            </div>
+            <div id="BeardColor" style="text-align: left;"></div>
+            <hr>
+            <p>Eyebrows</p>
+            <div class="slidecontainer">
+                <button type="button" class="RangeButton" name="eyebrows" onclick="Skin.LeftRange('eyebrows')">❮</button>
+                <input type="range" class="slider" id="eyebrows" name="eyebrows" min="0" max="33" value="0">
+                <button type="button" class="RangeButton" name="eyebrows" onclick="Skin.RightRange('eyebrows')">❯</button>
+            </div>
+            <p>Opacity</p>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="eyebrowsopacity" name="eyebrowsopacity" step="0.03" min="0.0" max="0.99" value="0.0">
+            </div>
+            <div id="EyebrowsColor" style="text-align: left;"></div>
+            <hr>
+            <p>Wrinkles</p>
+            <div class="slidecontainer">
+                <button type="button" class="RangeButton" name="wrinkles" onclick="Skin.LeftRange('wrinkles')">❮</button>
+                <input type="range" class="slider" id="wrinkles" name="wrinkles" min="0" max="14" value="0">
+                <button type="button" class="RangeButton" name="wrinkles" onclick="Skin.RightRange('wrinkles')">❯</button>
+            </div>
+            <p>Opacity</p>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="wrinklesopacity" name="wrinklesopacity" step="0.03" min="0.0" max="0.99" value="0.0">
+            </div>
+            <hr>
+            <p>Makeup</p>
+            <div class="slidecontainer">
+                <button type="button" class="RangeButton" name="makeup" onclick="Skin.LeftRange('makeup')">❮</button>
+                <input type="range" class="slider" id="makeup" name="makeup" min="0" max="71" value="0">
+                <button type="button" class="RangeButton" name="makeup" onclick="Skin.RightRange('makeup')">❯</button>
+            </div>
+            <p>Opacity</p>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="makeupopacity" name="makeupopacity" step="0.03" min="0.0" max="0.99" value="0.0">
+            </div>
+            <div id="MakeupColor" style="text-align: left;"></div>
+            <hr>
+            <p>Blush</p>
+            <div class="slidecontainer">
+                <button type="button" class="RangeButton" name="blush" onclick="Skin.LeftRange('blush')">❮</button>
+                <input type="range" class="slider" id="blush" name="blush" min="0" max="6" value="0">
+                <button type="button" class="RangeButton" name="blush" onclick="Skin.RightRange('blush')">❯</button>
+            </div>
+            <p>Opacity</p>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="blushopacity" name="blushopacity" step="0.03" min="0.0" max="0.99" value="0.0">
+            </div>
+            <div id="BlushColor" style="text-align: left;"></div>
+            <hr>
+            <p>Complexion</p>
+            <div class="slidecontainer">
+                <button type="button" class="RangeButton" name="complexion" onclick="Skin.LeftRange('complexion')">❮</button>
+                <input type="range" class="slider" id="complexion" name="complexion" min="0" max="11" value="0">
+                <button type="button" class="RangeButton" name="complexion" onclick="Skin.RightRange('complexion')">❯</button>
+            </div>
+            <p>Opacity</p>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="complexionopacity" name="complexionopacity" step="0.03" min="0.0" max="0.99" value="0.0">
+            </div>
+            <hr>
+            <p>Sun Damage</p>
+            <div class="slidecontainer">
+                <button type="button" class="RangeButton" name="sundamage" onclick="Skin.LeftRange('sundamage')">❮</button>
+                <input type="range" class="slider" id="sundamage" name="sundamage" min="0" max="10" value="0">
+                <button type="button" class="RangeButton" name="sundamage" onclick="Skin.RightRange('sundamage')">❯</button>
+            </div>
+            <p>Opacity</p>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="sundamageopacity" name="sundamageopacity" step="0.03" min="0.0" max="0.99" value="0.0">
+            </div>
+            <hr>
+            <p>Lipstick</p>
+            <div class="slidecontainer">
+                <button type="button" class="RangeButton" name="lipstick" onclick="Skin.LeftRange('lipstick')">❮</button>
+                <input type="range" class="slider" id="lipstick" name="lipstick" min="0" max="9" value="0">
+                <button type="button" class="RangeButton" name="lipstick" onclick="Skin.RightRange('lipstick')">❯</button>
+            </div>
+            <p>Opacity</p>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="lipstickopacity" name="lipstickopacity" step="0.03" min="0.0" max="0.99" value="0.0">
+            </div>
+            <div id="LipstickColor" style="text-align: left;"></div>
+            <hr>
+            <p>Freckles</p>
+            <div class="slidecontainer">
+                <button type="button" class="RangeButton" name="freckles" onclick="Skin.LeftRange('freckles')">❮</button>
+                <input type="range" class="slider" id="freckles" name="freckles" min="0" max="17" value="0">
+                <button type="button" class="RangeButton" name="freckles" onclick="Skin.RightRange('freckles')">❯</button>
+            </div>
+            <p>Opacity</p>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="frecklesopacity" name="frecklesopacity" step="0.03" min="0.0" max="0.99" value="0.0">
+            </div>
+            <hr>
+            <p>Chest Hair</p>
+            <div class="slidecontainer">
+                <button type="button" class="RangeButton" name="chesthair" onclick="Skin.LeftRange('chesthair')">❮</button>
+                <input type="range" class="slider" id="chesthair" name="chesthair" min="0" max="16" value="0">
+                <button type="button" class="RangeButton" name="chesthair" onclick="Skin.RightRange('chesthair')">❯</button>
+            </div>
+            <p>Opacity</p>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="chesthairopacity" name="chesthairopacity" step="0.03" min="0.0" max="0.99" value="0.0">
+            </div>
+            <div id="ChestHairColor" style="text-align: left;"></div>
+            <hr>
+            <p>Body Blemishes</p>
+            <div class="slidecontainer">
+                <button type="button" class="RangeButton" name="bodyblemishes" onclick="Skin.LeftRange('bodyblemishes')">❮</button>
+                <input type="range" class="slider" id="bodyblemishes" name="bodyblemishes" min="0" max="11" value="0">
+                <button type="button" class="RangeButton" name="bodyblemishes" onclick="Skin.RightRange('bodyblemishes')">❯</button>
+            </div>
+            <p>Opacity</p>
+            <div class="slidecontainer">
+                <input type="range" class="slider" id="bodyblemishesopacity" name="bodyblemishesopacity" step="0.03" min="0.0" max="0.99" value="0.0">
+            </div>
         </div>
-            <div id="Appearance" class="TabContent">
-                <div id="Skin" class="RadioImageBox"></div>
-                <hr>
-                <div id="Face" class="RadioImageBox"></div>
-                <hr>
-                <div id="Hair" class="RadioImageBox"></div>
-                <div id="HairColor" class="RadioImageBox"></div>
-                <hr>
-                <div id="EyesColor" class="RadioImageBox"></div>
-            </div>
-            <div id="Cosmetic" class="TabContent">
-                <div class="Container">
-                    <p>Blemishes</p>
-                    <div class="slidecontainer">
-                        <button type="button" class="RangeButton" name="blemishes" onclick="Skin.LeftRange('blemishes')">❮</button>
-                        <input type="range" class="slider" id="blemishes" name="blemishes" min="0" max="23" value="0">
-                        <button type="button" class="RangeButton" name="blemishes" onclick="Skin.RightRange('blemishes')">❯</button>
-                    </div>
-                    <p>Opacity</p>
-                    <div class="slidecontainer">
-                        <input type="range" class="slider" id="blemishes" name="blemishesopacity" step="0.03" min="0.0" max="0.99" value="0.0">
-                    </div>
-                    <hr>
-                    <p>Beard</p>
-                    <div class="slidecontainer">
-                        <button type="button" class="RangeButton" name="beard" onclick="Skin.LeftRange('beard')">❮</button>
-                        <input type="range" class="slider" id="beard" name="beard" min="0" max="28" value="0">
-                        <button type="button" class="RangeButton" name="beard" onclick="Skin.RightRange('beard')">❯</button>
-                    </div>
-                    <p>Opacity</p>
-                    <div class="slidecontainer">
-                        <input type="range" class="slider" id="beardopacity" name="beardopacity" step="0.03" min="0.0" max="0.99" value="0.0">
-                    </div>
-                    <div id="BeardColor" style="text-align: left;"></div>
-                    <hr>
-                    <p>Eyebrows</p>
-                    <div class="slidecontainer">
-                        <button type="button" class="RangeButton" name="eyebrows" onclick="Skin.LeftRange('eyebrows')">❮</button>
-                        <input type="range" class="slider" id="eyebrows" name="eyebrows" min="0" max="33" value="0">
-                        <button type="button" class="RangeButton" name="eyebrows" onclick="Skin.RightRange('eyebrows')">❯</button>
-                    </div>
-                    <p>Opacity</p>
-                    <div class="slidecontainer">
-                        <input type="range" class="slider" id="eyebrowsopacity" name="eyebrowsopacity" step="0.03" min="0.0" max="0.99" value="0.0">
-                    </div>
-                    <div id="EyebrowsColor" style="text-align: left;"></div>
-                    <hr>
-                    <p>Wrinkles</p>
-                    <div class="slidecontainer">
-                        <button type="button" class="RangeButton" name="wrinkles" onclick="Skin.LeftRange('wrinkles')">❮</button>
-                        <input type="range" class="slider" id="wrinkles" name="wrinkles" min="0" max="14" value="0">
-                        <button type="button" class="RangeButton" name="wrinkles" onclick="Skin.RightRange('wrinkles')">❯</button>
-                    </div>
-                    <p>Opacity</p>
-                    <div class="slidecontainer">
-                        <input type="range" class="slider" id="wrinklesopacity" name="wrinklesopacity" step="0.03" min="0.0" max="0.99" value="0.0">
-                    </div>
-                    <hr>
-                    <p>Makeup</p>
-                    <div class="slidecontainer">
-                        <button type="button" class="RangeButton" name="makeup" onclick="Skin.LeftRange('makeup')">❮</button>
-                        <input type="range" class="slider" id="makeup" name="makeup" min="0" max="71" value="0">
-                        <button type="button" class="RangeButton" name="makeup" onclick="Skin.RightRange('makeup')">❯</button>
-                    </div>
-                    <p>Opacity</p>
-                    <div class="slidecontainer">
-                        <input type="range" class="slider" id="makeupopacity" name="makeupopacity" step="0.03" min="0.0" max="0.99" value="0.0">
-                    </div>
-                    <div id="MakeupColor" style="text-align: left;"></div>
-                    <hr>
-                    <p>Blush</p>
-                    <div class="slidecontainer">
-                        <button type="button" class="RangeButton" name="blush" onclick="Skin.LeftRange('blush')">❮</button>
-                        <input type="range" class="slider" id="blush" name="blush" min="0" max="6" value="0">
-                        <button type="button" class="RangeButton" name="blush" onclick="Skin.RightRange('blush')">❯</button>
-                    </div>
-                    <p>Opacity</p>
-                    <div class="slidecontainer">
-                        <input type="range" class="slider" id="blushopacity" name="blushopacity" step="0.03" min="0.0" max="0.99" value="0.0">
-                    </div>
-                    <div id="BlushColor" style="text-align: left;"></div>
-                    <hr>
-                    <p>Complexion</p>
-                    <div class="slidecontainer">
-                        <button type="button" class="RangeButton" name="complexion" onclick="Skin.LeftRange('complexion')">❮</button>
-                        <input type="range" class="slider" id="complexion" name="complexion" min="0" max="11" value="0">
-                        <button type="button" class="RangeButton" name="complexion" onclick="Skin.RightRange('complexion')">❯</button>
-                    </div>
-                    <p>Opacity</p>
-                    <div class="slidecontainer">
-                        <input type="range" class="slider" id="complexionopacity" name="complexionopacity" step="0.03" min="0.0" max="0.99" value="0.0">
-                    </div>
-                    <hr>
-                    <p>Sun Damage</p>
-                    <div class="slidecontainer">
-                        <button type="button" class="RangeButton" name="sundamage" onclick="Skin.LeftRange('sundamage')">❮</button>
-                        <input type="range" class="slider" id="sundamage" name="sundamage" min="0" max="10" value="0">
-                        <button type="button" class="RangeButton" name="sundamage" onclick="Skin.RightRange('sundamage')">❯</button>
-                    </div>
-                    <p>Opacity</p>
-                    <div class="slidecontainer">
-                        <input type="range" class="slider" id="sundamageopacity" name="sundamageopacity" step="0.03" min="0.0" max="0.99" value="0.0">
-                    </div>
-                    <hr>
-                    <p>Lipstick</p>
-                    <div class="slidecontainer">
-                        <button type="button" class="RangeButton" name="lipstick" onclick="Skin.LeftRange('lipstick')">❮</button>
-                        <input type="range" class="slider" id="lipstick" name="lipstick" min="0" max="9" value="0">
-                        <button type="button" class="RangeButton" name="lipstick" onclick="Skin.RightRange('lipstick')">❯</button>
-                    </div>
-                    <p>Opacity</p>
-                    <div class="slidecontainer">
-                        <input type="range" class="slider" id="lipstickopacity" name="lipstickopacity" step="0.03" min="0.0" max="0.99" value="0.0">
-                    </div>
-                    <div id="LipstickColor" style="text-align: left;"></div>
-                    <hr>
-                    <p>Freckles</p>
-                    <div class="slidecontainer">
-                        <button type="button" class="RangeButton" name="freckles" onclick="Skin.LeftRange('freckles')">❮</button>
-                        <input type="range" class="slider" id="freckles" name="freckles" min="0" max="17" value="0">
-                        <button type="button" class="RangeButton" name="freckles" onclick="Skin.RightRange('freckles')">❯</button>
-                    </div>
-                    <p>Opacity</p>
-                    <div class="slidecontainer">
-                        <input type="range" class="slider" id="frecklesopacity" name="frecklesopacity" step="0.03" min="0.0" max="0.99" value="0.0">
-                    </div>
-                    <hr>
-                    <p>Chest Hair</p>
-                    <div class="slidecontainer">
-                        <button type="button" class="RangeButton" name="chesthair" onclick="Skin.LeftRange('chesthair')">❮</button>
-                        <input type="range" class="slider" id="chesthair" name="chesthair" min="0" max="16" value="0">
-                        <button type="button" class="RangeButton" name="chesthair" onclick="Skin.RightRange('chesthair')">❯</button>
-                    </div>
-                    <p>Opacity</p>
-                    <div class="slidecontainer">
-                        <input type="range" class="slider" id="chesthairopacity" name="chesthairopacity" step="0.03" min="0.0" max="0.99" value="0.0">
-                    </div>
-                    <div id="ChestHairColor" style="text-align: left;"></div>
-                    <hr>
-                    <p>Body Blemishes</p>
-                    <div class="slidecontainer">
-                        <button type="button" class="RangeButton" name="bodyblemishes" onclick="Skin.LeftRange('bodyblemishes')">❮</button>
-                        <input type="range" class="slider" id="bodyblemishes" name="bodyblemishes" min="0" max="11" value="0">
-                        <button type="button" class="RangeButton" name="bodyblemishes" onclick="Skin.RightRange('bodyblemishes')">❯</button>
-                    </div>
-                    <p>Opacity</p>
-                    <div class="slidecontainer">
-                        <input type="range" class="slider" id="bodyblemishesopacity" name="bodyblemishesopacity" step="0.03" min="0.0" max="0.99" value="0.0">
-                    </div>
-                </div>
-            </div>                  
-        <button id="Submit" class="submit">Save Changes</button>
-        <div class="Keys"> 
-            <div class="RightKeyContainer">
-                <p>Toggle View</p>
+    </div>                  
+    <button class="submit">Save Changes</button>
+    <div class="Keys"> 
+        <div class="RightKeyContainer">
+            <p>Toggle View</p>
                 <div class="KeysContainer">
-                    <p class="RotationButton">TAB</p>
-                </div>
+                <p class="RotationButton">TAB</p>
             </div>
-            <div class="RightKeyContainer">
-                <p>Rotation</p>
-                <div class="KeysContainer">
-                    <p class="RotationButton">A</p>
-                    <p class="RotationButton">D</p>
-                </div>
+        </div>
+        <div class="RightKeyContainer">
+            <p>Rotation</p>
+            <div class="KeysContainer">
+                <p class="RotationButton">A</p>
+                <p class="RotationButton">D</p>
             </div>
         </div>
     </div>
+</div>

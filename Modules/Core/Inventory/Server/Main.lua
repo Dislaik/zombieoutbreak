@@ -1,6 +1,3 @@
-LoadModuleTranslations("Data/Locales/".. GlobalConfig.Lang ..".lua")
-Load("Server/Events.lua")
-
 Inventory.Drop = {}
 Inventory.DropId = 0
 Inventory.VisualDrop = {}
