@@ -1,10 +1,20 @@
 local Config = LoadModuleConfig("Data/Config.lua")
 
 SetArtificialLightsState(true)
-SetScenarioGroupEnabled("LSA_Planes", false)
 StartAudioScene("CHARACTER_CHANGE_IN_SKY_SCENE")
 SetDistantCarsEnabled(true)
 SetMaxWantedLevel(0)
+
+local SpawnVehicleSuppressed = { "akula", "annihilator", "buzzard", "buzzard2", "cargobob", "cargobob2", "cargobob3", "cargobob4", "frogger", "frogger2",
+    "havok", "hunter", "maverick", "savage", "seasparrow", "skylift", "supervolito", "supervolito2", "swift", "swift2", "valkyrie", "valkyrie2", "volatus",
+    "annihilator2", "seasparrow2", "seasparrow3", "alphaz1", "avenger", "avenger2", "besra", "blimp", "blimp2", "blimp3", "bombushka", "cargoplane", "cuban800",
+    "dodo", "duster", "howard", "hydra", "jet", "lazer", "luxor", "luxor2", "mammatus", "microlight", "miljet", "mogul", "molotok", "nimbus", "nokota", "pyro",
+    "rogue", "seabreeze", "shamal", "starling", "strikeforce", "stunt", "titan", "tula", "velum", "velum2", "vestra", "volatol", "alkonost"
+}
+
+for i in pairs(SpawnVehicleSuppressed) do
+    SetVehicleModelIsSuppressed(GetHashKey(SpawnVehicleSuppressed[i]), true)
+end
 
 for i, zone in pairs(Config.SafeZones) do
     blip = AddBlipForRadius(zone.x, zone.y, zone.z, zone.radius)
