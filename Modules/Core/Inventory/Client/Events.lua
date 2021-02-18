@@ -121,7 +121,7 @@ AddEventHandler("Inventory:UpdatePlayerInventory", function(Data)
         SendNUIMessage({
             Type = "UpdateInventory",
             Inventory = Inventory.PlayerItems,
-            MaxWeight = 32.0
+            MaxWeight = GlobalConfig.PlayerWeight
         })
     end
 end)
