@@ -18,7 +18,6 @@ Register.Clothes = function(Item, Sex, Component, DrawableId)
                 if GetPedPropIndex(PlayerPedId(), 0) == DrawableId then
                     Skin.DeleteClothes(Component)
                 else
-                    Skin.DeleteClothes(Component)
                     Skin.SetClothes(Sex, Component, DrawableId)
                 end
             end
@@ -29,7 +28,6 @@ Register.Clothes = function(Item, Sex, Component, DrawableId)
                 if GetPedPropIndex(PlayerPedId(), 1) == DrawableId then
                     Skin.DeleteClothes(Component)
                 else
-                    Skin.DeleteClothes(Component)
                     Skin.SetClothes(Sex, Component, DrawableId)
                 end
             end
@@ -40,7 +38,6 @@ Register.Clothes = function(Item, Sex, Component, DrawableId)
                 if GetPedPropIndex(PlayerPedId(), 2) == DrawableId then
                     Skin.DeleteClothes(Component)
                 else
-                    Skin.DeleteClothes(Component)
                     Skin.SetClothes(Sex, Component, DrawableId)
                 end
             end
@@ -51,7 +48,6 @@ Register.Clothes = function(Item, Sex, Component, DrawableId)
                 if GetPedPropIndex(PlayerPedId(), 6) == DrawableId then
                     Skin.DeleteClothes(Component)
                 else
-                    Skin.DeleteClothes(Component)
                     Skin.SetClothes(Sex, Component, DrawableId)
                 end
             end
@@ -62,7 +58,6 @@ Register.Clothes = function(Item, Sex, Component, DrawableId)
                 if GetPedPropIndex(PlayerPedId(), 7) == DrawableId then
                     Skin.DeleteClothes(Component)
                 else
-                    Skin.DeleteClothes(Component)
                     Skin.SetClothes(Sex, Component, DrawableId)
                 end
             end
@@ -73,7 +68,6 @@ Register.Clothes = function(Item, Sex, Component, DrawableId)
                 if GetPedDrawableVariation(PlayerPedId(), 1) == DrawableId then
                     Skin.DeleteClothes(Component)
                 else
-                    Skin.DeleteClothes(Component)
                     Skin.SetClothes(Sex, Component, DrawableId)
                 end
             end
@@ -84,7 +78,6 @@ Register.Clothes = function(Item, Sex, Component, DrawableId)
                 if GetPedDrawableVariation(PlayerPedId(), 7) == DrawableId then
                     Skin.DeleteClothes(Component)
                 else
-                    Skin.DeleteClothes(Component)
                     Skin.SetClothes(Sex, Component, DrawableId)
                 end
             end
@@ -95,7 +88,6 @@ Register.Clothes = function(Item, Sex, Component, DrawableId)
                 if GetPedDrawableVariation(PlayerPedId(), 11) == DrawableId then
                     Skin.DeleteClothes(Component)
                 else
-                    Skin.DeleteClothes(Component)
                     Skin.SetClothes(Sex, Component, DrawableId)
                 end
             end
@@ -106,7 +98,6 @@ Register.Clothes = function(Item, Sex, Component, DrawableId)
                 if GetPedDrawableVariation(PlayerPedId(), 3) == DrawableId then
                     Skin.DeleteClothes(Component)
                 else
-                    Skin.DeleteClothes(Component)
                     Skin.SetClothes(Sex, Component, DrawableId)
                 end
             end
@@ -117,7 +108,6 @@ Register.Clothes = function(Item, Sex, Component, DrawableId)
                 if GetPedDrawableVariation(PlayerPedId(), 9) == DrawableId then
                     Skin.DeleteClothes(Component)
                 else
-                    Skin.DeleteClothes(Component)
                     Skin.SetClothes(Sex, Component, DrawableId)
                 end
             end
@@ -128,7 +118,6 @@ Register.Clothes = function(Item, Sex, Component, DrawableId)
                 if GetPedDrawableVariation(PlayerPedId(), 5) == DrawableId then
                     Skin.DeleteClothes(Component)
                 else
-                    Skin.DeleteClothes(Component)
                     Skin.SetClothes(Sex, Component, DrawableId)
                 end
             end
@@ -139,7 +128,6 @@ Register.Clothes = function(Item, Sex, Component, DrawableId)
                 if GetPedDrawableVariation(PlayerPedId(), 4) == DrawableId then
                     Skin.DeleteClothes(Component)
                 else
-                    Skin.DeleteClothes(Component)
                     Skin.SetClothes(Sex, Component, DrawableId)
                 end
             end
@@ -150,7 +138,6 @@ Register.Clothes = function(Item, Sex, Component, DrawableId)
                 if GetPedDrawableVariation(PlayerPedId(), 6) == DrawableId then
                     Skin.DeleteClothes(Component)
                 else
-                    Skin.DeleteClothes(Component)
                     Skin.SetClothes(Sex, Component, DrawableId)
                 end
             end
