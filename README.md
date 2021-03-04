@@ -18,10 +18,10 @@ Take a look at [Wiki](https://github.com/Dislaik/zombieoutbreak/wiki)
 ### Discord
 https://discord.gg/cejHPsgCam
 
-### Patreon
-https://www.patreon.com/dislaik
+### Buy me a pizza
+https://www.buymeacoffee.com/dislaik
 
 ## License
-Copyright © 2020 Matías Salas.
+Copyright © 2020 Matías N. Salas.
 
 Zombie Outbreak Framework is a community project, you legal permission to copy, distribute and/or modify it only if you have forked this repository, If it's not a forked repo, then the release will be taken down by DMCA request.
