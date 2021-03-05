@@ -18,8 +18,8 @@ Take a look at [Wiki](https://github.com/Dislaik/zombieoutbreak/wiki)
 ### Discord
 https://discord.gg/cejHPsgCam
 
-### Buy me a pizza
-https://www.buymeacoffee.com/dislaik
+### Support me
+[<a href="https://www.buymeacoffee.com/dislaik"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a pizza&emoji=🍕&slug=dislaik&button_colour=40DCA5&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00"></a>](https://www.buymeacoffee.com/dislaik)
 
 ## License
 Copyright © 2020 Matías N. Salas.
