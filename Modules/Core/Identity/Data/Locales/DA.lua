@@ -4,5 +4,5 @@ Translations = {
     ["Police"] = "Politi",
     ["Police_Description"] = "Beskrivelse af en politibetjent",
     ["Paramedic"] = "Læge",
-    ["Paramedic_Description"] = "Beskrivelse af en læge.",
+    ["Paramedic_Description"] = "Beskrivelse af en læge."
 }
