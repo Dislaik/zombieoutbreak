@@ -14,18 +14,17 @@ tasks:
   
   # Download and prepare server.cfg / loadingscreen / database
   - action: download_github
-    src: https://github.com/cibb/zombieoutbreak
-    ref: txRecipe
-    subpath: zombieoutbreak
-    dest: ./tmp/zombieoutbreak
+    src: https://github.com/Dislaik/zombieoutbreak
+    ref: main    
+    dest: ./resources/zombieoutbreak
 
   - action: move_path
-    src: ./tmp/zombieoutbreak/txAdminRecipe/server.cfg
+    src: ./resources/zombieoutbreak/txAdminRecipe/server.cfg
     dest: ./server.cfg
   
   - action: connect_database
   - action: query_database
-    file: ./tmp/zombieoutbreak/zombieoutbreak.sql
+    file: ./resources/zombieoutbreak/zombieoutbreak.sql
 
   # Download dependencies
 
@@ -33,7 +32,3 @@ tasks:
     src: https://github.com/brouznouf/fivem-mysql-async
     ref: c5fa317a65acfe2eef453257e19e3b4fde137089
     dest: ./resources/mysql-async
-
-  ## Final touches
-  - action: remove_path
-    path: ./tmp
