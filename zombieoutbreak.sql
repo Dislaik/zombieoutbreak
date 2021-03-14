@@ -1,6 +1,3 @@
-CREATE DATABASE IF NOT EXISTS `zombieoutbreak`;
-USE `zombieoutbreak`;
-
 CREATE TABLE `users` (
 	`ID` INT NOT NULL AUTO_INCREMENT,
 	`Identifier` VARCHAR(50) NOT NULL,
