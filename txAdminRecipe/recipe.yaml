@@ -1,0 +1,34 @@
+$engine: 2
+name: ZombieOutbreak
+version: v1.0.0
+author: Dislaik
+description: Zombie Survival RPG for FiveM!
+
+tasks:
+  # Download default CFX resources
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    ref: 88f4f974b855e0bf2ca5f51b9916648bd5b7d44b
+    subpath: resources
+    dest: ./resources
+  
+  # Download and prepare server.cfg / loadingscreen / database
+  - action: download_github
+    src: https://github.com/Dislaik/zombieoutbreak
+    ref: main    
+    dest: ./resources/zombieoutbreak
+
+  - action: move_path
+    src: ./resources/zombieoutbreak/txAdminRecipe/server.cfg
+    dest: ./server.cfg
+  
+  - action: connect_database
+  - action: query_database
+    file: ./resources/zombieoutbreak/zombieoutbreak.sql
+
+  # Download dependencies
+
+  - action: download_github
+    src: https://github.com/brouznouf/fivem-mysql-async
+    ref: c5fa317a65acfe2eef453257e19e3b4fde137089
+    dest: ./resources/mysql-async
