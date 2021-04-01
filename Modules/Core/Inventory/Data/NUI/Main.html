@@ -1,16 +1,31 @@
-
-    <div class="RightBox">
-        <div class="Container">
-            <div id="SlotsContainer"></div>
-            <div class="ButtonContainer">
-                <div id="Use"><a>Use</a></div>
-                <div id="Give"><p>Give</p><input value="1" id="GiveInput" autocomplete="off"/></div>
-                <div id="Throw"><p>Throw</p><input value="1" id="ThrowInput" autocomplete="off"/></div>
-                <p id="TotalWeight"></p>
+<!--<div class="Left-Container">-->
+    <div class="Container">
+        <div class="verticalnav">
+            <div id="inventory"></div>
+        </div>
+        <div id="playerinventory">
+            <div class="Container-Top">
+                <p id="playername" class="font-oswald"></p>
+            </div>
+            <div id="Container-Item">
+                <div id="Container-Items"></div>
+                <div class="Container-Right">
+                    <label>
+                        <input type="radio" name="inventory-containers" value="normal" checked>
+                        <span id="inventory-container-normal-icon"></span>
+                    </label>
+                </div>
             </div>
         </div>
+        
+        <!--<div id="loot">
+            <div class="Container-Top"></div>
+            <div class="Container-Right"></div>
+            <div id="Container-Loot"></div>
+        </div>-->
     </div>
-<div id="Loot">
+<!--</div>-->
+<!--<div id="Loot">
     <div class="LeftBox">
         <div class="Container">
             <div id="SlotsContainerLoot"></div>
@@ -19,7 +34,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 <!--<div id="QuickSlots">
     <div class="BottomBox">
         <div class="asd"></div>

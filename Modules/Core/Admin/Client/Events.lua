@@ -1,31 +1,33 @@
-RegisterNetEvent("Admin:GiveVehicle")
-AddEventHandler("Admin:GiveVehicle", function(VehicleName)
-    RequestModel(VehicleName)
-    while not HasModelLoaded(VehicleName) do
+RegisterEvent("Admin:GiveVehicle", function(vehicleName)
+
+    RequestModel(vehicleName)
+    while not HasModelLoaded(vehicleName) do
         Wait(0)
     end
-    local PlayerCoords = GetEntityCoords(PlayerPedId(), true)
-    local PlayerHeading = GetEntityHeading(PlayerPedId())
-    local Vehicle = CreateVehicle(VehicleName, PlayerCoords.x, PlayerCoords.y, PlayerCoords.z, PlayerHeading, true, true)
-    TaskWarpPedIntoVehicle(PlayerPedId(), Vehicle, -1)
+
+    local playerCoords = GetEntityCoords(PlayerPedId(), true)
+    local playerHeading = GetEntityHeading(PlayerPedId())
+    local vehicle = CreateVehicle(vehicleName, playerCoords.x, playerCoords.y, playerCoords.z, playerHeading, true, true)
+    TaskWarpPedIntoVehicle(PlayerPedId(), vehicle, -1)
 end)
 
-RegisterNetEvent("Admin:Revive")
-AddEventHandler("Admin:Revive", function(VehicleName)
-    local PlayerCoords = GetEntityCoords(PlayerPedId())
-    local PlayerHeading = GetEntityHeading(PlayerPedId())
+RegisterEvent("Admin:Revive", function()
+    local playerCoords = GetEntityCoords(PlayerPedId())
+    local playerHeading = GetEntityHeading(PlayerPedId())
+
     DoScreenFadeOut(1000)
 
     while not IsScreenFadedOut() do
 		Citizen.Wait(50)
     end
 
-    SetEntityCoordsNoOffset(PlayerPedId(), PlayerCoords.x, PlayerCoords.y, PlayerCoords.z, false, false, false, true)
-	NetworkResurrectLocalPlayer(PlayerCoords.x, PlayerCoords.y, PlayerCoords.z, PlayerHeading, true, false)
+    SetEntityCoordsNoOffset(PlayerPedId(), playerCoords.x, playerCoords.y, playerCoords.z, false, false, false, true)
+	NetworkResurrectLocalPlayer(playerCoords.x, playerCoords.y, playerCoords.z, playerHeading, true, false)
 	SetPlayerInvincible(PlayerPedId(), false)
 	ClearPedBloodDamage(PlayerPedId())
 	PlaySoundFrontend(-1, "Hit", "RESPAWN_ONLINE_SOUNDSET", 1)
     
     StopScreenEffect('DeathFailOut')
 	DoScreenFadeIn(1000)
+
 end)

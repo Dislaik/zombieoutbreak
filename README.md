@@ -24,4 +24,4 @@ https://www.patreon.com/dislaik
 ## License
 Copyright © 2020 Matías Salas.
 
-Outbreak Framework is a community project, you legal permission to copy, distribute and/or modify it only if you have forked this repository, If it's not a forked repo, then the release will be taken down by DMCA request.
+Zombie Outbreak Framework is a community project, you legal permission to copy, distribute and/or modify it only if you have forked this repository, If it's not a forked repo, then the release will be taken down by DMCA request.

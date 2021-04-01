@@ -1,10 +1,10 @@
-local Config = LoadModuleConfig("Data/Config.lua")
+--local Inventory = New("Inventory")
+local Utils = M("Utils")
 
 RegisterNetEvent("Plague:LootCorpse")
 AddEventHandler("Plague:LootCorpse", function(Ped, Loot, TotalProbability)
     local _Player = Player(source)
     local LootItems = {}
-
     for i = 1, Utils.Random(1, Config.MaxItemsLoot) do
         local CurrentProbability = 0
         local RandomLoot = Utils.Random(1, TotalProbability)
@@ -13,16 +13,10 @@ AddEventHandler("Plague:LootCorpse", function(Ped, Loot, TotalProbability)
         for i in pairs(Config.LootProbability) do
             CurrentProbability = CurrentProbability + Config.LootProbability[i]
             if RandomLoot <= CurrentProbability then
-                local LootArray = {}
-                for j in pairs(Inventory[i]) do
-                    for k in pairs(Loot) do
-                        if Inventory[i][j].Name == Loot[k] then
-                            table.insert(LootArray, Loot[k])
-                        end
-                    end
+                if next(Loot[i]) ~= nil then
+                    Item = Loot[i][Utils.Random(1, #Loot[i])]
+                    break
                 end
-                Item = LootArray[Utils.Random(1, #LootArray)]
-                break
             end
         end
 

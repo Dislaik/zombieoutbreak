@@ -1,7 +1,7 @@
 SoundsCoords = {}
 SoundsEntity = {}
 
-SetInterval(10, function()
+SetInterval(100, function()
     for i, Sound in pairs(SoundsCoords) do
         print(i,Sound)
         local Distance = Vdist(GetEntityCoords(PlayerPedId()), Sound.Coords.x, Sound.Coords.y, Sound.Coords.z)
@@ -15,7 +15,7 @@ SetInterval(10, function()
     end
 end)
 
-SetInterval(10, function()
+SetInterval(100, function()
     for i, Sound in pairs(SoundsEntity) do
         local Coords = GetEntityCoords(Sound.Entity)
         local Distance = Vdist(GetEntityCoords(PlayerPedId()), Coords.x, Coords.y, Coords.z)

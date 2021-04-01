@@ -1,17 +1,19 @@
-RegisterNetEvent("Skin:SetPlayerSkin")
-AddEventHandler("Skin:SetPlayerSkin", function(Data)
-    local _Player = Player(source)
-    local Identifier = _Player.Identifier()
+local Player = M("Player")
+
+RegisterEvent("Skin:SetPlayerSkin", function(data)
+    local player = Player:getPlayer(source)
+    local identifier = player:getIdentifier()
     
-    Database.ExecuteUpdateQuery("UPDATE users SET Skin = @Skin WHERE Identifier = @Identifier", {
-        ["@Identifier"] = Identifier,
-        ["@Skin"] = json.encode(Data)
+
+    Database.ExecuteUpdateQuery("UPDATE users SET skin = @skin WHERE identifier = @identifier", {
+        ["@identifier"] = identifier,
+        ["@skin"] = json.encode(data)
     })
 end)
 
-RegisterNetEvent("Skin:SetClothes")
-AddEventHandler("Skin:SetClothes", function(Component, DrawableId)
-    local _Player = Player(source)
+--[[
+RegisterEvent("Skin:SetClothes", function(Component, DrawableId)
+    local _Player = Player.Properties(source)
     local Identifier = _Player.Identifier()
     local PlayerSkin = _Player.GetSkin()
 
@@ -49,9 +51,8 @@ AddEventHandler("Skin:SetClothes", function(Component, DrawableId)
     })
 end)
 
-RegisterNetEvent("Skin:DeleteClothes")
-AddEventHandler("Skin:DeleteClothes", function(Component)
-    local _Player = Player(source)
+RegisterEvent("Skin:DeleteClothes", function(Component)
+    local _Player = Player.Properties(source)
     local Identifier = _Player.Identifier()
     local PlayerSkin = _Player.GetSkin()
 
@@ -89,10 +90,8 @@ AddEventHandler("Skin:DeleteClothes", function(Component)
     })
 end)
 
-
-RegisterNetEvent("Skin:ClearClothes")
-AddEventHandler("Skin:ClearClothes", function()
-    local _Player = Player(source)
+RegisterEvent("Skin:ClearClothes", function()
+    local _Player = Player.Properties(source)
     local Identifier = _Player.Identifier()
     local PlayerSkin = _Player.GetSkin()
 
@@ -107,3 +106,4 @@ AddEventHandler("Skin:ClearClothes", function()
         ["@Skin"] = json.encode(PlayerSkin)
     })
 end)
+--]]

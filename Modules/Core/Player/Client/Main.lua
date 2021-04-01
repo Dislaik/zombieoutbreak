@@ -1,84 +1,139 @@
-LoadModuleTranslations("Data/Locales/" .. "EN" .. ".lua")
-local Config = LoadModuleConfig("Data/Config.lua")
+local Utils = M("Utils")
 
-Player = {}
-Player.Loaded = false
-Player.IsDead = false
-Player.Shoot = false
-Player.Run = false
-Player.Drive = false
+DecorRegister("PLAYER", 2)
+DecorRegister("PLAYER_LOADED", 2)
+DecorRegister("PLAYER_SHOOTING", 2)
+DecorRegister("PLAYER_RUNNING", 2)
+DecorRegister("PLAYER_DRIVING", 2)
+DecorRegister("PLAYER_DEAD", 2)
+DecorRegister("PLAYER_ZOMBIFIED", 2)
 
 local OnControlPressed
 
+RegisterCommand("test", function(source, args, rawCommand)
+    --print(Player:getPlayer():Loaded())
+    print(Module.loaded(true))
+end, false)
+
+
 exports.spawnmanager:spawnPlayer({
-    x = Config.FirstSpawn.X,
-    y = Config.FirstSpawn.Y,
-    z = Config.FirstSpawn.Z,
-    heading = Config.FirstSpawn.Heading,
+    x = Module.Config.FirstSpawn.X,
+    y = Module.Config.FirstSpawn.Y,
+    z = Module.Config.FirstSpawn.Z,
+    heading = Module.Config.FirstSpawn.Heading,
     model = "mp_m_freemode_01",
     skipFade = true
-    }, function()
+}, function()            
+
+    --[[DecorSetBool(PlayerPed, "PLAYER", true)
+    DecorSetBool(PlayerPed, "PLAYER_LOADED", false)
+    DecorSetBool(PlayerPed, "PLAYER_SHOOTING", false)
+    DecorSetBool(PlayerPed, "PLAYER_RUNNING", false)
+    DecorSetBool(PlayerPed, "PLAYER_DRIVING", false)
+    DecorSetBool(PlayerPed, "PLAYER_DEAD", false)
+    DecorSetBool(PlayerPed, "PLAYER_ZOMBIFIED", false)--]]
+
+    --TriggerServerEvent("Player:Instance")
+    DisplayRadar(true)
+    DoScreenFadeOut(0)
+
+    TriggerServerEvent("Player:Spawned")
+    SetCanAttackFriendly(PlayerPedId(), true, false)
+    NetworkSetFriendlyFireOption(true)
+
+    SetInterval(60000, function()
+        if Module:getPlayer():loaded() then
+            local playerCoords = GetEntityCoords(PlayerPedId(), true)
+            TriggerServerEvent("Player:SetPositionData", playerCoords)
+        end
+    end)
+end)
+
+SetInterval(0, function()
+    --SetPlayerHealthRechargeLimit(PlayerId(), 50)
+    SetPlayerHealthRechargeMultiplier(PlayerId(), 0.0)
+    --print(GetPlayerHealthRechargeLimit(PlayerId()))
+end)
+
+--[[
+SetInterval(0, function()
+    for _, PlayerIndex in pairs(GetActivePlayers()) do
+        local PlayerId = GetPlayerFromServerId(PlayerIndex)
+        local PlayerPed = GetPlayerPed(PlayerId)
         
-        DoScreenFadeOut(0)
-        TriggerServerEvent("Player:Spawned")
-        SetCanAttackFriendly(PlayerPedId(), true, false)
-        NetworkSetFriendlyFireOption(true)
+        if not DecorExistOn(PlayerPed, "PLAYER") then
+            DecorSetBool(PlayerPed, "PLAYER", true)
+            DecorSetBool(PlayerPed, "PLAYER_LOADED", false)
+            DecorSetBool(PlayerPed, "PLAYER_INTERACT", false)
+            DecorSetBool(PlayerPed, "PLAYER_SHOOTING", false)
+            DecorSetBool(PlayerPed, "PLAYER_RUNNING", false)
+            DecorSetBool(PlayerPed, "PLAYER_DRIVING", false)
+            DecorSetBool(PlayerPed, "PLAYER_DEAD", false)
+            DecorSetBool(PlayerPed, "PLAYER_ZOMBIFIED", false)
+        end
+    end
+end)--]]
 
-        SetInterval(60000, function()
-            if Player.Loaded then
-                local PlayerCoords = GetEntityCoords(PlayerPedId(), true)
-                TriggerServerEvent("Player:Position", PlayerCoords)
+
+SetInterval(0, function()
+    for _, PlayerIndex in pairs(GetActivePlayers()) do
+        local PlayerId = GetPlayerFromServerId(PlayerIndex)
+        local PlayerPed = GetPlayerPed(PlayerId)
+        
+        if DecorExistOn(PlayerPed, "PLAYER_SHOOTING") then
+            if IsPedShooting(PlayerPed) then
+                DecorSetBool(PlayerPed, "PLAYER_SHOOTING", true)
+            
+                Wait(5000)
+            
+                DecorSetBool(PlayerPed, "PLAYER_SHOOTING", false)
             end
-        end)
+        end
+    end
 end)
 
-Player.ShowNotification = function(Message)
-    SetNotificationTextEntry('STRING')
-	AddTextComponentString(Message)
-	DrawNotification(0,1)
-end
-
-SetInterval(0, function() 
-    if NetworkIsPlayerActive(PlayerId()) then
-        if IsPedFatallyInjured(PlayerPedId()) and not Player.IsDead then
-            Player.IsDead = true
-            local Killer = GetPedSourceOfDeath(PlayerPedId())
-            local Weapon = GetPedCauseOfDeath(PlayerPedId())
-            local KillerId = NetworkGetPlayerIndexFromPed(Killer)
-
-            if Killer ~= PlayerPedId() and NetworkIsPlayerActive(KillerId) then
-                Player.PlayerDeathByPlayer(KillerId, Weapon)
+SetInterval(0, function()
+    for _, PlayerIndex in pairs(GetActivePlayers()) do
+        local PlayerId = GetPlayerFromServerId(PlayerIndex)
+        local PlayerPed = GetPlayerPed(PlayerId)
+        
+        if DecorExistOn(PlayerPed, "PLAYER_RUNNING") then
+            if IsPedSprinting(PlayerPed) or IsPedRunning(PlayerPed) then
+                if not DecorGetBool(PlayerPed, "PLAYER_RUNNING") then
+                    DecorSetBool(PlayerPed, "PLAYER_RUNNING", true)
+                end
             else
-                Player.PlayerDeath(Weapon)
+                if DecorGetBool(PlayerPed, "PLAYER_RUNNING") then
+                    DecorSetBool(PlayerPed, "PLAYER_RUNNING", false)
+                end
             end
-        elseif not IsPedFatallyInjured(PlayerPedId()) then
-            Player.IsDead = false
-        end
-    end
-
-    if Player.IsDead then
-        if IsControlPressed(0, 38) then
-            OnControlPressed = OnControlPressed + 1
-            if OnControlPressed > 30 then
-                TriggerServerEvent("Player:Reset")
-                Skin.ClearClothes()
-                DoScreenFadeOut(1000)
-                Wait(2000)
-                NetworkResurrectLocalPlayer(Config.PlayerRespawn.X, Config.PlayerRespawn.Y, Config.PlayerRespawn.Z, Config.PlayerRespawn.Heading, true, false)
-                ClearPedBloodDamage(PlayerPedId())
-                AnimpostfxStop("DeathFailOut")
-                DoScreenFadeIn(1000)
-                PlaySoundFrontend(-1, "Hit", "RESPAWN_ONLINE_SOUNDSET", true)
-            end
-        else
-            OnControlPressed = 0
         end
 
-        Utils.DrawText("You are dead\nHold down E for respawn", 0.5, 0.5, 0.5, 2, 0, 255, 255, 255, 255, true)
+        if DecorExistOn(PlayerPed, "PLAYER_DRIVING") then
+            if IsPedInAnyVehicle(PlayerPed, false) then
+                local Vehicle = GetVehiclePedIsIn(PlayerPed, false)
+                if GetEntitySpeed(Vehicle) > 0.0 then
+                    if not DecorGetBool(PlayerPed, "PLAYER_DRIVING") then
+                        DecorSetBool(PlayerPed, "PLAYER_DRIVING", true)
+                    end
+                else
+                    if DecorGetBool(PlayerPed, "PLAYER_DRIVING") then
+                        DecorSetBool(PlayerPed, "PLAYER_DRIVING", false)
+                    end
+                end
+            else
+                if DecorGetBool(PlayerPed, "PLAYER_DRIVING") then
+                    DecorSetBool(PlayerPed, "PLAYER_DRIVING", false)
+                end
+            end
+        end
+        
     end
 end)
 
-Player.PlayerDeath = function(Weapon)
+
+PlayerDeath = function(Killer, Weapon)
+    print(Killer)
     local PlayerCoords = GetEntityCoords(PlayerPedId(), false)
     
     local Data = {}
@@ -89,7 +144,7 @@ Player.PlayerDeath = function(Weapon)
     TriggerServerEvent("Player:DeathDetection", Data)
 end
 
-Player.PlayerDeathByPlayer = function(KillerId, Weapon)
+PlayerDeathByPlayer = function(KillerId, Weapon)
     local PlayerCoords = GetEntityCoords(PlayerPedId(), false)
     local KillerCoords = GetEntityCoords(GetPlayerPed(KillerId), false)
 
@@ -103,55 +158,45 @@ Player.PlayerDeathByPlayer = function(KillerId, Weapon)
     TriggerServerEvent("Player:DeathDetection", Data)
 end
 
-SetInterval(0, function()
-    if IsPedShooting(PlayerPedId()) then
-        Player.Shoot = true
-        Wait(5000)
-        Player.Shoot = false
-    end
-end)
+SetInterval(0, function() 
+    if NetworkIsPlayerActive(PlayerId()) then
+        if IsPedFatallyInjured(PlayerPedId()) and not Module:getPlayer():isDead() then
+            local Killer = GetPedSourceOfDeath(PlayerPedId())
+            local Weapon = GetPedCauseOfDeath(PlayerPedId())
+            local KillerId = NetworkGetPlayerIndexFromPed(Killer)
 
-SetInterval(1000, function()
-    if IsPedSprinting(PlayerPedId()) or IsPedRunning(PlayerPedId()) then
-        if Player.Run == false then
-            Player.Run = true
-        end
-    else
-        if Player.Run == true then
-            Player.Run = false
+            if Killer ~= PlayerPedId() and NetworkIsPlayerActive(KillerId) then
+                PlayerDeathByPlayer(KillerId, Weapon)
+            else
+                PlayerDeath(Killer, Weapon)
+            end
+
+            Module:getPlayer():isDead(true)
+        elseif not IsPedFatallyInjured(PlayerPedId()) then
+            Module:getPlayer():isDead(false)
         end
     end
-    
-    if IsPedInAnyVehicle(PlayerPedId(), false) then
-        local Vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-        if GetEntitySpeed(Vehicle) > 0.0 then
-            if Player.Drive == false then
-                Player.Drive = true
+
+    --[[if Dead then
+
+        if IsControlPressed(0, 38) then
+
+            OnControlPressed = OnControlPressed + 1
+            if OnControlPressed > 30 then
+                TriggerServerEvent("Player:Reset")
+                Skin.ClearClothes()
+                DoScreenFadeOut(1000)
+                Wait(2000)
+                NetworkResurrectLocalPlayer(Module.Config.PlayerRespawn.X, Module.Config.PlayerRespawn.Y, Module.Config.PlayerRespawn.Z, Module.Config.PlayerRespawn.Heading, true, false)
+                ClearPedBloodDamage(PlayerPedId())
+                AnimpostfxStop("DeathFailOut")
+                DoScreenFadeIn(1000)
+                PlaySoundFrontend(-1, "Hit", "RESPAWN_ONLINE_SOUNDSET", true)
             end
         else
-            if Player.Drive == true then
-                Player.Drive = false
-            end
+            OnControlPressed = 0
         end
-    else
-        if Player.Drive == true then
-            Player.Drive = false
-        end
-    end
+
+        Utils.DrawText("You are dead\nHold down E for respawn", 0.5, 0.5, 0.5, 2, 0, 255, 255, 255, 255, true)
+    end--]]
 end)
-
-Player.Dead = function()
-    return Player.IsDead
-end
-
-Player.Shooting = function()
-    return Player.Shoot
-end
-
-Player.Running = function()
-    return Player.Run
-end
-
-Player.Driving = function()
-    return Player.Drive
-end

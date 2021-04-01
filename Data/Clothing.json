@@ -1,0 +1,22 @@
+{
+    "ClotherTest" : {
+        "BodyLocation" : "T-Shirt",
+        "Gender" : "Male",
+        "ComponentId" : 7,
+        "DrawableId" : 22,
+        "TextureId" : 0,
+        "PaletteId" : 0,
+        "Label" : "ClotherTest_Label",
+        "Description" : "ClotherTest_Description",
+        "Weight" : 0.2,
+        "Limit" : -1,
+        "Icon" : "ClotherTest",
+        "CombatSpeedModifier" : 0.95,
+        "BiteDefense" : 100,
+        "ScratchDefense" : 100,
+        "ChanceToFall" : 10,
+        "Insulation" : 0.70,
+        "WindResistance" : 0.70,
+        "WaterResistance" : 1.0
+    }
+}

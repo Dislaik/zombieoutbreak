@@ -1,5 +1,4 @@
-RegisterNetEvent("Sound:Coords")
-AddEventHandler("Sound:Coords", function(Module, Resource, Name, Volume, Coords, Loop)
+RegisterEvent("Sound:Coords", function(Module, Resource, Name, Volume, Coords, Loop)
     local i = 0
     while SoundsCoords[i] ~= nil or SoundsEntity[i] ~= nil do i = i + 1 end
     SoundsCoords[i] = {Coords = Coords, Volume = Volume}
@@ -15,8 +14,7 @@ AddEventHandler("Sound:Coords", function(Module, Resource, Name, Volume, Coords,
     })
 end)
 
-RegisterNetEvent("Sound:Entity")
-AddEventHandler("Sound:Entity", function(Module, Resource, Name, Volume, Entity, Loop)
+RegisterEvent("Sound:Entity", function(Module, Resource, Name, Volume, Entity, Loop)
     local i = 0
     while SoundsEntity[i] ~= nil or SoundsCoords[i] ~= nil do i = i + 1 end
     local Coords = GetEntityCoords(Entity)

@@ -1,400 +1,246 @@
 @font-face {
-    font-family: Roboto;
-    src: url(./Fonts/RobotoMono-VariableFont_wght.ttf);
+    font-family: "Oswald";
+    src: url("Fonts/Oswald.ttf");
 }
-@font-face {
-    font-family: Bebas;
-    src: url(./Fonts/BebasNeue-Regular.ttf);
+
+
+#IncluideInventory .font-oswald {
+    font-family: Oswald;
 }
 
 #IncluideInventory {
-    background-color: rgba(0,0,0,0.3);
-    width: 100%;
-    height: 100%;
+    background-color: transparent;
+    width: 100vw;
+    height: 100vh;
     position: absolute;
     overflow: hidden;
 }
 
-#IncluideInventory .RightBox {
-    height:100%;
-    width:761px;
-    background:transparent;
-    position:absolute;
-    right: 0px;
-}
-
 #IncluideInventory .Container {
-    height:80%;
-    width:90%;
-    margin-top: 50px;
-    background:rgba(0,0,0,0.3);
-    left: auto;
-    padding: 15px 15px 10px 15px;
-}
-
-#IncluideInventory #SlotsContainer {
-    background-color: rgba(0,0,0,0.6);
-    height: 90%;
-    overflow-y: auto;
-}
-
-#IncluideInventory .row {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-}
-
-#IncluideInventory .col-3 {
-    -ms-flex: 0 0 19.7%;
-    flex: 0 0 19.7%;
-    max-width: 19.7%;
-    margin: 1px;
-}
-
-#IncluideInventory .Slots {
-    background-color: rgba(0,0,0,0.5);
-    width: 135px;
-    height: 135px;
-    margin: 0 auto;
-    z-index: 20;
     position: relative;
-    -webkit-user-select: none;
-}
-
-#IncluideInventory .Slots .Label {
-    font-family: Bebas;
-    color: rgba(200, 200, 200, 1);
-    background-color:  rgba(200, 200, 200, 0.2);
-    bottom: 0px;
-    z-index: 2;
-    position: absolute;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
-}
-
-#IncluideInventory .Slots .Limit {
-    font-family: Bebas;
-    color: rgba(200, 200, 200, 1);
-    z-index: 2;
-    position: absolute;
-    left: 5px;
-    user-select: none;
-}
-
-#IncluideInventory .Slots .Weight {
-    font-family: Bebas;
-    color: rgba(200, 200, 200, 1);
-    z-index: 2;
-    position: absolute;
-    Right: 5px;
-    user-select: none;
-}
-
-#IncluideInventory input {
-    background-color: transparent;
-    outline: none;
-    width: 50px;
-    font-size: 15px;
-    text-align: center;
-    color: white;
-    left: 36%;
-    bottom: 10px;
-    position: absolute;
-    border-width: 0px 0px 2px;
-    border-color: rgba(200, 200, 200, 0.5);
-    transition: border-color 0.2s ease-in-out;
-    z-index: 20;
-}
-
-#IncluideInventory input:focus {
-    border-color: rgba(200, 200, 200, 1);
-}
-
-#IncluideInventory .ButtonContainer {
-    background: transparent;
-    max-height: 100px;
-    width: 100%;
-    margin-top: 10px;
-    height: 70px;
-}
-
-
-#IncluideInventory #Use {
-    background-color:  rgba(0, 0, 0, 0.7);
-    width: 25%;
-    height: 100%;
-    display: inline-block;
-    position: relative;
-    text-align: center;
-}
-
-#IncluideInventory #Use > a {
-    font-family: Bebas;
-    color:  rgba(200, 200, 200, 1);
-    font-size: 25px;
-    text-align: center;
-    top: 20px;
-    position: relative;
-    user-select: none;
-}
-
-
-#IncluideInventory #Give {
-    background-color:  rgba(0, 0, 0, 0.7);
-    width: 25%;
-    height: 100%;
-    display: inline-block;
-    position: relative;
-    text-align: center;
-}
-#IncluideInventory #Give > p {
-    font-family: Bebas;
-    color:  rgba(200, 200, 200, 1);
-    font-size: 25px;
-    top: 5px;
-    position: relative;
-    text-align: center;
-    user-select: none;
-}
-
-#IncluideInventory #Throw {
-    background-color:  rgba(0, 0, 0, 0.7);
-    width: 25%;
-    height: 100%;
-    display: inline-block;
-    position: relative;
-    text-align: center;
-}
-
-#IncluideInventory #Throw > p {
-    font-family: Bebas;
-    color:  rgba(200, 200, 200, 1);
-    font-size: 25px;
-    top: 5px;
-    position: relative;
-    text-align: center;
-    user-select: none;
-}
-
-#IncluideInventory #TotalWeight {
-    font-family: Bebas;
-    color:  rgba(200, 200, 200, 1);
-    font-size: 28px;
-    margin-top: 20px;
-    margin-right: 10px;
-    float: right;
-}
-
-#QuickSlots {
-    background-color: transparent;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    position: absolute;
-}
-
-#QuickSlots .BottomBox {
-    width:500px;
     height:100%;
+    width:100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
     background:transparent;
-    margin:auto;
-    position: relative;
 }
 
-#QuickSlots .BottomBox .asd {
-    background-color: rgba(0,0,0,0.3);
+#IncluideInventory .Container .verticalnav{
     position: absolute;
-    width: 100%;
-    height: 110px;
-    margin-bottom: 20px;
-    bottom: 0;
+    height: 100%;
+    width: 100px;
+    left: 0;
+    top: 30%;
+    margin: auto;
+    background:transparent;
+}
+
+#IncluideInventory .Container .verticalnav #inventory {
+    position: relative;
+    display: block;
+    height: 60px;
+    width: 60%;
+    margin-left: 20px;
+    background-image: url("Images/icon_inventory.png");
+    background-repeat: no-repeat;
+    background-size: 60px;
+    filter: grayscale(100%);
+}
+
+#IncluideInventory .Container #playerinventory {
+    position: absolute !important;
+    height: 30%;
+    width: 25%;
+    left: 5%;
+    top: 5%;
+    overflow: hidden;
+    background:rgba(0,0,0,0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#IncluideInventory .Container #loot {
+    position: absolute !important;
+    height: 30%;
+    width: 25%;
+    left: 32%;
+    top: 5%;
+    overflow: hidden;
+    background-color:rgba(0,0,0,0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#IncluideInventory .Container .Container-Top {
+    /*position: relative;*/
+    position: absolute;
+    height: 35px;
+    width:100%;
+    background:rgba(0,0,0,1.0);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 1;
 }
 
-#IncluideInventory .ghost {
-    opacity: .5;
-}
-
-#IncluideInventory .hide {
-    display: none;
-}
-      
-#IncluideInventory .Slots:hover + .hide {
-    display: inline-block;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
-    position: absolute;;
-    width: 300px;
-    height: 380px;
-    /*left: -320;*/
-    text-align: center;
-    /*top: 50;*/
-    background-color:  transparent;
-    z-index: 100;
-}
-
-#IncluideInventory .test {
-    background-color:  rgba(0, 0, 0, 0.9);
-    z-index: 1000;
+#IncluideInventory .Container .Container-Top > p {
     position: absolute;
-    height: 100%;
-    left: -315;
-    top: -136;
-    width: 100%;
+    color: white;
+    top: 10%;
+    white-space: nowrap;
+    padding-left: 20px;
+    /*font-size: 2vh;*/
+    user-select: none;
+    /*height: auto;*/
 }
 
-#IncluideInventory .test::after {
-    content: "";
-    position: absolute;
-    top: 15%;
-    left: 100%;
-    margin-top: -5px;
-    border-width: 15px;
-    border-style: solid;
-    border-color: transparent transparent transparent black;
-}
-
-#IncluideInventory .hide .title {
-    font-family: Bebas;
-    font-size: 30;
-    color: rgba(200, 200, 200, 1);
-    margin-top: 10px;
-    position: absolute;
-    display: block;
-    width: 320px;
-}
-
-#IncluideInventory .ImageDescription {
-    display: inline-block;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 30%;
-}
-
-#IncluideInventory .Description {
-    font-family: Bebas;
-    text-align: justify;
-    font-size: 18;
-    padding-top: 10px;
-    color:  rgba(200,200,200,0.5);
-    display: block;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-
-@-webkit-keyframes fadeIn {
-    from { opacity: 0; }
-      to { opacity: 1; }
-}
-@keyframes fadeIn {
-    from { opacity: 0; }
-      to { opacity: 1; }
-}
-
-#IncluideInventory #Loot {
-    background-color: transparent;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-}
-
-#IncluideInventory #Loot .LeftBox {
-    height:100%;
-    width:1040px;
-    background:transparent;
-    position:absolute;
-    left: 0px;
-}
-
-#IncluideInventory #Loot .Container {
-    height:60%;
-    width:92%;
-    margin-top: 50px;
-    background:rgba(0,0,0,0.3);
-    right: 0;
-    position: absolute;
-    padding: 15px 15px 10px;
-}
-
-#IncluideInventory #Loot #SlotsContainerLoot {
-    background-color: rgba(0,0,0,0.6);
-    height: 88%;
-    overflow-y: auto;
-}
-
-#IncluideInventory #Loot .row {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-}
-
-#IncluideInventory #Loot .col-3 {
-    -ms-flex: 0 0 14%;
-    flex: 0 0 14%;
-    max-width: 14%;
-    margin: 1px;
-}
-
-#IncluideInventory #Loot .SlotsLoot {
-    background-color: rgba(0,0,0,0.5);
-    width: 135px;
-    height: 135px;
-    margin: 0 auto;
+#IncluideInventory .Container .Container-Right {
     position: relative;
-    -webkit-user-select: none;
+    /*display: inline-flex;*/
+    height:100%;
+    /*width:10%;*/
+    width: 60px;
+    right: 0;
+    float: right;
+    bottom: 0;
+    background:rgba(0,0,0,1.0);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1;
 }
 
-#IncluideInventory #Loot .SlotsLoot .Label {
-    font-family: Bebas;
-    color: rgba(200, 200, 200, 1);
-    background-color:  rgba(200, 200, 200, 0.2);
-    bottom: 0px;
-    z-index: 2;
-    position: absolute;
+#IncluideInventory .Container .Container-Right #inventory-container-normal-icon {
+    position: relative;
+    display: block;
+    height: 60px;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-image: url("Images/icon_inventory.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px;
+}
+
+#IncluideInventory .Container #Container-Item {
+    position: relative;
+    display: inline-flex;
+    height: -webkit-fill-available;
+    margin-top: 35px;
+    width:100%;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#IncluideInventory .Container #Container-Items {
+    position: relative;
+    /*display: inline-flex;*/
+    height:100%;
+    width:100%;
+    background: rgba(0, 0, 0, 0.2);
+    overflow: auto;
+}
+
+#IncluideInventory .Container #Container-Items .inventory-items {
+    /*position: relative;*/
+    display: block;
+    height: 40px;
+    width: 100%;
+    background-color: rgba(0,0,0,0.8);
+    white-space: nowrap;
     user-select: none;
 }
 
-#IncluideInventory #Loot .SlotsLoot .Limit {
-    font-family: Bebas;
-    color: rgba(200, 200, 200, 1);
-    z-index: 2;
+#IncluideInventory .Container #Container-Items .inventory-items .icon {
+    /*position: relative;*/
+    display: inline-block;
+    height: 100%;
+    width: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px;
+    /*white-space: nowrap;*/
+}
+
+#IncluideInventory .Container #Container-Items .inventory-items .item-name {
+    position: relative;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    bottom: 15px;
+    color: white;
+    /*user-select: none;
+    white-space: nowrap;*/
+}
+
+#IncluideInventory .Container #Container-Loot {
     position: absolute;
-    left: 5px;
-    user-select: none;
-}
-
-#IncluideInventory #Loot .SlotsLoot .Weight {
-    font-family: Bebas;
-    color: rgba(200, 200, 200, 1);
-    z-index: 2;
-    position: absolute;
-    Right: 5px;
-    user-select: none;
-}
-
-#IncluideInventory #Loot .CenterContainer {
+    height:90%;
+    width:90%;
+    bottom: 0;
     background: transparent;
-    max-height: 100px;
-    width: 100%;
-    /*margin-top: 10px;*/
-    height: 70px;
-    text-align: center;
 }
 
-#IncluideInventory #Loot .CenterContainer > a {
-    font-family: Bebas;
-    font-size: 70;
-    color: rgba(200, 200, 200, 1);
-    user-select: none;
+
+#IncluideInventory [type=radio] { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
+
+#IncluideInventory [type=radio]:checked + #inventory-container-normal-icon {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#IncluideInventory .Tooltip {
+    text-decoration:none;
+}
+
+#IncluideInventory .Tooltip span {
+    display:none;
+    max-height: 120px;
+    width: 180px;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 2;
+}
+#IncluideInventory .Tooltip:hover span {
+    display:block;
+    position:fixed;
+    overflow:hidden;
+}
+
+#IncluideInventory .Tooltip span > p {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14;
+    color: white;
+}
+
+
+#IncluideInventory .context-menu > .menu {
+    /*display:none;*/
+    display:block;
+    position: fixed;
+    min-height: 100px;
+    min-width: 100px;
+    max-width: 500px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 20;
+    visibility: hidden;
+}
+
+#IncluideInventory .context-menu .menu a {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+#IncluideInventory .context-menu .menu a:hover {background-color: rgba(50, 50, 50, 0.8);}
+
+/*
+#IncluideInventory .context-menu > .menu {
+    display:block;
+    position:fixed;
+    overflow:hidden;
+    visibility: hidden;
+}*/

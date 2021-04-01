@@ -1,2 +1,2 @@
 Config = {}
-Config.Test = "Example config test"
+Config.Test = "Test from Config Example"

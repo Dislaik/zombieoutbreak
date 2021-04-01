@@ -1,6 +1,11 @@
---LoadModuleTranslations("Data/Locales/".. GlobalConfig.Lang ..".lua")
---local Config = LoadModuleConfig("Data/Config.lua")
---Load("Server/Events.lua")
+--local Example2 = M("Example2")
+--local Utils = M("Utils")
 
---print(Translate("Example:Test"))
---print(Config.Test)
+local var = "hola:HOLA"
+
+--print(Utils.split(var, ":")[2])
+--print(Example2.TestShared())
+
+
+
+Module.test()   

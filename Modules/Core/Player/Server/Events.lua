@@ -1,69 +1,79 @@
-local function OnPlayerConnecting(name, setKickReason, deferrals)
-    local _Player = Player(source)
-    local Identifier = _Player.Identifier()
+--[[local Inventory = New("Inventory")--]]
+local Skin = M("Skin")
+
+local firstConnection
+
+AddEventHandler("playerConnecting", function(name, setKickReason, deferrals)
+    local player = Module:getPlayer(source)
+    local identifier = player:getIdentifier()
     
     deferrals.defer()
     Wait(0)
 
-    if not Identifier then
-        deferrals.done("You dont have a " .. GlobalConfig.Identifier .." identifier.")
+    if not identifier then
+        deferrals.done("You dont have a ".. Config.Identifier .." identifier.")
     else
-        if (_Player.Exists()) then
-            print(name .. " - User Authenticated [" .. Identifier .. "]")
+        if (player:alreadyOnDB()) then
+            print(name .. " - User Authenticated [".. identifier .."]")
+            firstConnection = false
         else
-            print(name .. "[" .. Identifier .. "] - Joined for first time to server!")
-            Database.ExecuteInsertQuery("INSERT INTO users (Identifier, Nickname, Level, `Group`) VALUES ('" .. Identifier .. "', '" .. name .. "', '1', 'User')")
+            print(name .."[".. identifier .."] - Joined for first time to the server!")
+            Database.ExecuteInsertQuery("INSERT INTO users (identifier, nickname, `group`) VALUES ('" .. identifier .. "', '" .. name .. "', 'user')")
+            firstConnection = true
         end
         deferrals.done()
     end
-end
-AddEventHandler("playerConnecting", OnPlayerConnecting)
+end)
 
-RegisterNetEvent("Player:Spawned")
-AddEventHandler("Player:Spawned", function()
-    local _Player = Player(source)
-    local Identifier = _Player.Identifier()
+RegisterEvent("Player:Instance", function()
+    TriggerClientEvent("Player:Instance", -1)
+end)
 
-    local Data = _Player.GetIdentity()
-    local Validation = 0
-    for Key, Value in pairs(Data) do
-        if Data[Key] ~= nil and Data[Key]:match("%S") ~= nil then
-            Validation = Validation + 1
+RegisterEvent("Player:Spawned", function()
+    local player = Module:getPlayer(source)
+    local identifier = player:getIdentifier()
+    local information = player:getInformation()
+    local validation = 0
+    --local validationLimit = ? --get from character module
+    if information then
+        for k, v in pairs(information) do
+            if v ~= nil and v:match("%S") ~= nil then
+                validation = validation + 1
+            end
         end
     end
 
-    if Validation == 4 then
-        Database.ExecuteSelectQuery("SELECT Sex, Skin, Position FROM users WHERE Identifier = @Identifier", {
-            ["@Identifier"] = Identifier
-        }, function(Result)
-            local Sex = Result[1]["Sex"]
-            local Skin = json.decode(Result[1]["Skin"])
-            local Position = json.decode(Result[1]["Position"])
-            local PlayerInventory = _Player.GetInventory()
-            TriggerClientEvent("Inventory:PlayerInventory", _Player.Source, PlayerInventory)
-            TriggerClientEvent("Player:LoadPlayer", _Player.Source, Sex, Skin, Position)
-        end)
+    if validation == 4 then
+        local gender = player:getInformation().gender
+        local skin = player:getSkin()
+        local status = player:getStatus()
+        local position = player:getPosition()
+        local inventory = player:getInventory()
+
+        TriggerClientEvent("Inventory:PlayerInventory", player.source, inventory)
+        TriggerClientEvent("Player:LoadPlayer", player.source, gender, status, skin, position)
     else
-        TriggerClientEvent("Identity:Register", _Player.Source)
+        --TriggerClientEvent("Player:LoadedInstance", -1)
+        TriggerClientEvent("Player:Register", player.source, firstConnection)
     end
-    TriggerClientEvent("Inventory:UpdateDrop", -1, Inventory.Drop, Inventory.DropId)
-    TriggerClientEvent("Inventory:CreateDrop", _Player.Source, Inventory.Drop)
+
+    --TriggerClientEvent("Inventory:UpdateDrop", -1, Inventory.Drop, Inventory.DropId)
+    --TriggerClientEvent("Inventory:CreateDrop", _Player.Source, Inventory.Drop)
 end)
 
-RegisterNetEvent("Player:Position")
-AddEventHandler("Player:Position", function(Data)
-    local _Player = Player(source)
-    local Identifier = _Player.Identifier()
+RegisterEvent("Player:SetPositionData", function(data)
+    local player = Module:getPlayer(source)
+    local identifier = player:getIdentifier()
 
-    Database.ExecuteUpdateQuery("UPDATE users SET Position = @Position WHERE Identifier = @Identifier", {
-        ["@Identifier"] = Identifier,
-        ["@Position"] = json.encode(Data)
+    Database.ExecuteUpdateQuery("UPDATE users SET position = @position WHERE identifier = @identifier", {
+        ["@identifier"] = identifier,
+        ["@position"] = json.encode(data)
     })
 end)
-
+--[[
 RegisterNetEvent("Player:Reset")
 AddEventHandler("Player:Reset", function()
-    local _Player = Player(source)
+    local _Player = Module.Properties(source)
     local Identifier = _Player.Identifier()
     local PlayerSkin = _Player.GetSkin()
     local InventoryVoid = {}
@@ -88,4 +98,20 @@ AddEventHandler("Player:Reset", function()
         ["@Skin"] = json.encode(PlayerSkin)
     })
     TriggerClientEvent("Inventory:UpdatePlayerInventory", _Player.Source, InventoryVoid)
+end)--]]
+
+RegisterEvent("Player:SetDataCharacter", function(data)
+    local identifier = Module:getPlayer(source):getIdentifier()
+    local information = {}
+
+    information.name = data.firstname .." ".. data.lastname
+    information.gender = Skin.GetModelSex(data.model)
+    information.occupation = data.occupation
+    information.faction = "survivor"
+
+    Database.ExecuteUpdateQuery("UPDATE users SET information = @information WHERE identifier = @identifier", {
+        ["@identifier"] = identifier,
+        ["@information"] = json.encode(information)
+    })
+
 end)

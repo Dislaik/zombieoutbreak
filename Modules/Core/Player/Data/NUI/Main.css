@@ -1,0 +1,857 @@
+@font-face {
+    font-family: 'Oswald';
+    src: url('Fonts/Oswald.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url("Fonts/Roboto.ttf");
+}
+
+
+#IncluidePlayer .Font-Oswald {
+    font-family: Oswald;
+}
+
+#IncluidePlayer .Font-Roboto {
+    font-family: Roboto;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+#IncluidePlayer p {
+    font-family: Oswald;
+}
+
+#IncluidePlayer input[type=text] {
+    width: 70%;
+    box-sizing: border-box;
+    float: right;
+    font-size: 14;
+    outline: none;
+    color: white;
+    margin-top: 5px;
+    background-color: rgba(0, 0, 0, 0.4 );
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+#IncluidePlayer select {
+    color: white;
+    outline:none!important;
+    background: transparent;
+    box-shadow: none;
+    float: right;
+    font-size: 14;
+    background-color: rgba(0, 0, 0, 0.4 );
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+select:focus {
+    outline:none!important;
+    background: transparent;
+    box-shadow: none;
+}
+
+#IncluidePlayer select > option {
+    outline:none!important;
+    background: transparent;
+    box-shadow: none;
+    background-color: black;
+}
+
+
+#IncluidePlayer select.Color {
+    padding-right: 20px;
+}
+
+
+#IncluidePlayer .Tooltip {
+    text-decoration:none;
+    position:relative;
+}
+
+#IncluidePlayer .Tooltip span {
+    display:none;
+    max-height: 120px;
+    width: 180px;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 2;
+}
+#IncluidePlayer .Tooltip:hover span {
+    display:block;
+    position:fixed;
+    overflow:hidden;
+}
+
+#IncluidePlayer .Tooltip span > p {
+    position: relative;
+    font-family: Roboto;
+    font-size: 14;
+}
+
+#IncluidePlayer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#IncluidePlayer #OccupationsAndTraits {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
+#IncluidePlayer #CustomizeCharacter {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container {
+    position: absolute;
+    user-select: none;
+    width: 80%;
+    height: 90%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    right: 0;
+    margin: auto;
+    padding: 0px 0px 0px 0px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Container-Left {
+    position: absolute;
+    user-select: none;
+    width: 64.4%;
+    height: 100%;
+    text-align: center;
+    padding: 0px 0px 0px 0px;
+    background-color: rgba(0, 0, 0, 0.8);
+    /*border: 1px solid rgba(255, 255, 255, 0.2);*/
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Container-Left #information {
+    display:inline-block;
+    width: 31.5%;
+    height: 92%;
+    margin: 10px 5px 5px 5px;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Container-Left #information > p {
+    position: absolute;
+    font-family: Oswald;
+    font-size: 20;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Container-Left #information .Content {
+    position: absolute;
+    margin-top: 30px;
+    width: 32%;
+    height: 90%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Container-Left #information .Content .Button {
+    background-color: rgba(0, 0, 0, 0.8 ); /* Green */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    color: white;
+    margin: 5px 0px 5px 0px;
+    font-family: Oswald;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Container-Left #information .Content .Container-Box {
+    display: inline-block;
+    width: 100%;
+    margin: 3px 0px 3px 0px;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Container-Left #information .Content .Container-Box > p{
+    position:relative;
+    float: left;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Container-Left #Appearance {
+    display:inline-block;
+    width: 31.5%;
+    height: 92%;
+    margin: 10px 5px 5px 5px;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Container-Left #Appearance > p {
+    position: absolute;
+    font-family: Oswald;
+    font-size: 20;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Container-Left #Appearance .Content {
+    position: absolute;
+    margin-top: 30px;
+    width: 32%;
+    height: 90%;
+    background-color: transparent;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+#IncluidePlayer #CustomizeCharacter .Container .Container-Left #Appearance .Content .Container-Box {
+    display: inline-block;
+    width: 100%;
+    margin: 3px 0px 3px 0px;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Container-Left #Appearance .Content .Container-Box > p{
+    position:relative;
+    float: left;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Container-Left #Clothing {
+    display:inline-block;
+    width: 31.5%;
+    height: 92%;
+    margin: 10px 5px 5px 5px;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Container-Left #Clothing > p {
+    position: absolute;
+    font-family: Oswald;
+    font-size: 20;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Container-Left #Clothing .Content {
+    position: absolute;
+    margin-top: 30px;
+    width: 32%;
+    height: 90%;
+    background-color: transparent;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Container-Left #Clothing .Content .Container-Box {
+    display: inline-block;
+    width: 100%;
+    margin: 3px 0px 3px 0px;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Container-Left #Clothing .Content .Container-Box > p{
+    position:relative;
+    float: left;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Middle{
+    position: relative;
+    user-select: none;
+    width: 13.9%;
+    height: 100%;
+    text-align: center;
+    float: right;
+    padding: 0px 0px 0px 0px;
+    background-color: transparent;
+    /*border: 1px solid rgba(255, 255, 255, 0.2);*/
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Middle .Container-Top {
+    position: relative;
+    user-select: none;
+    width: 100%;
+    height: 19.1%;
+    text-align: center;
+    right: 0;
+    padding: 0px 0px 0px 0px;
+    background-color: rgba(0, 0, 0, 0.8);
+    /*border: 1px solid rgba(255, 255, 255, 0.2);*/
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Middle .Container-Preview {
+    position: relative;
+    user-select: none;
+    width: 100%;
+    height: 66.5%;
+    text-align: center;
+    right: 0;
+    padding: px 0px 0px 0px;
+    background-color: transparent;
+    /*border: 1px solid rgba(255, 255, 255, 0.2);*/
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Middle .Container-Bottom {
+    position: absolute;
+    user-select: none;
+    width: 100%;
+    height: 14.5%;
+    text-align: center;
+    bottom: 0;
+    right: 0;
+    padding: px 0px 0px 0px;
+    background-color: rgba(0, 0, 0, 0.8);
+    /*border: 1px solid rgba(255, 255, 255, 0.2);*/
+}
+
+
+#IncluidePlayer #CustomizeCharacter .Container .Right {
+    position: relative;
+    user-select: none;
+    width: 21.7%;
+    height: 100%;
+    text-align: center;
+    float: right;
+    background-color: rgba(0, 0, 0, 0.8);
+    /*border: 1px solid rgba(255, 255, 255, 0.2);*/
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Bottom {
+    position: absolute;
+    bottom: 0;
+    height: 5%;
+    width: 99.4%;
+    margin: 10px 5px 5px 5px;
+    background-color: transparent;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Bottom #Back {
+    background-color: rgba(0, 0, 0, 0.8 ); /* Green */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    color: white;
+    float: left;
+    height: 70%;
+    margin: 5px 0px 5px 10px;
+    font-family: Oswald;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+#IncluidePlayer #CustomizeCharacter .Container .Bottom #Play {
+    background-color: rgba(0, 0, 0, 0.8 ); /* Green */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    color: white;
+    float: right;
+    height: 70%;
+    margin: 5px 10px 5px 0px;
+    font-family: Oswald;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+
+#IncluidePlayer .Title {
+    font-family: Oswald;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 22;
+    color: white;
+    user-select: none;
+    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container {
+    position: absolute;
+    user-select: none;
+    width: 80%;
+    height: 90%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    right: 0;
+    margin: auto;
+    padding: 0px 0px 0px 0px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #Ocuppations {
+    display:inline-block;
+    width: 32%;
+    height: 92%;
+    margin: 10px 5px 5px 5px;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #Ocuppations > p {
+    position: absolute;
+    font-family: Oswald;
+    font-size: 20;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #Ocuppations .Content {
+    position: absolute;
+    margin-top: 30px;
+    width: 32%;
+    height: 90%;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #AvailableTraits {
+    display:inline-block;
+    width: 32%;
+    height: 92%;
+    margin: 10px 5px 5px 5px;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #AvailableTraits > p {
+    position: absolute;
+    font-family: Oswald;
+    font-size: 20;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #AvailableTraits .Content {
+    position: absolute;
+    margin-top: 30px;
+    width: 32%;
+    height: 90%;
+    display: block;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #AvailableTraits .Content .Content-Row-Top {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 47%;
+    background-color: black;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #AvailableTraits .Content .Content-Row-Top span.Traits-Positive-Item .Right {
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    font-family: Oswald;
+    color: rgba(66, 176, 51, 1);
+    font-size: 14;
+    top: 3px;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #AvailableTraits .Content .Content-Row-Middle {
+    display: block;
+    width: 100%;
+    height: 4.5%;
+    background-color: transparent;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #AvailableTraits .Content .Content-Row-Middle .Button {
+    background-color: rgba(0, 0, 0, 0.8 ); /* Green */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    color: white;
+    float: right;
+    height: 100%;
+    margin: 5px 0px 5px 0px;
+    font-family: Oswald;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #AvailableTraits .Content .Content-Row-Bottom {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 47%;
+    bottom: 0px;
+    background-color: black;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #AvailableTraits .Content .Content-Row-Bottom span.Traits-Negative-Item .Right {
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    font-family: Oswald;
+    color: rgba(176, 51, 51, 1);
+    font-size: 14;
+    top: 3px;
+}
+
+
+#IncluidePlayer #OccupationsAndTraits .Container #ChosenTraits {
+    display:inline-block;
+    width: 32%;
+    height: 92%;
+    margin: 10px 5px 5px 5px;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #ChosenTraits > p {
+    position: absolute;
+    font-family: Oswald;
+    font-size: 20;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #ChosenTraits .Content {
+    position: absolute;
+    margin-top: 30px;
+    width: 32%;
+    height: 90%;
+    display: block;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #ChosenTraits .Content .Content-Row-Top {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 47%;
+    background-color: black;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #ChosenTraits .Content .Content-Row-Middle {
+    display: block;
+    width: 100%;
+    height: 4.5%;
+    background-color: transparent;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #ChosenTraits .Content .Content-Row-Middle .Button {
+    background-color: rgba(0, 0, 0, 0.8 ); /* Green */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    color: white;
+    float: right;
+    height: 100%;
+    margin: 5px 0px 5px 0px;
+    font-family: Oswald;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container #ChosenTraits .Content .Content-Row-Bottom {
+    position: absolute;
+    width: 100%;
+    height: 47%;
+    bottom: 0;
+    background-color: black;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+#IncluidePlayer [type=radio] { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+#IncluidePlayer [type=radio]:checked + .Occupatons-Item {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#IncluidePlayer span.Occupatons-Item {
+    width: 100%;
+    height: 80px;
+    display: block;
+    padding: 0px 0px 0px 0px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#IncluidePlayer span.Occupatons-Item > p {
+    position: relative;
+    font-family: Oswald;
+    top: 25px;
+}
+
+#IncluidePlayer [type=radio]:checked + .Traits-Positive-Item {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#IncluidePlayer span.Traits-Positive-Item {
+    width: 100%;
+    height: 30px;
+    display: block;
+    padding: 0px 0px 0px 0px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#IncluidePlayer span.Traits-Positive-Item > p {
+    position: relative;
+    display: inline-block;
+    font-family: Oswald;
+    color: rgba(66, 176, 51, 1);
+    font-size: 14;
+    top: 3px;
+}
+
+#IncluidePlayer span.Traits-Positive-Item .Right {
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    font-family: Oswald;
+    color: rgba(66, 176, 51, 1);
+    font-size: 14;
+    top: 3px;
+}
+
+#IncluidePlayer [type=radio]:checked + .Traits-Negative-Item {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#IncluidePlayer span.Traits-Negative-Item {
+    width: 100%;
+    height: 30px;
+    display: block;
+    padding: 0px 0px 0px 0px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#IncluidePlayer span.Traits-Negative-Item > p {
+    position: relative;
+    display: inline-block;
+    font-family: Oswald;
+    color: rgba(176, 51, 51, 1);
+    font-size: 14;
+    top: 3px;
+}
+
+#IncluidePlayer span.Traits-Negative-Item .Right {
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    font-family: Oswald;
+    color: rgba(176, 51, 51, 1);
+    font-size: 14;
+    top: 3px;
+}
+
+#IncluidePlayer span.MajorSkills-Item {
+    width: 100%;
+    height: 30px;
+    display: block;
+    padding: 0px 0px 0px 0px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#IncluidePlayer span.MajorSkills-Item > p {
+    position: relative;
+    display: inline-block;
+    font-family: Oswald;
+    color: rgba(66, 176, 51, 1);
+    font-size: 14;
+    top: 3px;
+}
+
+#IncluidePlayer span.MajorSkills-Item .Right {
+    position: relative;
+    float: right;
+    margin-right: 10px;
+    font-family: Oswald;
+    color: rgba(66, 176, 51, 1);
+    font-size: 14;
+    top: 3px;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container .Container-Bottom {
+    position: relative;
+    bottom: 0;
+    height: 5%;
+    width: 100%;
+    margin: 10px 5px 5px 5px;
+    background-color: transparent;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container .Container-Bottom .Button {
+    background-color: rgba(0, 0, 0, 0.8 ); /* Green */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    color: white;
+    float: right;
+    height: 80%;
+    margin: 0px 20px 5px 0px;
+    font-family: Oswald;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+#IncluidePlayer #OccupationsAndTraits .Container .Container-Bottom .Points {
+    position: relative;
+    color: white;
+    float: right;
+    margin: 5px 20px 5px 0px;
+    font-family: Oswald;
+    font-size: 15px;
+}
+
+#IncluidePlayer .Message-Background {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    overflow: hidden;
+    z-index: 3;
+}
+
+#IncluidePlayer .Message-Background .Message {
+    position: absolute;
+    user-select: none;
+    width: 500px;
+    height: 180px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 10px 10px 10px 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+#IncluidePlayer .Message-Background .Message #CloseMessage {
+    position: absolute;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    user-select: none;
+    outline: none;
+    margin: 140px 0px 0px 205px;
+    height: 30px;
+    width: 90px;
+    font-family: Oswald;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/*the container must be positioned relative:*/
+.custom-select {
+    position: relative;
+    display: block;
+    font-family: Arial;
+    text-align: left;
+    color: white;
+    float: right;
+    width: 50%;
+    font-size: 14;
+    background-color: rgba(0, 0, 0, 0.3 );
+}
+
+  
+  .custom-select select {
+    display: none; /*hide original SELECT element:*/
+  }
+  
+  .select-selected {
+    background-color: rgba(0, 0, 0, 0.4 );
+  }
+  
+  /*style the arrow inside the select element:*/
+  .select-selected:after {
+    position: absolute;
+    display: block;
+    float: right;
+    content: "";
+    top: 10px;
+    right: 5px;
+    width: 2px;
+    height: 2px;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+  }
+  
+  /*style the items (options), including the selected item:*/
+  .select-items div,.select-selected {
+    color: #ffffff;
+    padding: 3px 0px 3px 3px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  /*style items (options):*/
+  .select-items {
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    overflow-y: auto;
+    max-height: 135px;
+  }
+  
+  /*hide the items when the select box is closed:*/
+  .select-hide {
+    display: none;
+  }
+  
+  .select-items div:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+
+  .custom-select-color {
+    display: block;
+    align-content: center;
+    width: 80%;
+    height: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.Disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}

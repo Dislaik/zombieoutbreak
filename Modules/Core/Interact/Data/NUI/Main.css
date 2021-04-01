@@ -1,0 +1,102 @@
+@font-face {
+    font-family: "Oswald";
+    src: url("Fonts/Oswald.ttf");
+}
+
+
+#IncluideInteract .font-oswald {
+    font-family: Oswald;
+}
+
+#IncluideInteract .size-16 {
+    font-size: 22;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+#IncluideInteract {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+#IncluideInteract .btn-group {
+    position: absolute;
+    user-select: none;
+    width: 250px;
+    height: 0px;
+    top: 0;
+    bottom: 0;
+    left: 300;
+    right: 0;
+    margin: auto;
+    background-color: transparent;
+    color: white;
+    z-index: 10;
+}
+
+#IncluideInteract .btn-group button {
+    background-color: rgba(0, 0, 0, 0.8); /* Green background */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white; /* White text */
+    height: 40px;
+    padding: 10px 24px;
+    cursor: pointer; /* Pointer/hand icon */
+    width: 100%; /* Set a width if needed */
+    display: block; /* Make the buttons appear below each other */
+    outline: none;
+}
+  
+#IncluideInteract .btn-group button:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+}
+  
+/* Add a background color on hover */
+#IncluideInteract .btn-group button:hover {
+    background-color: rgba(25, 25, 25, 0.8);
+}
+
+#IncluideInteract #sleep {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+#IncluideInteract #sleep #timer{
+    color: white;
+}
+
+#IncluideInteract #sleep .center{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 20%;
+    height: 20%;
+    background-color: transparent;
+    text-align: center;
+}

@@ -1,6 +1,15 @@
---LoadModuleTranslations("Data/Locales/".. GlobalConfig.Lang ..".lua")
---local Config = LoadModuleConfig("Data/Config.lua")
---Load("Client/Events.lua")
+local Example2 = M("Example2")
 
---print(Translate("Example:Test"))
---print(Config.Test)
+--print(Module.test())
+
+RegisterCommand("test2", function(source, args, rawCommand)
+    --print(Player:getPlayer():Loaded())
+    print(Example2.Test())
+    --print(Root.Modules[3][2].ENV.Client.Test())
+end, false)
+
+SetInterval(5000, function()
+    print(Example2.Test())
+    Example2.Test(true)
+
+end)

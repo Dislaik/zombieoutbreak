@@ -12,17 +12,19 @@ Config.MaxItemsLoot = 3
 Config.MaxItemCount = 2
 Config.MaxWeaponAmmo = 30
 Config.LootProbability = {
-    Items = 15, -- 15%
+    Items = 0, -- 0%
     Clothes = 15, -- 15%
-    Weapons = 5 -- 5%
-    -- 65% No Loot
+    Weapons = 0 -- 0%
+    -- 85% No Loot
 }
 Config.Loot = {
-    "unemployedtshirt",
-    "unemployedpants",
-    "unemployedshoes",
-    "test",
-    "weapon_bat"
+    Items = {},
+    Clothes = {
+        "unemployedtshirt",
+        "unemployedpants",
+        "unemployedshoes"
+    },
+    Weapons = {}
 }
 
 Config.Debug = false

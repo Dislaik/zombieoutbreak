@@ -1,19 +1,18 @@
 Database = {}
-UsableItems = {}
 
-function Database.ExecuteInsertQuery(Query)
+Database.ExecuteInsertQuery = function(Query)
     MySQL.ready(function ()
         MySQL.Async.execute(Query)
     end)
 end
 
-function Database.ExecuteUpdateQuery(Query, Params)
+Database.ExecuteUpdateQuery = function(Query, Params)
     MySQL.ready(function ()
         MySQL.Async.execute(Query, Params)
     end)
 end
 
-function Database.ExecuteSelectQuery(Query, Params, CB)
+Database.ExecuteSelectQuery = function(Query, Params, CB)
     MySQL.ready(function ()
         MySQL.Async.fetchAll(Query, Params, function(Result)
             CB(Result)
@@ -21,17 +20,14 @@ function Database.ExecuteSelectQuery(Query, Params, CB)
     end)
 end
 
-function Register.Command(Command, Group, CB, Suggestion, Description)
-    RegisterCommand(Command, function(source, args, rawCommand)
-        local PlayerSource = Player(source)
-        local Identifier = PlayerSource.Identifier()
-        if (Group == PlayerSource.GetGroup() or Group == "None") then
-            CB(source, args, rawCommand)
-        end
-    end, false)
-    TriggerClientEvent("chat:addSuggestion", -1, "/".. Command, Suggestion, Description)
-end
 
-Register.Item = function(Name, CB)
-    UsableItems[Name] = CB
-end
+
+--[[
+TriggerEventOnClient = function(eventName, playerId, ...)
+    local payload = msgpack.pack({...})
+    if Root.Events[eventName] then
+        return TriggerClientEventInternal(eventName, playerId, payload, payload:len())
+    else
+        print(eventName .."Not exists")
+    end
+end--]]

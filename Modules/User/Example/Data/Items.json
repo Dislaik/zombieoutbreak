@@ -1,0 +1,27 @@
+{
+    "TestFromExample" : {
+        "Type" : "Food",
+        "Weight" : 2.2,
+        "Limit" : -1,
+        "FoodType" : "Food Canned",
+        "Icon" : "Test",
+        "IsCookable" : false,
+        "ReplaceOnUse" : "TinCanEmpty",
+        "DaysFresh" : 5,
+        "DaysTotallyRotten" : 7,
+        "Carbohydrates" : 77.56,
+        "Proteins" : 16.04,
+        "Lipids" : 12.58,
+        "Calories" : 498,
+        "Packaged" : true,
+        "HungerChange" : -20,
+        "ThirstChange" : -10,
+        "DangerousUncooked" : false,
+        "UnhappyChange" : 0,
+        "MinutesToCook" : 20,
+        "MinutesToBurn" : 15,
+        "BoredomChange" : 0,
+        "StressChange" : 0,
+        "CannedFood " : true
+    }
+}

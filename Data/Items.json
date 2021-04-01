@@ -1,0 +1,33 @@
+{
+    "FoodTest" : {
+        "Type" : "Food",
+        "Weight" : 2.2,
+        "Limit" : -1,
+        "TypeFood" : "Food Canned",
+        "Icon" : "Test",
+        "IsCookable" : false,
+        "HungerChange" : -20,
+        "ThirstChange" : -10,
+        "DangerousUncooked" : false,
+        "UnhappyChange" : 0,
+        "MinutesToCook" : 20,
+        "MinutesToBurn" : 15,
+        "BoredomChange" : 0,
+        "StressChange" : 0
+    },
+    "NormalTest" : {
+        "Type" : "Normal",
+        "Weight" : 2.2,
+        "Limit" : -1,
+        "Icon" : "Test",
+        "IsCookable" : false,
+        "HungerChange" : -20,
+        "ThirstChange" : -10,
+        "DangerousUncooked" : false,
+        "UnhappyChange" : 0,
+        "MinutesToCook" : 20,
+        "MinutesToBurn" : 15,
+        "BoredomChange" : 0,
+        "StressChange" : 0
+    }
+}

@@ -1,3 +1,13 @@
+local Player = M("Player")
+local Register = M("Register")
+
+Register:command("giveitem", "none", function(source, args, rawCommand)
+    local player = Player:getPlayer(source)
+    player:addInventoryItem(args[1], 1)
+end)
+
+
+--[[
 Register.Command("giveweapon", "Admin", function(Source, Arguments, RawCommand)
     if Arguments[3] == nil then _Player = Player(Source)
     else _Player = Player(tonumber(Arguments[3])) end
@@ -34,4 +44,4 @@ Register.Command("revive", "Admin", function(Source, Arguments, RawCommand)
     end
 end, "Revive a player", {
     { name="PlayerId", help="Player id" }
-})
+})--]]

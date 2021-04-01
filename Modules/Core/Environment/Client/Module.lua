@@ -1,0 +1,1 @@
+Module.Config = Load("Data/Config.lua")["Config"]

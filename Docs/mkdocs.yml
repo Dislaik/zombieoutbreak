@@ -1,0 +1,47 @@
+site_name: Dislaik's Docs
+site_description: Official Dislaik's Documentations
+site_author: Matías N. Salas
+
+repo_name: Github
+repo_url: https://github.com/Dislaik/
+edit_uri: ""
+
+copyright: Copyright &copy; 2020 Matías N. Salas
+
+docs_dir: docs
+site_dir: site
+strict: true
+
+plugins:
+    - search
+    - awesome-pages
+
+theme:
+    name: material
+    language: en
+    features:
+    - navigation.tabs
+    palette:
+        scheme: slate
+        primary: teal
+        accent: teal
+    icon:
+        logo: fontawesome/solid/code
+        repo: fontawesome/brands/github
+    font:
+        text: Roboto
+        code: Roboto Mono
+
+markdown_extensions:
+    - admonition
+    - pymdownx.details
+    - pymdownx.superfences
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/dislaik
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/5KZBHPP
+    - icon: fontawesome/brands/patreon
+      link: https://patreon.com/dislaik

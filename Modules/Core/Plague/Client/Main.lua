@@ -1,13 +1,23 @@
-LoadModuleTranslations("Data/Locales/".. GlobalConfig.Lang ..".lua")
-local Config = LoadModuleConfig("Data/Config.lua")
+local Player = M("Player");
+local Utils = M("Utils");
+--local Inventory = New("Inventory")
 
 local PlayerGroup, ZombieGroup = "PLAYER", "ZOMBIE"
-DecorRegister("RegisterZombie", 2)
-DecorRegister("ZombieLoot", 2)
-local ZombieGrunt = {"zombie2", "zombie3", "zombie4", "zombie5", "zombie6", "zombie8", "zombie9", "zombie11", "zombie12", "zombie13",
-	"zombie14", "zombie16", "zombie17", "zombie18", "zombie19", "zombie20"}
+local Shooting, Running, Driving = false, false, false
+DecorRegister("ZOMBIE", 2)
+--DecorRegister("ZombieLoot", 2)
+--local ZombieGrunt = {"zombie2", "zombie3", "zombie4", "zombie5", "zombie6", "zombie8", "zombie9", "zombie11", "zombie12", "zombie13",
+--	"zombie14", "zombie16", "zombie17", "zombie18", "zombie19", "zombie20"}
 
-local ZombieGruntAlert = {"zombie1", "zombie7", "zombie10", "zombie15"}
+--local ZombieGruntAlert = {"zombie1", "zombie7", "zombie10", "zombie15"}
+---SetFocusEntity() --- para focusear al ped zombie
+local WalkStyle = {
+	"move_m@drunk@verydrunk",
+	"move_m@drunk@moderatedrunk",
+	"move_m@drunk@a",
+	"anim_group_move_ballistic",
+	"move_lester_CaneUp"
+}
 
 AddRelationshipGroup(ZombieGroup)
 SetRelationshipBetweenGroups(0, GetHashKey(ZombieGroup), GetHashKey(PlayerGroup))
@@ -19,88 +29,67 @@ SetInterval(0, function()
     local Handler, PedHandler = FindFirstPed()
 
     repeat
-        Wait(10)
+        Wait(0)
             
         if IsPedHuman(PedHandler) and not IsPedAPlayer(PedHandler) and not IsPedDeadOrDying(PedHandler, true) then
-            if not DecorExistOn(PedHandler, "RegisterZombie") then
-                ClearPedTasks(PedHandler)
-                ClearPedSecondaryTask(PedHandler)
-                ClearPedTasksImmediately(PedHandler)
-                TaskWanderStandard(PedHandler, 10.0, 10)
-                SetPedRelationshipGroupHash(PedHandler, ZombieGroup)
-                ApplyPedDamagePack(PedHandler, "BigHitByVehicle", 0.0, 1.0)
-                SetEntityHealth(PedHandler, Config.ZombieHealth)
+            if DecorExistOn(PedHandler, "ZOMBIE") then
+                for _, PlayerIndex in pairs(GetActivePlayers()) do
+                    local PlayerId = GetPlayerFromServerId(PlayerIndex)
+                    local PlayerPed = GetPlayerPed(PlayerId)
+                    local PlayerCoords = GetEntityCoords(PlayerPed)
+                    local PedCoords = GetEntityCoords(PedHandler)
+                    local Distance = Vdist(PlayerCoords.x, PlayerCoords.y, PlayerCoords.z, PedCoords.x, PedCoords.y, PedCoords.z)
+                    local DistanceTarget = Module.Config.DistanceTarget
 
-                RequestAnimSet("move_m@drunk@verydrunk")
-                while not HasAnimSetLoaded("move_m@drunk@verydrunk") do
-                    Wait(0)
-                end
-                SetPedMovementClipset(PedHandler, "move_m@drunk@verydrunk", 1.0)
-
-                SetPedConfigFlag(PedHandler, 100, false)
-                DecorSetBool(PedHandler, "RegisterZombie", true)
-            end
-
-            ZombiePedAttributes(PedHandler)
-
-            local PlayerCoords = GetEntityCoords(PlayerPedId())
-            local PedCoords = GetEntityCoords(PedHandler)
-            local Distance = Vdist(PlayerCoords.x, PlayerCoords.y, PlayerCoords.z, PedCoords.x, PedCoords.y, PedCoords.z)
-            local DistanceTarget
-
-            if Player.Shooting() then
-                DistanceTarget = Config.DistanceTarget + 100.0
-            elseif Player.Running() then
-                DistanceTarget = Config.DistanceTarget + 20.0
-            elseif Player.Driving() then
-                local Vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-                if GetVehicleClass(Vehicle) == 15 or GetVehicleClass(Vehicle) == 16 then
-                    DistanceTarget = Config.DistanceTarget + 100.0
-                else
-                    DistanceTarget = Config.DistanceTarget + 60.0
-                end
-            else
-                DistanceTarget = Config.DistanceTarget
-            end
-
-            if Distance <= DistanceTarget then
-                if (Config.ZombieCanRun) then TaskGoStraightToCoord(PedHandler, PlayerCoords.x, PlayerCoords.y, PlayerCoords.z, 2.0, -1, 0.0, 0.0)
-                else TaskGoStraightToCoord(PedHandler, PlayerCoords.x, PlayerCoords.y, PlayerCoords.z, 1.0, -1, 0.0, 0.0) end
-            end
-
-            if Distance <= Config.DistanceTarget then
-                if not GetPedConfigFlag(PedHandler, 100, false) and GetEntityHealth(PlayerPedId()) ~= 0 then
-                    local GruntAlert = ZombieGruntAlert[Utils.Random(1, #ZombieGruntAlert)]
-                    Utils.IndividualSoundEntity("Core", "Plague", GruntAlert, 0.8, PedHandler, false)
-                    SetPedConfigFlag(PedHandler, 100, true)
-                end
-            end
-
-            if (Distance <= 1.3) then
-                if not IsPedRagdoll(PedHandler) and not IsPedGettingUp(PedHandler) then
-                    if (GetEntityHealth(PlayerPedId()) == 0) then
-                        ClearPedTasks(PedHandler)
-                        TaskWanderStandard(PedHandler, 10.0, 10)
-                    else
-                        local GruntAlert = ZombieGruntAlert[Utils.Random(1, #ZombieGruntAlert)]
-                        RequestAnimSet("melee@unarmed@streamed_core_fps")
-                        while not HasAnimSetLoaded("melee@unarmed@streamed_core_fps") do
-                            Wait(10)
+                    --[[if Player.Shooting(PlayerPed) then
+                        DistanceTarget = Module.Config.DistanceTarget + 100.0
+                    elseif Player.Running(PlayerPed) then
+                        DistanceTarget = Module.Config.DistanceTarget + 10.0
+                    elseif Player.Driving(PlayerPed) then
+                        local Vehicle = GetVehiclePedIsIn(PlayerPed, false)
+                        if GetVehicleClass(Vehicle) == 15 or GetVehicleClass(Vehicle) == 16 then
+                            DistanceTarget = Module.Config.DistanceTarget + 100.0
+                        else
+                            DistanceTarget = Module.Config.DistanceTarget + 50.0
                         end
+                    end--]]
 
-                        TaskPlayAnim(PedHandler, "melee@unarmed@streamed_core_fps", "ground_attack_0_psycho", 8.0, 1.0, -1, 48, 0.001, false, false, false)
 
-                        ApplyDamageToPed(PlayerPedId(), Config.ZombieDamage, false)
+                    if Distance <= 5.0 then
+                        TaskGoStraightToCoord(PedHandler, PlayerCoords.x, PlayerCoords.y, PlayerCoords.z, 1.4, -1, 0.0, 1)
+                    elseif Distance <= DistanceTarget then
+                        TaskGoStraightToCoord(PedHandler, PlayerCoords.x, PlayerCoords.y, PlayerCoords.z, 1.0, -1, 0.0, 1)
                     end
                 end
-            end
-            
-            if not NetworkGetEntityIsNetworked(PedHandler) then
-                DeleteEntity(PedHandler)
-            end
 
-            if (Config.Debug) then
-                DrawMarker(1, PedCoords.x, PedCoords.y, PedCoords.z + 1.0, 0.0, 0.0, 0.0, 0.0, 180.0, 0.0, 2.0, 2.0, 2.0, 255, 255, 255, 255, false, true, 2, nil, nil, false)
+                --if not NetworkGetEntityIsNetworked(PedHandler) then
+                --    DeleteEntity(PedHandler)
+                --end
+
+            else
+                if not IsPedModel(PedHandler, GetHashKey("mp_m_freemode_01")) and not IsPedModel(PedHandler, GetHashKey("mp_f_freemode_01")) then
+
+                    if IsPedInAnyHeli(PedHandler) or IsPedInAnyPlane(PedHandler) then
+                        local VehiclePedHandler = GetVehiclePedIsIn(PedHandler, true)
+                        DeleteEntity(VehiclePedHandler)
+                    end
+
+                    SetPedRelationshipGroupHash(PedHandler, ZombieGroup)
+
+                    Module.ResetAttributes(PedHandler)
+                    Module.ZombieAttributes(PedHandler)
+
+                    local Walk = WalkStyle[Utils.random(1, #WalkStyle)]
+
+                    RequestAnimSet(Walk)
+                    while not HasAnimSetLoaded(Walk) do
+                        Wait(0)
+                    end
+
+                    SetPedMovementClipset(PedHandler, Walk, 1.0)
+
+                    DecorSetBool(PedHandler, "ZOMBIE", true)
+                end
             end
         end
 
@@ -110,7 +99,56 @@ SetInterval(0, function()
     EndFindPed(Handler)
 end)
 
+SetInterval(0, function()
+    local PedHandler = -1
+    local Success = false
+    local Handler, PedHandler = FindFirstPed()
 
+    repeat
+        Wait(0)
+            
+        if IsPedHuman(PedHandler) and not IsPedAPlayer(PedHandler) and not IsPedDeadOrDying(PedHandler, true) then
+            if DecorExistOn(PedHandler, "ZOMBIE") then
+                for _, PlayerIndex in pairs(GetActivePlayers()) do
+                    local PlayerId = GetPlayerFromServerId(PlayerIndex)
+                    local PlayerPed = GetPlayerPed(PlayerId)
+                    local PlayerCoords = GetEntityCoords(PlayerPed)
+                    local PedCoords = GetEntityCoords(PedHandler)
+                    local Distance = Vdist(PlayerCoords.x, PlayerCoords.y, PlayerCoords.z, PedCoords.x, PedCoords.y, PedCoords.z)
+
+                    if (Distance <= 1.2) then
+                        if not IsPedRagdoll(PedHandler) and not IsPedGettingUp(PedHandler) then
+                            if GetMeleeTargetForPed(PlayerPed) ~= PedHandler then
+                                RequestAnimSet("melee@unarmed@streamed_core_fps")
+                                while not HasAnimSetLoaded("melee@unarmed@streamed_core_fps") do
+                                    Wait(0)
+                                end
+        
+                                TaskPlayAnim(PedHandler, "melee@unarmed@streamed_core_fps", "ground_attack_0_psycho", 8.0, 1.0, -1, 48, 0.001, false, false, false)
+        
+                                ApplyDamageToPed(PlayerPed, Module.Config.ZombieDamage, true)
+
+                                --if DecorGetBool(PlayerPed, "PLAYER_DEAD") then
+                                    --DecorExistOn(PlayerPed, "PLAYER_ZOMBIFIED")
+                                    --print("Player se murioxd")
+                                    --Module.Zombified(PlayerPed)
+                                --end
+                                --AÑADIR PROBABILIDAD DE INFECCION
+                                Wait(1000)
+                            end
+                        end
+                    end
+                end
+            end
+        end
+
+        Success, PedHandler = FindNextPed(Handler)
+    until not (Success)
+
+    EndFindPed(Handler)
+end)
+
+--[[
 SetInterval(0, function()
     local PedHandler = -1
     local Success = false
@@ -163,21 +201,4 @@ SetInterval(0, function()
 
     EndFindPed(Handler)
 end)
-
-function ZombiePedAttributes(Ped)
-    if not Config.ZombieCanRagdollByShots then SetPedRagdollBlockingFlags(Ped, 1) end
-    SetPedCanRagdollFromPlayerImpact(Ped, false)
-    SetPedSuffersCriticalHits(Ped, Config.ZombieInstantDeathByHeadshot)
-    SetPedEnableWeaponBlocking(Ped, true)
-    DisablePedPainAudio(Ped, true)
-    StopPedSpeaking(Ped, true)
-    SetPedDiesWhenInjured(Ped, false)
-    StopPedRingtone(Ped)
-    SetPedMute(Ped)
-    SetPedIsDrunk(Ped, true)
-    SetPedConfigFlag(Ped, 166, false)
-    SetPedConfigFlag(Ped, 170, false)
-    SetBlockingOfNonTemporaryEvents(Ped, true)
-    SetPedCanEvasiveDive(Ped, false)
-    RemoveAllPedWeapons(Ped, true)
-end
+--]]

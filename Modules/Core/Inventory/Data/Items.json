@@ -1,0 +1,23 @@
+{
+    "Test" : {
+        "Type" : "Normal",
+        "Weight" : 2.2,
+        "Icon" : "Test",
+        "UseCondition" : true
+    },
+    "Test2" : {
+        "Type" : "Normal",
+        "Weight" : 2.2,
+        "Icon" : "Test",
+        "UseCondition" : false
+    },
+    "FoodTest" : {
+        "Type" : "Food",
+        "TypeFood" : "Food Canned",
+        "Weight" : 0.2,
+        "Icon" : "Test",
+        "Hunger" : -20,
+        "Thirst" : 0,
+        "Packaged" : true
+    }
+}

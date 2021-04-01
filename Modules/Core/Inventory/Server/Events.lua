@@ -1,36 +1,92 @@
-LoadModuleTranslations("Data/Locales/".. GlobalConfig.Lang ..".lua")
-
-RegisterNetEvent("Inventory:UseItem")
-AddEventHandler("Inventory:UseItem", function(Item)
-    local _Player = Player(source)
+local Player = M("Player")
+--[[
+RegisterNetEvent("Inventory:ItemNormal")
+AddEventHandler("Inventory:ItemNormal", function(Item)
+    local _Player = Player.Properties(source)
 
     if UsableItems[Item] then
         UsableItems[Item](_Player.Source)
     end
 
+end)--]]
+
+
+RegisterEvent("Inventory:UseItem", function(item)
+
+    if item.Type == "Normal" then
+
+        if UsableItems[item.Name] then
+
+            UsableItems[item.Name](item)
+
+        end
+    elseif item.Type == "Food" then
+        
+        if item.TypeFood == "Food Canned" then
+
+            --Player:getPlayer(source):addInventoryItem("EMPTYCAN")
+            print("Item: EMPTYCAN added to player")
+        end
+
+        if item.Hunger then
+            print("Hunger:", item.Hunger)
+        end
+
+        if item.Thirst then
+            print("Thirst:", item.Thirst)
+        end
+
+    end
+
 end)
 
+--[[RegisterEvent("Inventory:ItemNormal", function(item)
+    
+    itemName = string.lower(item.Name)
+
+    if UsableItems[itemName] then
+
+        UsableItems[itemName](item)
+
+    end
+
+end)
+
+RegisterEvent("Inventory:ItemFood", function(item)
+    
+    itemName = string.lower(item.Name)
+
+    if UsableItems[itemName] then
+
+        UsableItems[itemName](item)
+
+    end
+
+end)--]]
+
+
+--[[
 RegisterNetEvent("Inventory:UpdateWeaponAmmo")
 AddEventHandler("Inventory:UpdateWeaponAmmo", function(WeaponAmmo)
-    local _Player = Player(source)
+    local _Player = Player.Properties(source)
     _Player.RemoveWeaponAmmo(WeaponAmmo, 1)
 end)
 
 RegisterNetEvent("Inventory:RemoveItem")
 AddEventHandler("Inventory:RemoveItem", function(Item, Count)
-    local _Player = Player(source)
+    local _Player = Player.Properties(source)
     _Player.RemoveItem(Item, Count)
 end)
 
 RegisterNetEvent("Inventory:RemoveWeapon")
 AddEventHandler("Inventory:RemoveWeapon", function(WeaponName)
-    local _Player = Player(source)
+    local _Player = Player.Properties(source)
     _Player.RemoveWeapon(WeaponName)
 end)
 
 RegisterNetEvent("Inventory:Lootable")
 AddEventHandler("Inventory:Lootable", function(Item)
-    local _Player = Player(source)
+    local _Player = Player.Properties(source)
     if _Player.CurrentWeight() <= GlobalConfig.PlayerWeight then
         if Item.Type == "Item" or Item.Type == "Clothes" then
             if _Player.CanCarryItem(Item.Name, 1) then
@@ -54,8 +110,9 @@ end)
 
 RegisterNetEvent("Inventory:Give")
 AddEventHandler("Inventory:Give", function(PlayerTarget, Item, Input)
-    local _Player = Player(source)
-    local _Target = Player(PlayerTarget)
+    local _Player = Player.Properties(source)
+    local _Target = Player.Properties(PlayerTarget)
+
     if _Target.CurrentWeight() <= GlobalConfig.PlayerWeight then
         if Item.Type == "Item" or Item.Type == "Clothes" then
 
@@ -101,13 +158,13 @@ end)
 
 RegisterNetEvent("Inventory:UpdateDrop")
 AddEventHandler("Inventory:UpdateDrop", function(Drop, Id)
-    Inventory.Drop = Drop
-    Inventory.DropId = Id
+    Module.Drop = Drop
+    Module.DropId = Id
 end)
 
 RegisterNetEvent("Inventory:CheckLoot")
 AddEventHandler("Inventory:CheckLoot", function(Ped, Item)
-    local _Player = Player(source)
+    local _Player = Player.Properties(source)
     if Item.Type == "Item" or Item.Type == "Clothes" then
         if _Player.CanCarryItem(Item.Name, 1) then
             _Player.AddItem(Item.Name, 1)
@@ -124,3 +181,5 @@ AddEventHandler("Inventory:CheckLoot", function(Ped, Item)
         end
     end
 end)
+
+--]]

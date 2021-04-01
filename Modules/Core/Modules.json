@@ -1,12 +1,3 @@
 [
-    "Admin",
-    "Environment",
-    "Identity",
-    "Inventory",
-    "Plague",
-    "Player",
-    "Skill",
-    "Skin",
-    "Sound",
     "Utils"
 ]

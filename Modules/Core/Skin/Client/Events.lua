@@ -1,7 +1,6 @@
-local Camera, CameraView = nil, false
+--[[local Camera, CameraView = nil, false
 
-RegisterNetEvent("Skin:Creator")
-AddEventHandler("Skin:Creator", function(Data)
+RegisterEvent("Skin:Creator", function(Data)
     Camera = Utils.CreateCamera(0.0, 0.0, 180.0)
     local PlayerCoords = GetEntityCoords(PlayerPedId(), true)
     SetEntityHeading(PlayerPedId(), -20.0)
@@ -10,7 +9,7 @@ AddEventHandler("Skin:Creator", function(Data)
     SetNuiFocus(true, true)
     SendNUIMessage({
         Type = "Skin",
-        Sex = Skin.GetPlayerSex(),
+        Sex = Module.GetPlayerSex(),
         Locale = GlobalConfig.Lang,
         Display = true
     })
@@ -45,12 +44,12 @@ RegisterNUICallback("Skin:Submit", function(Data)
     SetNuiFocus(false, false)
     SendNUIMessage({
         Type = "Skin",
-        Sex = Skin.GetPlayerSex(),
+        Sex = Module.GetPlayerSex(),
         Display = false
     })
     DoScreenFadeOut(1000)
     TriggerServerEvent("Skin:SetPlayerSkin", Data)
-    TriggerServerEvent("Identity:OccupationSuit", Skin.GetPlayerSex())
+    TriggerServerEvent("Identity:OccupationSuit", Module.GetPlayerSex())
     Wait(1000)
     Utils.DeleteCamera(Camera)
     DoScreenFadeIn(1000)
@@ -81,8 +80,7 @@ RegisterNUICallback("Skin:Update", function(Data)
     SetPedHeadOverlay(PlayerPedId(), 11, Data["BodyBlemishes"], Data["BodyBlemishesOpacity"])
 end)
 
-RegisterNetEvent("Skin:RemoveClothes")
-AddEventHandler("Skin:RemoveClothes", function(Name, Sex)
+RegisterEvent("Skin:RemoveClothes", function(Name, Sex)
     for i in pairs(Root.ItemClothes) do
         if i == Name then
             local Component = Root.ItemClothes[i][Sex][1]
@@ -90,57 +88,58 @@ AddEventHandler("Skin:RemoveClothes", function(Name, Sex)
                 
             if Component == 0 then
                 if DrawableId == GetPedPropIndex(PlayerPedId(), 0) then
-                    Skin.DeleteClothes(Component)
+                    Module.DeleteClothes(Component)
                 end
             elseif Component == 1 then
                 if DrawableId == GetPedPropIndex(PlayerPedId(), 1) then
-                    Skin.DeleteClothes(Component)
+                    Module.DeleteClothes(Component)
                 end
             elseif Component == 2 then
                 if DrawableId == GetPedPropIndex(PlayerPedId(), 2) then
-                    Skin.DeleteClothes(Component)
+                    Module.DeleteClothes(Component)
                 end
             elseif Component == 3 then
                 if DrawableId == GetPedPropIndex(PlayerPedId(), 6) then
-                    Skin.DeleteClothes(Component)
+                    Module.DeleteClothes(Component)
                 end
             elseif Component == 4 then
                 if DrawableId == GetPedPropIndex(PlayerPedId(), 7) then
-                    Skin.DeleteClothes(Component)
+                    Module.DeleteClothes(Component)
                 end
             elseif Component == 5 then
                 if DrawableId == GetPedDrawableVariation(PlayerPedId(), 1) then
-                    Skin.DeleteClothes(Component)
+                    Module.DeleteClothes(Component)
                 end
             elseif Component == 6 then
                 if DrawableId == GetPedDrawableVariation(PlayerPedId(), 7) then
-                    Skin.DeleteClothes(Component)
+                    Module.DeleteClothes(Component)
                 end
             elseif Component == 7 then
                 if DrawableId == GetPedDrawableVariation(PlayerPedId(), 11) then
-                    Skin.DeleteClothes(Component)
+                    Module.DeleteClothes(Component)
                 end
             elseif Component == 8 then
                 if DrawableId == GetPedDrawableVariation(PlayerPedId(), 3) then
-                    Skin.DeleteClothes(Component)
+                    Module.DeleteClothes(Component)
                 end
             elseif Component == 9 then
                 if DrawableId == GetPedDrawableVariation(PlayerPedId(), 9) then
-                    Skin.DeleteClothes(Component)
+                    Module.DeleteClothes(Component)
                 end
             elseif Component == 10 then
                 if DrawableId == GetPedDrawableVariation(PlayerPedId(), 5) then
-                    Skin.DeleteClothes(Component)
+                    Module.DeleteClothes(Component)
                 end
             elseif Component == 11 then
                 if DrawableId == GetPedDrawableVariation(PlayerPedId(), 4) then
-                    Skin.DeleteClothes(Component)
+                    Module.DeleteClothes(Component)
                 end
             elseif Component == 12 then
                 if DrawableId == GetPedDrawableVariation(PlayerPedId(), 6) then
-                    Skin.DeleteClothes(Component)
+                    Module.DeleteClothes(Component)
                 end
             end
         end
     end
 end)
+--]]

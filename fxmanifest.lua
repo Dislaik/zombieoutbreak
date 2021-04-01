@@ -3,11 +3,13 @@ games { "gta5" }
 
 author "Matias Salas"
 description "Zombie Survival RPG Framework"
-version "0.7.2"
+version "0.8.6"
 
 
 client_script {
-    "Config/Global.lua",
+    "Config/General.lua",
+    "Config/Interval.lua",
+    "Data/Locales/*.lua",
     "Root/Shared/Events.lua",
     "Root/Shared/Functions.lua",
     "Root/Shared/Main.lua",
@@ -18,7 +20,9 @@ client_script {
 
 server_script {
     "@mysql-async/lib/MySQL.lua",
-    "Config/Global.lua",
+    "Config/General.lua",
+    "Config/Interval.lua",
+    "Data/Locales/*.lua",
     "Root/Shared/Events.lua",
     "Root/Shared/Functions.lua",
     "Root/Shared/Main.lua",
@@ -33,13 +37,19 @@ dependencies {
 
 ui_page "NUI/Main.html"
 
+loadscreen "Loadscreen/Index.html"
+
 files {
+    "Data/Clothing.json",
+    "Data/Items.json",
+    "Data/Recipes.json",
     "Data/Weapons.json",
     "Modules/Core/Modules.json",
     "Modules/Base/Modules.json",
     "Modules/User/Modules.json",
     "Modules/Core/**/Data/Locales/*.lua",
     "Modules/Core/**/Data/*.lua",
+    "Modules/Core/**/Data/*.json",
     "Modules/Core/**/Data/NUI/*.css",
     "Modules/Core/**/Data/NUI/*.html",
     "Modules/Core/**/Data/NUI/*.js",
@@ -52,15 +62,37 @@ files {
     "Modules/Core/**/Client/*.lua",
     "Modules/Base/**/Data/Locales/*.lua",
     "Modules/Base/**/Data/*.lua",
+    "Modules/Base/**/Data/*.json",
+    "Modules/Base/**/Data/NUI/*.css",
+    "Modules/Base/**/Data/NUI/*.html",
+    "Modules/Base/**/Data/NUI/*.js",
+    "Modules/Base/**/Data/NUI/Images/*.jpg",
+    "Modules/Base/**/Data/NUI/Images/*.png",
+    "Modules/Base/**/Data/NUI/Fonts/*.ttf",
+    "Modules/Base/**/Data/Sounds/*.ogg",
     "Modules/Base/**/Shared/*.lua",
     "Modules/Base/**/Server/*.lua",
     "Modules/Base/**/Client/*.lua",
     "Modules/User/**/Data/Locales/*.lua",
     "Modules/User/**/Data/*.lua",
+    "Modules/User/**/Data/*.json",
+    "Modules/User/**/Data/NUI/*.css",
+    "Modules/User/**/Data/NUI/*.html",
+    "Modules/User/**/Data/NUI/*.js",
+    "Modules/User/**/Data/NUI/Images/*.jpg",
+    "Modules/User/**/Data/NUI/Images/*.png",
+    "Modules/User/**/Data/NUI/Fonts/*.ttf",
+    "Modules/User/**/Data/Sounds/*.ogg",
     "Modules/User/**/Shared/*.lua",
     "Modules/User/**/Server/*.lua",
     "Modules/User/**/Client/*.lua",
     "NUI/Main.html",
     "NUI/Main.js",
-    "NUI/Default.css"
+    "NUI/Default.css",
+    "Loadscreen/Index.html",
+    "Loadscreen/Loadscreen.js",
+    "Loadscreen/Oswald.ttf",
+    "Loadscreen/Loadscreen.css",
+    "Loadscreen/Background.jpg",
+    "Loadscreen/Sound.ogg"
 }
